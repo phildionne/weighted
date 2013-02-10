@@ -1,7 +1,6 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.11'
-gem 'pg'
 gem 'thin'
 
 
@@ -15,6 +14,10 @@ group :assets do
   # gem 'therubyracer', :platforms => :ruby
 
   gem 'uglifier', '>= 1.0.3'
+end
+
+group :production do
+  gem 'pg'
 end
 
 group :development, :test do
