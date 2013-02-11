@@ -1,5 +1,5 @@
 Weighted::Application.routes.draw do
-  resources :users
+  resources :users, :only => :show
 
 
   # The priority is based upon order of creation:
