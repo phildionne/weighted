@@ -1,11 +1,23 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="utf-8">
   <title><%= page_title %></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
   <%= stylesheet_link_tag "application", :media => nil %>
+
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="apple-touch-icon-144-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="apple-touch-icon-114-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="apple-touch-icon-72-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" href="apple-touch-icon-57-precomposed.png">
+  <link rel="shortcut icon" href="favicon.png">
+
   <%= csrf_meta_tags %>
 </head>
-<body class="<%= body_class %>">
+<body data-view="<%= body_class %>">
 
   <%= render 'layouts/header' %>
   <%= render :partial => 'layouts/flash', :object => flash %>
