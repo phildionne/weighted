@@ -48,6 +48,10 @@ module Weighted
     # Enable escaping HTML in JSON.
     config.active_support.escape_html_entities_in_json = true
 
+    # Heroku fix
+    # Force your application to not access the DB or load models when precompiling your assets
+    config.assets.initialize_on_precompile = false
+
     # Use SQL instead of Active Record's schema dumper when creating the database.
     # This is necessary if your schema can't be completely dumped by the schema dumper,
     # like if you have constraints or database-specific column types
