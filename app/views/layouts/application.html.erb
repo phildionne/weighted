@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Weighted</title>
+  <title><%= page_title %></title>
   <%= stylesheet_link_tag "application", :media => nil %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body class="<%= body_class %>">
 
 <%= yield %>
 
