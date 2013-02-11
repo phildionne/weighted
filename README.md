@@ -14,3 +14,6 @@ git push heroku develop:master
 ```
 
 ## Running tests
+```
+bundle exec guard
+```
