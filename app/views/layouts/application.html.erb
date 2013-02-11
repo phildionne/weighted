@@ -7,7 +7,12 @@
 </head>
 <body class="<%= body_class %>">
 
-<%= yield %>
+  <%= render 'layouts/header' %>
+  <%= render :partial => 'layouts/flash', :object => flash %>
+
+  <%= yield %>
+
+  <%= render 'layouts/footer' %>
 
   <%= javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.0/jquery.min.js" %>
   <%= javascript_include_tag "application" %>
