@@ -21,13 +21,15 @@ end
 
 group :development, :test do
   gem 'sqlite3'
-  gem 'rspec-rails'
   gem 'capybara'
+  gem 'rspec-rails'
   gem 'spork-rails'
   gem 'guard-rspec'
   gem 'guard-livereload'
   gem 'guard-spork'
-  gem 'factory_girl_rails'
+  gem 'rb-fsevent'
+  gem 'factory_girl_rails', '~> 4.0'
+
   gem 'better_errors'
   gem 'binding_of_caller'
 end

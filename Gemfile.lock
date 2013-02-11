@@ -137,6 +137,7 @@ GEM
       rdoc (~> 3.4)
       thor (>= 0.14.6, < 2.0)
     rake (10.0.3)
+    rb-fsevent (0.9.3)
     rdoc (3.12.1)
       json (~> 1.4)
     ref (1.0.2)
@@ -201,7 +202,7 @@ DEPENDENCIES
   binding_of_caller
   capybara
   coffee-rails (~> 3.2.1)
-  factory_girl_rails
+  factory_girl_rails (~> 4.0)
   guard-livereload
   guard-rspec
   guard-spork
@@ -209,6 +210,7 @@ DEPENDENCIES
   less-rails
   pg
   rails (= 3.2.11)
+  rb-fsevent
   rspec-rails
   spork-rails
   sqlite3
