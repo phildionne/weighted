@@ -1,5 +1,11 @@
 class User < ActiveRecord::Base
-  attr_accessible :username
+
+  # :token_authenticatable, :confirmable, :rememberable
+  # :lockable, :timeoutable
+  devise :database_authenticatable, :registerable,
+  :recoverable, :validatable, :omniauthable
+
+  attr_accessible :email, :password, :password_confirmation, :username
 
   has_one :profile, :inverse_of => :user, :dependent => :destroy
 
