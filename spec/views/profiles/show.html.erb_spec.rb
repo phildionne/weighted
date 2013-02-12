@@ -2,12 +2,7 @@ require 'spec_helper'
 
 describe "profiles/show" do
   before(:each) do
-    @profile = assign(:profile, stub_model(Profile,
-      :gravatar_email => "Gravatar Email",
-      :first_name => "First Name",
-      :last_name => "Last Name",
-      :avatar => "Avatar"
-    ))
+    @profile = assign(:profile, FactoryGirl.create(:profile))
   end
 
   it "renders attributes in <p>" do

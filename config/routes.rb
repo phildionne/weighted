@@ -1,8 +1,10 @@
 Weighted::Application.routes.draw do
-  resources :profiles
-
 
   resources :users, :only => :show
+
+  namespace :settings do
+    resource :profile, :only => [:show, :edit, :update]
+  end
 
 
   # The priority is based upon order of creation:

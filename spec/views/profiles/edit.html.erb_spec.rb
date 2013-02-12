@@ -2,12 +2,7 @@ require 'spec_helper'
 
 describe "profiles/edit" do
   before(:each) do
-    @profile = assign(:profile, stub_model(Profile,
-      :gravatar_email => "MyString",
-      :first_name => "MyString",
-      :last_name => "MyString",
-      :avatar => "MyString"
-    ))
+    @profile = assign(:profile, FactoryGirl.create(:profile))
   end
 
   it "renders the edit profile form" do
