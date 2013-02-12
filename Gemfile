@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.11'
 gem 'thin'
+gem 'devise'
 
 
 # Gems used only for assets and not required
