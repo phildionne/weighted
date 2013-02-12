@@ -11,6 +11,7 @@ Weighted::Application.routes.draw do
     resource :profile, :only => [:show, :edit, :update]
   end
 
+  root :to => 'home#index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
