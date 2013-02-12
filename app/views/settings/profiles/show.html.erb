@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Gravatar email:</b>
+  <%= @profile.gravatar_email %>
+</p>
+
+<p>
+  <b>First name:</b>
+  <%= @profile.first_name %>
+</p>
+
+<p>
+  <b>Last name:</b>
+  <%= @profile.last_name %>
+</p>
+
+<p>
+  <b>Avatar:</b>
+  <%= @profile.avatar %>
+</p>
+
+
+<%= link_to 'Edit', edit_settings_profile_path %>
