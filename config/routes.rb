@@ -1,6 +1,9 @@
 Weighted::Application.routes.draw do
 
-  devise_for :users, :controllers => { :omniauth_callbacks => 'omniauth_callbacks' }
+  devise_for :users, :controllers => {
+    :registrations => 'registrations',
+    :omniauth_callbacks => 'omniauth_callbacks'
+  }
   devise_scope :user do
     # Not added by default while using devise with omniauth
     delete '/users/sign_out' => 'devise/sessions#destroy'

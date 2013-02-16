@@ -10,4 +10,18 @@ class Profile < ActiveRecord::Base
     :allow_blank => true
 
   belongs_to :user
+
+
+  def update_attributes_from_auth(auth={})
+    if auth.has_key?(:info)
+      auth = auth.info
+    end
+
+    self.update_attributes({
+      name: auth.name,
+      first_name: auth.first_name,
+      last_name: auth.last_name,
+      provider_avatar: auth.image
+      })
+  end
 end
