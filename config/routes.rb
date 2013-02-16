@@ -1,5 +1,9 @@
 Weighted::Application.routes.draw do
 
+  namespace :settings do
+    resource :profile, :only => [:show, :edit, :update]
+  end
+
   devise_for :users, :controllers => {
     :registrations => 'registrations',
     :omniauth_callbacks => 'omniauth_callbacks'
@@ -10,9 +14,7 @@ Weighted::Application.routes.draw do
   end
   resources :users, :only => :show
 
-  namespace :settings do
-    resource :profile, :only => [:show, :edit, :update]
-  end
+  resources :collections
 
   root :to => 'home#index'
 
