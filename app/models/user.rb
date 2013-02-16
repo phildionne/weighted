@@ -50,4 +50,8 @@ class User < ActiveRecord::Base
       super
     end
   end
+
+  def flexible_name
+    name.blank? ? username : name
+  end
 end
