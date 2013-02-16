@@ -1,4 +1,5 @@
 class Settings::ProfilesController < ApplicationController
+  before_filter :authenticate_user!
 
   # GET /settings/profile
   # GET /settings/profile.json
