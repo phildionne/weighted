@@ -19,7 +19,6 @@ ActiveRecord::Schema.define(:version => 20130212022413) do
     t.string   "name"
     t.string   "first_name"
     t.string   "last_name"
-    t.string   "avatar"
     t.integer  "user_id"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false

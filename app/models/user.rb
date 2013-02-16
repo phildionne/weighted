@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
 
   after_create { self.create_profile }
 
-  delegate :avatar, :first_name, :gravatar_email, :last_name, :name, :provider_avatar, :to => :profile
+  delegate :avatar, :first_name, :last_name, :name, :to => :profile
 
   def self.first_or_create_from_auth(auth)
     where(auth.slice(:provider, :uid)).first_or_create do |user|
