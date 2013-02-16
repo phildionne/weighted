@@ -36,6 +36,7 @@ group :development, :test do
   gem 'guard-spork'
   gem 'rb-fsevent'
   gem 'factory_girl_rails', '~> 4.0'
+  gem 'awesome_print'
 end
 
 gem 'jquery-rails'
