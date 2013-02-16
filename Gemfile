@@ -21,6 +21,11 @@ group :production do
   gem 'pg'
 end
 
+group :development do
+  gem 'better_errors'
+  gem 'binding_of_caller'
+end
+
 group :development, :test do
   gem 'sqlite3'
   gem 'capybara'
@@ -31,9 +36,6 @@ group :development, :test do
   gem 'guard-spork'
   gem 'rb-fsevent'
   gem 'factory_girl_rails', '~> 4.0'
-
-  gem 'better_errors'
-  gem 'binding_of_caller'
 end
 
 gem 'jquery-rails'
