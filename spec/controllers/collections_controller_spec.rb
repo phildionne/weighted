@@ -36,7 +36,7 @@ describe CollectionsController do
 
   describe "GET index" do
     it "assigns all collections as @collections" do
-      collection = Collection.create! valid_attributes
+      collection = FactoryGirl.create(:collection)
       get :index, {}, valid_session
       assigns(:collections).should eq([collection])
     end
@@ -44,7 +44,7 @@ describe CollectionsController do
 
   describe "GET show" do
     it "assigns the requested collection as @collection" do
-      collection = Collection.create! valid_attributes
+      collection = FactoryGirl.create(:collection)
       get :show, {:id => collection.to_param}, valid_session
       assigns(:collection).should eq(collection)
     end
@@ -59,7 +59,7 @@ describe CollectionsController do
 
   describe "GET edit" do
     it "assigns the requested collection as @collection" do
-      collection = Collection.create! valid_attributes
+      collection = FactoryGirl.create(:collection)
       get :edit, {:id => collection.to_param}, valid_session
       assigns(:collection).should eq(collection)
     end
@@ -105,7 +105,7 @@ describe CollectionsController do
   describe "PUT update" do
     describe "with valid params" do
       it "updates the requested collection" do
-        collection = Collection.create! valid_attributes
+        collection = FactoryGirl.create(:collection)
         # Assuming there are no other collections in the database, this
         # specifies that the Collection created on the previous line
         # receives the :update_attributes message with whatever params are
@@ -115,13 +115,13 @@ describe CollectionsController do
       end
 
       it "assigns the requested collection as @collection" do
-        collection = Collection.create! valid_attributes
+        collection = FactoryGirl.create(:collection)
         put :update, {:id => collection.to_param, :collection => valid_attributes}, valid_session
         assigns(:collection).should eq(collection)
       end
 
       it "redirects to the collection" do
-        collection = Collection.create! valid_attributes
+        collection = FactoryGirl.create(:collection)
         put :update, {:id => collection.to_param, :collection => valid_attributes}, valid_session
         response.should redirect_to(collection)
       end
@@ -129,7 +129,7 @@ describe CollectionsController do
 
     describe "with invalid params" do
       it "assigns the collection as @collection" do
-        collection = Collection.create! valid_attributes
+        collection = FactoryGirl.create(:collection)
         # Trigger the behavior that occurs when invalid params are submitted
         Collection.any_instance.stub(:save).and_return(false)
         put :update, {:id => collection.to_param, :collection => { "name" => "invalid value" }}, valid_session
@@ -137,7 +137,7 @@ describe CollectionsController do
       end
 
       it "re-renders the 'edit' template" do
-        collection = Collection.create! valid_attributes
+        collection = FactoryGirl.create(:collection)
         # Trigger the behavior that occurs when invalid params are submitted
         Collection.any_instance.stub(:save).and_return(false)
         put :update, {:id => collection.to_param, :collection => { "name" => "invalid value" }}, valid_session
@@ -148,14 +148,14 @@ describe CollectionsController do
 
   describe "DELETE destroy" do
     it "destroys the requested collection" do
-      collection = Collection.create! valid_attributes
+      collection = FactoryGirl.create(:collection)
       expect {
         delete :destroy, {:id => collection.to_param}, valid_session
       }.to change(Collection, :count).by(-1)
     end
 
     it "redirects to the collections list" do
-      collection = Collection.create! valid_attributes
+      collection = FactoryGirl.create(:collection)
       delete :destroy, {:id => collection.to_param}, valid_session
       response.should redirect_to(collections_url)
     end
