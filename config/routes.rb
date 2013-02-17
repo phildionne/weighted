@@ -1,8 +1,5 @@
 Weighted::Application.routes.draw do
 
-  resources :contents
-
-
   namespace :settings do
     resource :profile, :only => [:show, :edit, :update]
   end
@@ -17,7 +14,9 @@ Weighted::Application.routes.draw do
   end
   resources :users, :only => :show
 
-  resources :collections
+  resources :collections do
+    resources :contents
+  end
 
   root :to => 'home#index'
 

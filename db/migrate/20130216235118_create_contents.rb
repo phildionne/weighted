@@ -4,6 +4,7 @@ class CreateContents < ActiveRecord::Migration
       t.string :title
       t.text :body
       t.string :source
+      t.belongs_to :collection
 
       t.timestamps
     end

@@ -2,5 +2,5 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @content %> |
-<%= link_to 'Back', contents_path %>
+<%= link_to 'Show', collection_content_path(@collection, @content) %> |
+<%= link_to 'Back', collection_contents_path %>
