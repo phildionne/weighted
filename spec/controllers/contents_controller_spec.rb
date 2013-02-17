@@ -36,7 +36,7 @@ describe ContentsController do
 
   describe "GET index" do
     it "assigns all contents as @contents" do
-      content = Content.create! valid_attributes
+      content = FactoryGirl.create(:content)
       get :index, {}, valid_session
       assigns(:contents).should eq([content])
     end
@@ -44,7 +44,7 @@ describe ContentsController do
 
   describe "GET show" do
     it "assigns the requested content as @content" do
-      content = Content.create! valid_attributes
+      content = FactoryGirl.create(:content)
       get :show, {:id => content.to_param}, valid_session
       assigns(:content).should eq(content)
     end
@@ -59,7 +59,7 @@ describe ContentsController do
 
   describe "GET edit" do
     it "assigns the requested content as @content" do
-      content = Content.create! valid_attributes
+      content = FactoryGirl.create(:content)
       get :edit, {:id => content.to_param}, valid_session
       assigns(:content).should eq(content)
     end
@@ -105,7 +105,7 @@ describe ContentsController do
   describe "PUT update" do
     describe "with valid params" do
       it "updates the requested content" do
-        content = Content.create! valid_attributes
+        content = FactoryGirl.create(:content)
         # Assuming there are no other contents in the database, this
         # specifies that the Content created on the previous line
         # receives the :update_attributes message with whatever params are
@@ -115,13 +115,13 @@ describe ContentsController do
       end
 
       it "assigns the requested content as @content" do
-        content = Content.create! valid_attributes
+        content = FactoryGirl.create(:content)
         put :update, {:id => content.to_param, :content => valid_attributes}, valid_session
         assigns(:content).should eq(content)
       end
 
       it "redirects to the content" do
-        content = Content.create! valid_attributes
+        content = FactoryGirl.create(:content)
         put :update, {:id => content.to_param, :content => valid_attributes}, valid_session
         response.should redirect_to(content)
       end
@@ -129,7 +129,7 @@ describe ContentsController do
 
     describe "with invalid params" do
       it "assigns the content as @content" do
-        content = Content.create! valid_attributes
+        content = FactoryGirl.create(:content)
         # Trigger the behavior that occurs when invalid params are submitted
         Content.any_instance.stub(:save).and_return(false)
         put :update, {:id => content.to_param, :content => { "title" => "invalid value" }}, valid_session
@@ -137,7 +137,7 @@ describe ContentsController do
       end
 
       it "re-renders the 'edit' template" do
-        content = Content.create! valid_attributes
+        content = FactoryGirl.create(:content)
         # Trigger the behavior that occurs when invalid params are submitted
         Content.any_instance.stub(:save).and_return(false)
         put :update, {:id => content.to_param, :content => { "title" => "invalid value" }}, valid_session
@@ -148,14 +148,14 @@ describe ContentsController do
 
   describe "DELETE destroy" do
     it "destroys the requested content" do
-      content = Content.create! valid_attributes
+      content = FactoryGirl.create(:content)
       expect {
         delete :destroy, {:id => content.to_param}, valid_session
       }.to change(Content, :count).by(-1)
     end
 
     it "redirects to the contents list" do
-      content = Content.create! valid_attributes
+      content = FactoryGirl.create(:content)
       delete :destroy, {:id => content.to_param}, valid_session
       response.should redirect_to(contents_url)
     end
