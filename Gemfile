@@ -37,6 +37,7 @@ group :development, :test do
   gem 'rb-fsevent'
   gem 'factory_girl_rails', '~> 4.0'
   gem 'awesome_print'
+  gem 'faker'
 end
 
 gem 'jquery-rails'
