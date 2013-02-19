@@ -2,8 +2,8 @@
 
 FactoryGirl.define do
   factory :content do
-    title "MyString"
-    body "MyText"
-    source "MyString"
+    title { Faker::Lorem.words(8) }
+    body { Faker::Lorem.paragraphs }
+    source { Faker::Internet.url }
   end
 end

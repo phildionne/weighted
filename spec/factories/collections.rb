@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :collection do
-    name "MyString"
-    description "MyString"
+    name { Faker::Name.first_name }
+    description { Faker::Lorem.sentence }
   end
 end
