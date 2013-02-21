@@ -35,6 +35,7 @@ group :development, :test do
   gem 'guard-livereload'
   gem 'guard-spork'
   gem 'rb-fsevent'
+  gem 'database_cleaner'
   gem 'factory_girl_rails', '~> 4.0'
   gem 'awesome_print'
   gem 'faker'
