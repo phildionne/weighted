@@ -1,5 +1,7 @@
 require 'spec_helper'
 
 describe "Profiles" do
-  pending
+  describe "GET /settings/profile" do
+    pending
+  end
 end

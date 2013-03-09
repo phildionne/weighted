@@ -15,6 +15,7 @@ describe User do
   end
 
   describe :Associations do
+    pending
   end
 
   describe :Validations do

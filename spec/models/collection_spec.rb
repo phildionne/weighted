@@ -15,9 +15,11 @@ describe Collection do
   end
 
   describe :Associations do
+    pending
   end
 
   describe :Validations do
+    pending
   end
 
 end
