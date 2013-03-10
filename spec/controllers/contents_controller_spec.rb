@@ -3,53 +3,56 @@ require 'spec_helper'
 describe ContentsController do
   include Devise::TestHelpers
 
-  before :each do
+  before do
     @user = FactoryGirl.create(:user)
     sign_in @user
   end
 
   describe "GET index" do
-    it "assigns all contents as @contents" do
+    before do
       @collection = FactoryGirl.create(:collection_with_contents)
-
       get :index, { collection_id: @collection }
-      assigns(:contents).should eq(@collection.contents)
     end
+    subject { controller }
+
+    it { should assign_to(:contents).with_kind_of(Array) }
   end
 
   describe "GET show" do
-    it "assigns the requested content as @content" do
+    before do
       @collection = FactoryGirl.create(:collection_with_contents)
       @content = @collection.contents.first
-
       get :show, { id: @content, collection_id: @collection }
-      assigns(:content).should eq(@content)
     end
+    subject { controller }
+
+    it { should assign_to(:content).with(@content) }
   end
 
   describe "GET new" do
-    it "assigns a new content as @content" do
+    before do
       @collection = FactoryGirl.create(:collection)
-
       get :new, { collection_id: @collection }
-      assigns(:content).should be_a_new(Content)
     end
+    subject { controller }
+
+    it { should assign_to(:content) }
   end
 
   describe "GET edit" do
-    it "assigns the requested content as @content" do
+    before do
       @collection = FactoryGirl.create(:collection_with_contents)
       @content = @collection.contents.first
-
       get :edit, { id: @content, collection_id: @collection }
-      assigns(:content).should eq(@content)
     end
+    subject { controller }
+
+    it { should assign_to(:content).with(@content) }
   end
 
   describe "POST create" do
     context "with valid params" do
-
-      before :each do
+      before do
         @collection = FactoryGirl.create(:collection)
         @content_attributes = FactoryGirl.attributes_for(:content)
       end
@@ -73,27 +76,22 @@ describe ContentsController do
     end
 
     context "with invalid params" do
-
-      before :each do
+      before do
         @collection = FactoryGirl.create(:collection)
         @invalid_content_attributes = FactoryGirl.attributes_for(:invalid_content)
+        post :create, { content: @invalid_content_attributes, collection_id: @collection }
       end
 
       it "assigns a newly created but unsaved content as @content" do
-        post :create, { content: @invalid_content_attributes, collection_id: @collection }
         assigns(:content).should be_a_new(Content)
       end
 
-      it "re-renders the 'new' template" do
-        post :create, { content: @invalid_content_attributes, collection_id: @collection }
-        response.should render_template :new
-      end
+      it { should render_template :new }
     end
   end
 
   describe "PUT update" do
-
-    before :each do
+    before do
       @collection = FactoryGirl.create(:collection) do |collection|
         collection.contents.create(attributes_for(:content, title: "Lorem ipsum dolor sit amet", body: "A pretty neat body", source: "http://example.com"))
       end
@@ -142,8 +140,7 @@ describe ContentsController do
   end
 
   describe "DELETE destroy" do
-
-    before :each do
+    before do
       @collection = FactoryGirl.create(:collection) do |collection|
         collection.contents.create(attributes_for(:content))
       end

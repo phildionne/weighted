@@ -15,11 +15,18 @@ describe Collection do
   end
 
   describe :Associations do
-    pending
+    it { should have_many(:contents) }
   end
 
   describe :Validations do
-    pending
+    it { should validate_presence_of(:description) }
+    it { should validate_presence_of(:name) }
+    it { should validate_uniqueness_of(:description) }
+    it { should validate_uniqueness_of(:name) }
+    it { should ensure_length_of(:name).is_at_least(3).is_at_most(255) }
+
+    it { should allow_mass_assignment_of(:description) }
+    it { should allow_mass_assignment_of(:name) }
   end
 
 end

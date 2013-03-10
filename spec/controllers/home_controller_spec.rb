@@ -6,7 +6,7 @@ describe HomeController do
   describe "GET 'index'" do
     context "being signed in" do
 
-      before :each do
+      before do
         @user = FactoryGirl.create(:user)
         sign_in @user
       end

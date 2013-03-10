@@ -3,51 +3,49 @@ require 'spec_helper'
 describe CollectionsController do
   include Devise::TestHelpers
 
-  before :each do
+  before do
     @user = FactoryGirl.create(:user)
     sign_in @user
   end
 
   describe "GET index" do
-    it "assigns all collections as @collections" do
-      @collection = FactoryGirl.create(:collection)
+    before { get :index }
+    subject { controller }
 
-      get :index, {}
-      assigns(:collections).should eq([@collection])
-    end
+    it { should assign_to(:collections).with_kind_of(Array) }
   end
 
   describe "GET show" do
-    it "assigns the requested collection as @collection" do
+    before do
       @collection = FactoryGirl.create(:collection)
-
       get :show, { id: @collection }
-      assigns(:collection).should eq(@collection)
     end
+    subject { controller }
+
+    it { should assign_to(:collection).with(@collection) }
   end
 
   describe "GET new" do
-    it "assigns a new collection as @collection" do
-      get :new
-      assigns(:collection).should be_a_new(Collection)
-    end
+    before { get :new }
+    subject { controller }
+
+    it { should assign_to(:collection) }
   end
 
   describe "GET edit" do
-    it "assigns the requested collection as @collection" do
+    before do
       @collection = FactoryGirl.create(:collection)
-
       get :edit, { id: @collection }
-      assigns(:collection).should eq(@collection)
     end
+    subject { controller }
+
+    it { should assign_to(:collection).with(@collection) }
   end
 
   describe "POST create" do
-    context "with valid params" do
 
-      before :each do
-        @collection_attributes = FactoryGirl.attributes_for(:collection)
-      end
+    context "with valid params" do
+      before { @collection_attributes = FactoryGirl.attributes_for(:collection) }
 
       it "creates a new Collection" do
         expect {
@@ -68,28 +66,18 @@ describe CollectionsController do
     end
 
     context "with invalid params" do
-
-      before :each do
-        @invalid_collection_attributes = FactoryGirl.attributes_for(:invalid_collection)
-      end
+      before { post :create, FactoryGirl.attributes_for(:invalid_collection) }
 
       it "assigns a newly created but unsaved collection as @collection" do
-        post :create, @invalid_collection_attributes
         assigns(:collection).should be_a_new(Collection)
       end
 
-      it "re-renders the 'new' template" do
-        post :create, @invalid_collection_attributes
-        response.should render_template :new
-      end
+      it { should render_template :new }
     end
   end
 
   describe "PUT update" do
-
-    before :each do
-      @collection = FactoryGirl.create(:collection, name: "Bacon", description: "Is so tasty!")
-    end
+    before { @collection = FactoryGirl.create(:collection, name: "Bacon", description: "Is so tasty!") }
 
     context "with valid params" do
       it "updates the requested collection" do
@@ -131,9 +119,7 @@ describe CollectionsController do
   end
 
   describe "DELETE destroy" do
-    before :each do
-      @collection = FactoryGirl.create(:collection)
-    end
+    before { @collection = FactoryGirl.create(:collection) }
 
     it "destroys the requested collection" do
       expect {
