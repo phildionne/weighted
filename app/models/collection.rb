@@ -5,7 +5,7 @@ class Collection < ActiveRecord::Base
 
   validates_presence_of     :description, :name
   validates_uniqueness_of   :description, :name
-  validates_length_of       :name, :maximum => 255, :too_long => 'less than 255 characters'
+  validates_length_of       :name, minimum: 3, maximum: 255
 
   before_save { self.name = self.name.titleize }
 end

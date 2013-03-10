@@ -4,9 +4,9 @@ class Profile < ActiveRecord::Base
   DEFAULT_AVATAR = 'assets/default_avatar.png'
 
   validates_presence_of   :user
-  validates_length_of     :name, :maximum => 128, :allow_blank => true
-  validates_length_of     :first_name, :maximum => 64, :allow_blank => true
-  validates_length_of     :last_name, :maximum => 64, :allow_blank => true
+  validates_length_of     :name, minimum: 3, maximum: 128, allow_blank: true
+  validates_length_of     :first_name, minimum: 3, maximum: 64, allow_blank: true
+  validates_length_of     :last_name, minimum: 3, maximum: 64, allow_blank: true
 
   # FIXME: Find a better regex to validate email
   validates_format_of :gravatar_email, :with => /^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/,

@@ -6,7 +6,7 @@ class Content < ActiveRecord::Base
   validates_presence_of     :collection
   validates_presence_of     :body, :source, :title
   validates_uniqueness_of   :source, :title
-  validates_length_of       :title, :maximum => 255, :allow_blank => false, :too_long => 'less than 255 characters'
+  validates_length_of       :title, minimum: 3, maximum: 255, allow_blank: false
 
   before_save { self.title = self.title.titleize }
 end
