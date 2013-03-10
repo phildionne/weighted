@@ -129,7 +129,7 @@ describe CollectionsController do
 
     it "redirects to the collections list" do
       delete :destroy, { id: @collection }
-      response.should redirect_to(collections_url)
+      response.should redirect_to(collections_path)
     end
   end
 
