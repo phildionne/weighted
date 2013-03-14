@@ -13,16 +13,6 @@ describe Settings::ProfilesController do
     end
   end
 
-  describe "GET edit" do
-    it "assigns the user profile as @profile" do
-      @user = FactoryGirl.create(:user)
-      sign_in @user
-
-      get :edit
-      assigns(:profile).should eq(@user.profile)
-    end
-  end
-
   describe "PUT update" do
 
     before :each do
@@ -69,9 +59,9 @@ describe Settings::ProfilesController do
         @profile.first_name.should_not eq("The Great")
       end
 
-      it "re-renders the 'edit' template" do
+      it "re-renders the 'show' template" do
         put :update, { id: @profile, profile: FactoryGirl.attributes_for(:invalid_profile) }
-        response.should render_template :edit
+        response.should render_template :show
       end
     end
   end

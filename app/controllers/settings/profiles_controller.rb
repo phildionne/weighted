@@ -13,11 +13,6 @@ class Settings::ProfilesController < ApplicationController
     end
   end
 
-  # GET /settings/profile/edit
-  def edit
-    @profile = Profile.find_by_user_id(@user)
-  end
-
   # PUT /settings/profile
   # PUT /settings/profile.json
   def update
@@ -25,10 +20,10 @@ class Settings::ProfilesController < ApplicationController
 
     respond_to do |format|
       if @profile.update_attributes(params[:profile])
-        format.html { redirect_to settings_profile_path, notice: 'Profile was successfully updated.' }
+        format.html { redirect_to settings_profile_path(), notice: 'Profile was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render action: "edit" }
+        format.html { render action: "show" }
         format.json { render json: @profile.errors, status: :unprocessable_entity }
       end
     end

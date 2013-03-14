@@ -1,7 +1,7 @@
 Weighted::Application.routes.draw do
 
   namespace :settings do
-    resource :profile, :only => [:show, :edit, :update]
+    resource :profile, :only => [:show, :update]
   end
 
   devise_for :users, :controllers => {
