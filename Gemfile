@@ -4,6 +4,7 @@ gem 'rails', '3.2.12'
 gem 'thin'
 gem 'devise'
 gem 'omniauth-twitter'
+gem 'high_voltage'
 
 
 # Gems used only for assets and not required
