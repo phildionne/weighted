@@ -1,11 +1,11 @@
 class Collection < ActiveRecord::Base
-  attr_accessible :description, :name
+  attr_accessible :description, :subject
 
   has_many :contents
 
-  validates_presence_of     :description, :name
-  validates_uniqueness_of   :description, :name
-  validates_length_of       :name, minimum: 3, maximum: 255
+  validates_presence_of     :description, :subject
+  validates_uniqueness_of   :description, :subject
+  validates_length_of       :subject, minimum: 3, maximum: 255
 
-  before_save { self.name = self.name.titleize }
+  before_save { self.subject = self.subject.titleize }
 end

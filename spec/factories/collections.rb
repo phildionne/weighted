@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :collection do
-    name { Faker::Lorem.words(6).join(' ') }
+    subject { Faker::Lorem.words(6).join(' ') }
     description { Faker::Lorem.sentence }
 
     factory :collection_with_contents do
@@ -17,6 +17,6 @@ FactoryGirl.define do
 
   factory :invalid_collection, parent: :collection do
     description nil
-    name nil
+    subject nil
   end
 end

@@ -77,7 +77,7 @@ describe CollectionsController do
   end
 
   describe "PUT update" do
-    before { @collection = FactoryGirl.create(:collection, name: "Bacon", description: "Is so tasty!") }
+    before { @collection = FactoryGirl.create(:collection, subject: "Bacon", description: "Is so tasty!") }
 
     context "with valid params" do
       it "updates the requested collection" do
@@ -86,9 +86,9 @@ describe CollectionsController do
       end
 
       it "assigns the requested collection as @collection" do
-        put :update, { id: @collection, collection: FactoryGirl.attributes_for(:collection, name: "Poutine", description: "Is so tasty!") }
+        put :update, { id: @collection, collection: FactoryGirl.attributes_for(:collection, subject: "Poutine", description: "Is so tasty!") }
         @collection.reload
-        @collection.name.should eq("Poutine")
+        @collection.subject.should eq("Poutine")
         @collection.description.should eq("Is so tasty!")
       end
 
@@ -105,9 +105,9 @@ describe CollectionsController do
       end
 
       it "does not assigns the requested collection as @collection" do
-        put :update, { id: @collection, collection: FactoryGirl.attributes_for(:invalid_collection, name: "Poutine") }
+        put :update, { id: @collection, collection: FactoryGirl.attributes_for(:invalid_collection, subject: "Poutine") }
         @collection.reload
-        @collection.name.should_not eq("Poutine")
+        @collection.subject.should_not eq("Poutine")
         @collection.description.should eq("Is so tasty!")
       end
 

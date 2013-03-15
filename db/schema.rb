@@ -14,7 +14,7 @@
 ActiveRecord::Schema.define(:version => 20130216235118) do
 
   create_table "collections", :force => true do |t|
-    t.string   "name"
+    t.string   "subject"
     t.string   "description"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
