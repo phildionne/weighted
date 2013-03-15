@@ -19,5 +19,8 @@ Weighted::Application.routes.draw do
     resources :contents
   end
 
-  root :to => 'home#index'
+  get 'pages/about' => 'high_voltage/pages#show', id: 'about'
+  get 'pages/contact' => 'high_voltage/pages#show', id: 'contact'
+
+  root :to => 'high_voltage/pages#show', id: 'frontpage'
 end
