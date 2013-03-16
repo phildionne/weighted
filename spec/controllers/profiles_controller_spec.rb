@@ -29,14 +29,14 @@ describe Settings::ProfilesController do
 
     context "with valid params" do
       it "updates @profile's attributes" do
-        put :update, { profile: FactoryGirl.attributes_for(:profile, name: "Dalai Lama", gravatar_email: "test@gravatar.com") }
+        put :update, { profile: FactoryGirl.attributes_for(:profile, first_name: "Dalai Lama", gravatar_email: "test@gravatar.com") }
         assigns(:profile).should eq(@profile)
       end
 
       it "assigns the requested profile as @profile" do
-        put :update, { profile: FactoryGirl.attributes_for(:profile, name: "Dalai Lama", gravatar_email: "test@gravatar.com") }
+        put :update, { profile: FactoryGirl.attributes_for(:profile, first_name: "Dalai Lama", gravatar_email: "test@gravatar.com") }
         @profile.reload
-        @profile.name.should eq("Dalai Lama")
+        @profile.first_name.should eq("Dalai Lama")
         @profile.gravatar_email.should eq("test@gravatar.com")
       end
 
@@ -53,9 +53,9 @@ describe Settings::ProfilesController do
       end
 
       it "does not assigns the requested profile as @profile" do
-        put :update, { id: @profile, profile: FactoryGirl.attributes_for(:invalid_profile, name: "Napoleon", first_name: "The Great") }
+        put :update, { id: @profile, profile: FactoryGirl.attributes_for(:invalid_profile, first_name: "The Great", last_name: "Napoleon") }
         @profile.reload
-        @profile.name.should_not eq("Napoleon")
+        @profile.last_name.should_not eq("Napoleon")
         @profile.first_name.should_not eq("The Great")
       end
 

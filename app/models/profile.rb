@@ -1,18 +1,21 @@
 class Profile < ActiveRecord::Base
-  attr_accessible :first_name, :gravatar_email, :last_name, :name, :provider_avatar
+  attr_accessible :first_name, :gravatar_email, :last_name, :provider_avatar
 
   DEFAULT_AVATAR = 'assets/default_avatar.png'
 
   validates_presence_of   :user
-  validates_length_of     :name, minimum: 3, maximum: 128, allow_blank: true
   validates_length_of     :first_name, minimum: 3, maximum: 64, allow_blank: true
   validates_length_of     :last_name, minimum: 3, maximum: 64, allow_blank: true
 
   # FIXME: Find a better regex to validate email
-  validates_format_of :gravatar_email, :with => /^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/,
-    :allow_blank => true
+  validates_format_of :gravatar_email, with: /^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/,
+    allow_blank: true
 
   belongs_to :user
+
+  def name
+    "#{first_name} #{last_name}"
+  end
 
   def avatar
     if !self.gravatar_email.blank?
@@ -30,7 +33,6 @@ class Profile < ActiveRecord::Base
     end
 
     self.update_attributes({
-      name: auth.name,
       first_name: auth.first_name,
       last_name: auth.last_name,
       provider_avatar: auth.image

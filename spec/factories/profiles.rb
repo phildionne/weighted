@@ -2,7 +2,6 @@ FactoryGirl.define do
   factory :profile do
     user
 
-    name { Faker::Internet.user_name }
     first_name { Faker::Name.first_name }
     last_name { Faker::Name.last_name }
     gravatar_email { Faker::Internet.email }
