@@ -18,9 +18,9 @@ class Profile < ActiveRecord::Base
   end
 
   def avatar
-    if !self.gravatar_email.blank?
+    if self.gravatar_email.present?
       self.gravatar_avatar
-    elsif !self.provider_avatar.blank?
+    elsif self.provider_avatar.present?
       self.provider_avatar
     else
       DEFAULT_AVATAR
