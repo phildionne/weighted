@@ -12,16 +12,17 @@ class User < ActiveRecord::Base
 
   attr_accessible :email, :password, :password_confirmation, :username
 
-  has_one :profile, :inverse_of => :user, :dependent => :destroy
+  has_one :profile, inverse_of: :user, dependent: :destroy
   has_many :follows, dependent: :destroy
 
   validates_presence_of   :username
   validates_uniqueness_of :username
-  validates_format_of     :username, :with => /\A[\w]{1,20}\z/, :message => "is authorized: letters A-Z, numbers 0-9, underscores, 1-20 characters."
+  validates_format_of     :username, with: /\A[\w]{1,20}\z/,
+    message: "is authorized: letters A-Z, numbers 0-9, underscores, 1-20 characters."
 
   after_create { self.create_profile }
 
-  delegate :avatar, :first_name, :last_name, :name, :to => :profile
+  delegate :avatar, :first_name, :last_name, :name, to: :profile
 
   def self.first_or_create_from_auth(auth)
     where(auth.slice(:provider, :uid)).first_or_create do |user|
@@ -34,7 +35,7 @@ class User < ActiveRecord::Base
 
   def self.new_with_session(params, session)
     if session["devise.user_attributes"]
-      new(session["devise.user_attributes"], :without_protection => true) do |user|
+      new(session["devise.user_attributes"], without_protection: true) do |user|
         user.attributes = params
         user.valid?
       end

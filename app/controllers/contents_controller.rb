@@ -1,5 +1,5 @@
 class ContentsController < ApplicationController
-  before_filter :authenticate_user!, :except => [:index, :show]
+  before_filter :authenticate_user!, except: [:index, :show]
   before_filter :load_collection
 
   # GET collections/:collection_id/contents
