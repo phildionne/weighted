@@ -195,6 +195,7 @@ GEM
       rspec-core (~> 2.13.0)
       rspec-expectations (~> 2.13.0)
       rspec-mocks (~> 2.13.0)
+    ruby-prof (0.13.0)
     rubyzip (0.9.9)
     selenium-webdriver (2.31.0)
       childprocess (>= 0.2.5)
@@ -265,6 +266,7 @@ DEPENDENCIES
   rails (= 3.2.12)
   rb-fsevent
   rspec-rails
+  ruby-prof
   shoulda-matchers
   spork-rails
   sqlite3

@@ -45,4 +45,8 @@ group :development, :test do
   gem 'faker'
 end
 
+group :profiling do
+  gem 'ruby-prof'
+end
+
 gem 'jquery-rails'
