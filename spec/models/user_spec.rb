@@ -16,6 +16,7 @@ describe User do
 
   describe :Associations do
     it { should have_one(:profile).dependent(:destroy) }
+    it { should have_many(:follows).dependent(:destroy) }
   end
 
   describe :Validations do
@@ -33,4 +34,80 @@ describe User do
     it { should_not allow_value("veryveryverylongusername").for(:username) }
   end
 
+  describe :InstanceMethods do
+    before { @user = FactoryGirl.create(:user) }
+
+    describe "Follows" do
+      before { @collection = FactoryGirl.create(:collection) }
+
+      describe "follow!" do
+        it "adds the collection to the user's collections" do
+          expect(@user.following).to eq([])
+          @user.follow!(@collection)
+
+          expect(@user.following).to eq([@collection])
+        end
+
+        it "returns true when the user does not follow the collection" do
+          @user.follow!(@collection).should be(true)
+          expect(@user.following).to eq([@collection])
+        end
+
+        it "returns false when the user follows the collection" do
+          @user.follow!(@collection)
+          @user.follow!(@collection).should be(false)
+          expect(@user.following).to eq([@collection])
+        end
+      end
+
+      describe "unfollow!" do
+        it "removes the collection from the user's collections" do
+          @user.follow!(@collection)
+
+          @user.unfollow!(@collection)
+          expect(@user.following).to eq([])
+        end
+
+        it "returns true when the user already follows the collection" do
+          @user.follow!(@collection)
+          @user.unfollow!(@collection).should be(true)
+          expect(@user.following).to eq([])
+        end
+
+        it "returns false when the user does not already follow the collection" do
+          @user.unfollow!(@collection).should be(false)
+          expect(@user.following).to eq([])
+        end
+      end
+
+      describe "following" do
+        it "returns a collection of Collection records" do
+          @user.follow!(@collection)
+          expect(@user.following).to eq([@collection])
+        end
+      end
+
+      describe "following?" do
+        it "returns true when the user follows the collection" do
+          @user.follow!(@collection)
+          @user.following?(@collection).should be(true)
+        end
+
+        it "returns false when the user does not follow the collection" do
+          @user.following?(@collection).should be(false)
+        end
+      end
+
+      describe "following_count" do
+        it "returns a Fixnum" do
+          @user.follow!(@collection)
+          expect(@user.following_count).to be_a(Fixnum)
+        end
+
+        it "returns 0 when the user does not follow any collections" do
+          expect(@user.following_count).to eq(0)
+        end
+      end
+    end
+  end
 end
