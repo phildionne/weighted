@@ -83,10 +83,4 @@ class ContentsController < ApplicationController
       format.json { head :no_content }
     end
   end
-
-  private
-
-  def load_collection
-    @collection = Collection.find_by_id(params[:collection_id])
-  end
 end
