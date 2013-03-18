@@ -93,7 +93,14 @@ describe ContentsController do
   describe "PUT update" do
     before do
       @collection = FactoryGirl.create(:collection) do |collection|
-        collection.contents.create(attributes_for(:content, title: "Lorem ipsum dolor sit amet", body: "A pretty neat body", source: "http://example.com"))
+        collection.contents.create(
+          attributes_for(
+            :content,
+            title: "Lorem ipsum dolor sit amet",
+            body: "A pretty neat body",
+            location: "http://good-example.com"
+          )
+        )
       end
       @content = @collection.contents.first
     end
@@ -105,11 +112,20 @@ describe ContentsController do
       end
 
       it "assigns the requested content as @content" do
-        put :update, { id: @content, collection_id: @collection, content: FactoryGirl.attributes_for(:content, title: "Bacon ipsum dolor sit amet", body: "A very neat body", source: "http://test.com") }
+        put :update, {
+          id: @content,
+          collection_id: @collection,
+          content: FactoryGirl.attributes_for(
+            :content,
+            title: "Bacon ipsum dolor sit amet",
+            body: "A very neat body",
+            location: "http://good-test.com"
+          )
+        }
         @content.reload
         @content.title.should eq("Bacon ipsum dolor sit amet".titleize)
         @content.body.should eq("A very neat body")
-        @content.source.should eq("http://test.com")
+        @content.location.should eq("http://good-test.com")
       end
 
       it "redirects to the content" do
@@ -125,11 +141,19 @@ describe ContentsController do
       end
 
       it "does not assigns the requested content as @content" do
-        put :update, { id: @content, collection_id: @collection, content: FactoryGirl.attributes_for(:invalid_content, title: "Bacon ipsum dolor sit amet", source: "http://test.com") }
+        put :update, {
+          id: @content,
+          collection_id: @collection,
+          content: FactoryGirl.attributes_for(
+            :invalid_content,
+            title: "Bacon ipsum dolor sit amet",
+            location: "http://bad-test.com"
+          )
+        }
         @content.reload
         @content.title.should_not eq("Bacon ipsum dolor sit amet")
         @content.body.should eq("A pretty neat body")
-        @content.source.should eq("http://example.com")
+        @content.location.should eq("http://good-example.com")
       end
 
       it "re-renders the 'edit' template" do

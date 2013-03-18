@@ -14,7 +14,7 @@
   <tr>
     <td><%= content.title %></td>
     <td><%= content.body %></td>
-    <td><%= content.source %></td>
+    <td><%= content.location %></td>
     <td><%= link_to 'Show', collection_content_path(@collection, content) %></td>
     <td><%= link_to 'Edit', edit_collection_content_path(@collection, content) %></td>
     <td><%= link_to 'Destroy', collection_content_path(@collection, content), method: :delete, data: { confirm: 'Are you sure?' } %></td>
