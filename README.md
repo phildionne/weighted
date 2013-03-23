@@ -38,3 +38,6 @@ Apply release branch to develop:
 ## Running tests
 
     bundle exec guard
+
+## Assets
+Assets are automatically uploaded on AWS S3 using [asset_sync](https://github.com/rumblelabs/asset_sync) and served through a Cloudfront distribution.
