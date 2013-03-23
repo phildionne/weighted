@@ -5,6 +5,8 @@ describe Collection do
   describe :Factories do
     context "Valid factory" do
       subject { FactoryGirl.build(:collection) }
+      subject { FactoryGirl.build(:collection_with_contents) }
+      subject { FactoryGirl.build(:collection_with_sources) }
       specify { should be_valid }
     end
 
@@ -17,6 +19,7 @@ describe Collection do
   describe :Associations do
     it { should have_many(:contents) }
     it { should have_many(:follows).dependent(:destroy) }
+    it { should have_and_belong_to_many(:sources) }
   end
 
   describe :Validations do

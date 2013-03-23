@@ -13,6 +13,16 @@ FactoryGirl.define do
       end
     end
 
+    factory :collection_with_sources do
+      ignore do
+        sources_count 5
+      end
+
+      after(:create) do |collection, evaluator|
+        FactoryGirl.create_list(:source, evaluator.sources_count, collection: collection)
+      end
+    end
+
   end
 
   factory :invalid_collection, parent: :collection do
