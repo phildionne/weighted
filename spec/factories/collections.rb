@@ -19,7 +19,22 @@ FactoryGirl.define do
       end
 
       after(:create) do |collection, evaluator|
-        FactoryGirl.create_list(:source, evaluator.sources_count, collection: collection)
+        sources = FactoryGirl.create(:source, evaluator.sources_count)
+        collection.sources << sources
+      end
+    end
+
+    factory :collection_with_sources_and_contents do
+      ignore do
+        contents_count 10
+        sources_count 2
+      end
+
+      after(:create) do |collection, evaluator|
+        FactoryGirl.create_list(:content, evaluator.contents_count, collection: collection)
+
+        sources = FactoryGirl.create_list(:source, evaluator.sources_count)
+        collection.sources << sources
       end
     end
 

@@ -7,6 +7,7 @@ describe Collection do
       subject { FactoryGirl.build(:collection) }
       subject { FactoryGirl.build(:collection_with_contents) }
       subject { FactoryGirl.build(:collection_with_sources) }
+      subject { FactoryGirl.build(:collection_with_sources_and_contents) }
       specify { should be_valid }
     end
 
