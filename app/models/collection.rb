@@ -10,6 +10,7 @@ class Collection < ActiveRecord::Base
 
   has_many :contents
   has_many :follows, dependent: :destroy
+  has_and_belongs_to_many :sources
 
   validates_presence_of     :description, :subject
   validates_uniqueness_of   :description, :subject
