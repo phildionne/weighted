@@ -1,0 +1,18 @@
+<article>
+  <header>
+    <h1><%= content.title %></h1>
+    <div>
+      <%= link_to content.location, content.location %>
+    </div>
+  </header>
+
+  <div>
+    <%= content.body %>
+  </div>
+
+  <footer>
+    <%= link_to 'Show', collection_content_path(@collection, content) %>
+    <%= link_to 'Edit', edit_collection_content_path(@collection, content) %>
+    <%= link_to 'Destroy', collection_content_path(@collection, content), method: :delete, data: { confirm: 'Are you sure?' } %>
+  </footer>
+</article>

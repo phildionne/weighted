@@ -1,0 +1,15 @@
+<article>
+  <header>
+    <h1><%= collection.subject %></h1>
+  </header>
+
+  <p>
+    <%= collection.description %>
+  </p>
+
+  <footer>
+    <%= link_to 'Show', collection %>
+    <%= link_to 'Edit', edit_collection_path(collection) %>
+    <%= link_to 'Destroy', collection, method: :delete, data: { confirm: 'Are you sure?' } %>
+  </footer>
+</article>

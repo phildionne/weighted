@@ -1,20 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Title:</b>
-  <%= @content.title %>
-</p>
-
-<p>
-  <b>Body:</b>
-  <%= @content.body %>
-</p>
-
-<p>
-  <b>Location:</b>
-  <%= @content.location %>
-</p>
-
+<%= render @content %>
 
 <%= link_to 'Edit', edit_collection_content_path(@collection, @content) %> |
 <%= link_to 'Back', collection_contents_path %>

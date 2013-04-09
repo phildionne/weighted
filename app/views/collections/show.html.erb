@@ -1,15 +1,10 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Subject:</b>
-  <%= @collection.subject %>
-</p>
-
-<p>
-  <b>Description:</b>
-  <%= @collection.description %>
-</p>
-
+<%= render @collection %>
 
 <%= link_to 'Edit', edit_collection_path(@collection) %> |
 <%= link_to 'Back', collections_path %>
+
+<hr>
+
+<%= render partial: 'contents/content_listing', collection: @collection.contents, as: :content %>
