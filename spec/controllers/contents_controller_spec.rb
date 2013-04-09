@@ -13,9 +13,11 @@ describe ContentsController do
       @collection = FactoryGirl.create(:collection_with_contents)
       get :index, { collection_id: @collection }
     end
-    subject { controller }
 
-    it { should assign_to(:contents).with_kind_of(Array) }
+    it "responds with success and render template" do
+      response.should be_success
+      response.should render_template :index
+    end
   end
 
   describe "GET show" do
@@ -24,9 +26,11 @@ describe ContentsController do
       @content = @collection.contents.first
       get :show, { id: @content, collection_id: @collection }
     end
-    subject { controller }
 
-    it { should assign_to(:content).with(@content) }
+    it "responds with success and render template" do
+      response.should be_success
+      response.should render_template :show
+    end
   end
 
   describe "GET new" do
@@ -36,7 +40,10 @@ describe ContentsController do
     end
     subject { controller }
 
-    it { should assign_to(:content) }
+    it "responds with success and render template" do
+      response.should be_success
+      response.should render_template :new
+    end
   end
 
   describe "GET edit" do
@@ -47,7 +54,10 @@ describe ContentsController do
     end
     subject { controller }
 
-    it { should assign_to(:content).with(@content) }
+    it "responds with success and render template" do
+      response.should be_success
+      response.should render_template :edit
+    end
   end
 
   describe "POST create" do

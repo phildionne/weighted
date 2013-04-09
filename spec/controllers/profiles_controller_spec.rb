@@ -7,8 +7,8 @@ describe Settings::ProfilesController do
     it "assigns the user profile as @profile" do
       @user = FactoryGirl.create(:user)
       sign_in @user
-
       get :show
+
       assigns(:profile).should eq(@user.profile)
     end
   end

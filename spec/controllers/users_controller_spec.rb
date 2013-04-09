@@ -7,9 +7,11 @@ describe UsersController do
       @user = FactoryGirl.create(:user)
       get :show, { id: @user }
     end
-    subject { controller }
 
-    it { should assign_to(:user).with(@user) }
+    it "responds with success and render template" do
+      response.should be_success
+      response.should render_template :show
+    end
   end
 
 end

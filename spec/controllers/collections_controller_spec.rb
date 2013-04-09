@@ -10,9 +10,11 @@ describe CollectionsController do
 
   describe "GET index" do
     before { get :index }
-    subject { controller }
 
-    it { should assign_to(:collections).with_kind_of(Array) }
+    it "responds with success and render template" do
+      response.should be_success
+      response.should render_template :index
+    end
   end
 
   describe "GET show" do
@@ -20,16 +22,21 @@ describe CollectionsController do
       @collection = FactoryGirl.create(:collection)
       get :show, { id: @collection }
     end
-    subject { controller }
 
-    it { should assign_to(:collection).with(@collection) }
+    it "responds with success and render template" do
+      response.should be_success
+      response.should render_template :show
+    end
   end
 
   describe "GET new" do
     before { get :new }
     subject { controller }
 
-    it { should assign_to(:collection) }
+    it "responds with success and render template" do
+      response.should be_success
+      response.should render_template :new
+    end
   end
 
   describe "GET edit" do
@@ -37,9 +44,11 @@ describe CollectionsController do
       @collection = FactoryGirl.create(:collection)
       get :edit, { id: @collection }
     end
-    subject { controller }
 
-    it { should assign_to(:collection).with(@collection) }
+    it "responds with success and render template" do
+      response.should be_success
+      response.should render_template :edit
+    end
   end
 
   describe "POST create" do
