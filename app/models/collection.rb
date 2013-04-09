@@ -12,9 +12,9 @@ class Collection < ActiveRecord::Base
   has_many :follows, dependent: :destroy
   has_and_belongs_to_many :sources
 
-  validates_presence_of     :description, :subject
-  validates_uniqueness_of   :description, :subject
-  validates_length_of       :subject, minimum: 3, maximum: 255
+  validates :description, :subject,   presence: true
+  validates :description, :subject,   uniqueness: true
+  validates :subject,                 length: { minimum: 3, maximum: 255 }
 
   before_save { self.subject = self.subject.titleize }
 

@@ -3,10 +3,10 @@ class Content < ActiveRecord::Base
 
   belongs_to :collection
 
-  validates_presence_of     :collection
-  validates_presence_of     :body, :location, :title
-  validates_uniqueness_of   :location, :title
-  validates_length_of       :title, minimum: 3, maximum: 255, allow_blank: false
+  validates :collection,                presence: true
+  validates :body, :location, :title,   presence: true
+  validates :location, :title,          uniqueness: true
+  validates :title,                     length: { minimum: 3, maximum: 255, allow_blank: false }
 
   before_save { self.title = self.title.titleize }
 end
