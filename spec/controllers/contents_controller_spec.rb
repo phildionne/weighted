@@ -104,7 +104,7 @@ describe ContentsController do
     before do
       @collection = FactoryGirl.create(:collection) do |collection|
         collection.contents.create(
-          attributes_for(
+          FactoryGirl.attributes_for(
             :content,
             title: "Lorem ipsum dolor sit amet",
             body: "A pretty neat body",
@@ -176,7 +176,7 @@ describe ContentsController do
   describe "DELETE destroy" do
     before do
       @collection = FactoryGirl.create(:collection) do |collection|
-        collection.contents.create(attributes_for(:content))
+        collection.contents.create(FactoryGirl.attributes_for(:content))
       end
       @content = @collection.contents.first
     end
