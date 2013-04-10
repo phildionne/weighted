@@ -8,7 +8,7 @@ FactoryGirl.define do
       end
 
       after(:create) do |source, evaluator|
-        FactoryGirl.create_list(:collection, evaluator.collections_count, source: source)
+        source.collections << FactoryGirl.create_list(:collection, evaluator.collections_count)
       end
     end
   end
