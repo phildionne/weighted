@@ -5,6 +5,7 @@ gem 'thin'
 gem 'devise'
 gem 'omniauth-twitter'
 gem 'high_voltage'
+gem 'flutie'
 
 
 # Gems used only for assets and not required
