@@ -31,6 +31,7 @@ end
 
 group :development, :test do
   gem 'debugger'
+  gem 'simplecov', :require => false
   gem 'sqlite3'
   gem 'capybara'
   gem 'rspec-rails'
