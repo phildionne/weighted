@@ -8,6 +8,13 @@ Spork.prefork do
   # if you change any configuration or code from libraries loaded here, you'll
   # need to restart spork for it take effect.
 
+  # see https://github.com/colszowka/simplecov/issues/42#issuecomment-4440284
+  unless ENV['DRB']
+    require 'simplecov'
+    SimpleCov.start 'rails'
+  end
+
+
   # This file is copied to spec/ when you run 'rails generate rspec:install'
   ENV["RAILS_ENV"] ||= 'test'
   require File.expand_path("../../config/environment", __FILE__)
@@ -73,6 +80,12 @@ end
 
 Spork.each_run do
   # This code will be run each time you run your specs.
+
+  # see https://github.com/colszowka/simplecov/issues/42#issuecomment-4440284
+  unless ENV['DRB']
+    require 'simplecov'
+    SimpleCov.start 'rails'
+  end
 
   FactoryGirl.reload
 end
