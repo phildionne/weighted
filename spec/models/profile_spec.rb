@@ -4,7 +4,7 @@ describe Profile do
 
   describe :Factories do
     context "Valid factory" do
-      subject { FactoryGirl.build(:profile) }
+      subject { FactoryGirl.create(:profile) }
       specify { should be_valid }
     end
 

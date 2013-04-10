@@ -4,8 +4,8 @@ describe Source do
 
   describe :Factories do
     context "Valid factory" do
-      subject { FactoryGirl.build(:source) }
-      subject { FactoryGirl.build(:source_with_collections) }
+      subject { FactoryGirl.create(:source) }
+      subject { FactoryGirl.create(:source_with_collections) }
       specify { should be_valid }
     end
 

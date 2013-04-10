@@ -4,7 +4,7 @@ describe Content do
 
   describe :Factories do
     context "Valid factory" do
-      subject { FactoryGirl.build(:content) }
+      subject { FactoryGirl.create(:content) }
       specify { should be_valid }
     end
 

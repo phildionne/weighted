@@ -4,7 +4,7 @@ describe User do
 
   describe :Factories do
     context "Valid factory" do
-      subject { FactoryGirl.build(:user) }
+      subject { FactoryGirl.create(:user) }
       specify { should be_valid }
     end
 
