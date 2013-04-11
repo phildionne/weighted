@@ -8,7 +8,7 @@
 class User < ActiveRecord::Base
 
   devise :database_authenticatable, :registerable,
-  :recoverable, :validatable, :omniauthable
+  :recoverable, :validatable, :omniauthable, :omniauth_providers => [:twitter]
 
   attr_accessible :email, :password, :password_confirmation, :username
 
