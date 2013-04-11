@@ -1,4 +1,5 @@
-class OmniauthCallbacksController < ApplicationController
+class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
+
   def all
     auth = request.env["omniauth.auth"]
 
@@ -6,11 +7,8 @@ class OmniauthCallbacksController < ApplicationController
 
     if @user.persisted?
 
-      if @user.new_record?
-        @user.profile.update_attributes_from_auth(auth)
-      end
+      @user.profile.update_attributes_from_auth(auth) if @user.new_record?
 
-      # flash[:success] = "Signed in!"
       sign_in_and_redirect @user
     else
       session['devise.user_attributes'] = @user.attributes

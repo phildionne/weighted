@@ -6,7 +6,7 @@ Weighted::Application.routes.draw do
 
   devise_for :users, :controllers => {
     :registrations => 'registrations',
-    :omniauth_callbacks => 'omniauth_callbacks'
+    :omniauth_callbacks => 'users/omniauth_callbacks'
   }
   devise_scope :user do
     # Not added by default while using devise with omniauth
