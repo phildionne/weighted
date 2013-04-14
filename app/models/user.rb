@@ -59,7 +59,7 @@ class User < ActiveRecord::Base
   end
 
   def flexible_name
-    name.blank? ? username : name
+    name || username
   end
 
   # Make a user follow a collection

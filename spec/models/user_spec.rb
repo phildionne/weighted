@@ -37,6 +37,23 @@ describe User do
   describe :InstanceMethods do
     before { @user = FactoryGirl.create(:user) }
 
+    describe "#flexible_name" do
+      it "returns the name when name is specified" do
+        @user.profile.first_name = "Foo"
+        @user.profile.last_name = "Bar"
+
+        @user.flexible_name.should eq("Foo Bar")
+      end
+
+      it "returns the username when name is not specified" do
+        @user.username = "Foobar"
+        @user.profile.first_name = nil
+        @user.profile.last_name = nil
+
+        @user.flexible_name.should eq("Foobar")
+      end
+    end
+
     describe "Follows" do
       before { @collection = FactoryGirl.create(:collection) }
 
