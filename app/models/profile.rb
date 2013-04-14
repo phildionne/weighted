@@ -23,12 +23,10 @@ class Profile < ActiveRecord::Base
     gravatar_avatar || provider_avatar || DEFAULT_AVATAR
   end
 
-  def update_attributes_from_auth(auth={})
-    if auth.has_key?(:info)
-      auth = auth.info
-    end
-
-    self.update_attributes({
+  # Updates Profile attributes from Omiauth Auth hash
+  # @param auth [Hash]
+  def update_attributes_from_auth(auth)
+    update_attributes({
       first_name: auth.first_name,
       last_name: auth.last_name,
       provider_avatar: auth.image

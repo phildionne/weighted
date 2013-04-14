@@ -24,6 +24,7 @@ class User < ActiveRecord::Base
 
   delegate :avatar, :first_name, :last_name, :name, to: :profile
 
+  # Find or create a User based on Auth provider and uid
   def self.first_or_create_from_auth(auth)
     where(auth.slice(:provider, :uid)).first_or_create do |user|
       user.username = auth.info.nickname
@@ -33,6 +34,7 @@ class User < ActiveRecord::Base
     end
   end
 
+  # Populates a new User from the session and trigger validations
   def self.new_with_session(params, session)
     if session["devise.user_attributes"]
       new(session["devise.user_attributes"], without_protection: true) do |user|
@@ -44,12 +46,12 @@ class User < ActiveRecord::Base
     end
   end
 
-  # When creating User registration, don't require password when coming from Twitter
+  # In In Users/Registrations#new, don't require password when coming from OAuth provider
   def password_required?
     super && provider.blank?
   end
 
-  # When updating User registration, only require current password if signed up with password
+  # In Users/Registrations#update, only require current password if user signed up with password
   def update_with_password(params, *options)
     if encrypted_password.blank?
       update_attributes(params, *options)

@@ -7,7 +7,8 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
     if @user.persisted?
 
-      @user.profile.update_attributes_from_auth(auth) if @user.new_record?
+      # Update User's Profile with provider informations on every authentication
+      @user.profile.update_attributes_from_auth(auth.info)
 
       sign_in_and_redirect @user
     else
