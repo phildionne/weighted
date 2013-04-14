@@ -1,5 +1,5 @@
 class Profile < ActiveRecord::Base
-  attr_accessible :first_name, :gravatar_email, :last_name, :provider_avatar
+  attr_accessible :first_name, :last_name, :gravatar_email, :provider_avatar
 
   DEFAULT_AVATAR = 'assets/default_avatar.png'
 
@@ -8,23 +8,19 @@ class Profile < ActiveRecord::Base
   validates :last_name,     length: { minimum: 3, maximum: 64, allow_blank: true }
 
   # FIXME: Find a better regex to validate email
-  validates :gravatar_email, format: { with: /^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/,
+  validates :gravatar_email, format: {
+    with: /^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/,
     allow_blank: true }
 
   belongs_to :user
 
   def name
-    "#{first_name} #{last_name}"
+    "#{first_name} #{last_name}" if first_name && last_name
   end
 
+  # @return [String]
   def avatar
-    if self.gravatar_email.present?
-      self.gravatar_avatar
-    elsif self.provider_avatar.present?
-      self.provider_avatar
-    else
-      DEFAULT_AVATAR
-    end
+    gravatar_avatar || provider_avatar || DEFAULT_AVATAR
   end
 
   def update_attributes_from_auth(auth={})
@@ -39,10 +35,9 @@ class Profile < ActiveRecord::Base
       })
   end
 
+  private
 
-  protected
-
-  def gravatar_avatar
-    "https://gravatar.com/avatar/#{Digest::MD5.hexdigest(self.gravatar_email.downcase)}.png?size=70"
-  end
+    def gravatar_avatar
+      self.gravatar_email ? "https://gravatar.com/avatar/#{Digest::MD5.hexdigest(self.gravatar_email.downcase)}.png?size=70" : nil
+    end
 end

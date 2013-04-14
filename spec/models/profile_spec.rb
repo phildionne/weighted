@@ -32,4 +32,31 @@ describe Profile do
     it { should_not allow_value("not an email").for(:gravatar_email) }
   end
 
+  describe :InstanceMethods do
+    describe "#name" do
+      before { @profile = FactoryGirl.create(:profile, first_name: "Foo", last_name: "Bar") }
+
+      it "includes first_name and last_name" do
+        @profile.name.should eq("Foo Bar")
+      end
+    end
+
+    describe "#avatar" do
+      before { @profile = FactoryGirl.create(:profile, gravatar_email: nil, provider_avatar: nil) }
+
+      it "returns the gravatar_avatar when gravatar_email is specified" do
+        @profile.gravatar_email = "test@example.com"
+        @profile.avatar.should match(Digest::MD5.hexdigest('test@example.com'))
+      end
+
+      it "returns the provider_avatar when gravatar_email is not specified" do
+        @profile.provider_avatar = "http://www.example.com/provider_avatar_test.png"
+        @profile.avatar.should eq("http://www.example.com/provider_avatar_test.png")
+      end
+
+      it "returns the default avatar when gravatar_email and provider_avatar are not specified" do
+        @profile.avatar.should eq(Profile::DEFAULT_AVATAR)
+      end
+    end
+  end
 end
