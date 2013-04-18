@@ -1,3 +1,11 @@
+GIT
+  remote: git://github.com/smartinez87/exception_notification.git
+  revision: bed00303acbf6349322514736415d63ee83d3685
+  specs:
+    exception_notification (3.0.1)
+      actionmailer (>= 3.0.4)
+      activesupport (>= 3.0.4)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -278,6 +286,7 @@ DEPENDENCIES
   database_cleaner
   debugger
   devise
+  exception_notification!
   factory_girl_rails (~> 4.0)
   faker
   flutie

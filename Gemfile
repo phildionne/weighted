@@ -22,6 +22,7 @@ end
 
 group :production do
   gem 'pg'
+  gem 'exception_notification', github: 'smartinez87/exception_notification'
 end
 
 group :development do
