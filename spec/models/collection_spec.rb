@@ -5,8 +5,14 @@ describe Collection do
   describe :Factories do
     context "Valid factory" do
       subject { FactoryGirl.create(:collection) }
+      specify { should be_valid }
+
       subject { FactoryGirl.create(:collection_with_contents) }
+      specify { should be_valid }
+
       subject { FactoryGirl.create(:collection_with_sources) }
+      specify { should be_valid }
+
       subject { FactoryGirl.create(:collection_with_sources_and_contents) }
       specify { should be_valid }
     end
