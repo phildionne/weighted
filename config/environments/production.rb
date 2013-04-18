@@ -64,4 +64,20 @@ Weighted::Application.configure do
   # Log the query plan for queries taking more than this (works
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
+
+  config.middleware.use ExceptionNotifier,
+    :email => {
+      :email_prefix => "[Weighted Rescuer] ",
+      :sender_address => %{"Weighted Rescuer" <rescuer@weighted.com>},
+      :exception_recipients => %w{dionne.phil@gmail.com},
+      :smtp_settings => {
+        :port =>           '587',
+        :address =>        'smtp.mandrillapp.com',
+        :user_name =>      ENV['MANDRILL_USERNAME'],
+        :password =>       ENV['MANDRILL_APIKEY'],
+        :domain =>         'heroku.com',
+        :authentication => :plain
+      }
+    }
+
 end

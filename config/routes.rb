@@ -23,4 +23,8 @@ Weighted::Application.routes.draw do
   get 'pages/contact' => 'high_voltage/pages#show', id: 'contact'
 
   root :to => 'high_voltage/pages#show', id: 'frontpage'
+
+  unless Rails.application.config.consider_all_requests_local
+    match '*a', to: 'errors#not_found'
+  end
 end
