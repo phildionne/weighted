@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-  before_filter :authenticate_user!, except: :show
 
   # GET /users/1
   # GET /users/1.json

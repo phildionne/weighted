@@ -28,6 +28,8 @@ Weighted::Application.routes.draw do
     end
   end
 
+  resources :follows, only: [:create, :destroy]
+
   get 'pages/about'   => 'high_voltage/pages#show', id: 'about'
   get 'pages/contact' => 'high_voltage/pages#show', id: 'contact'
 

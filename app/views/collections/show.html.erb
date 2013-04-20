@@ -7,4 +7,8 @@
 
 <hr>
 
+<%= render 'follow_form', collection: @collection %>
+
+<hr>
+
 <%= render partial: 'contents/content_listing', collection: @collection.contents, as: :content %>
