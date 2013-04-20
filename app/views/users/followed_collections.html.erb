@@ -1,11 +1,6 @@
-
-<%= image_tag @user.avatar %>
-
-<h1><%= @user.flexible_name %></h1>
+<h1>Collections followed by <%= @user.flexible_name %></h1>
 
 <hr>
-
-<h2>Following <%= @user.followed_collections.count %> collections:</h2>
 
 <ol>
   <% @user.followed_collections.each do |collection| %>

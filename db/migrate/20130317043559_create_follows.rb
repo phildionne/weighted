@@ -8,5 +8,6 @@ class CreateFollows < ActiveRecord::Migration
     end
     add_index :follows, :user_id
     add_index :follows, :collection_id
+    add_index :follows, [:user_id, :collection_id], unique: true
   end
 end

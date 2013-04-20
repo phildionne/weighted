@@ -26,6 +26,7 @@ describe Collection do
   describe :Associations do
     it { should have_many(:contents) }
     it { should have_many(:follows).dependent(:destroy) }
+    it { should have_many(:reverse_follows).dependent(:destroy) }
     it { should have_and_belong_to_many(:sources) }
   end
 
@@ -46,34 +47,29 @@ describe Collection do
     describe "Follows" do
       before { @collection = FactoryGirl.create(:collection) }
 
+      it { should respond_to(:follows) }
+      it { should respond_to(:followers) }
+      it { should respond_to(:reverse_follows) }
+      it { should respond_to(:followed_by?) }
+
       describe "followers" do
         it "returns a collection of user records" do
           @user.follow!(@collection)
-          expect(@collection.followers).to eq([@user])
+          @collection.followers.should include(@user)
         end
       end
 
       describe "followed_by?" do
         it "returns true when the collection is being followed by the user" do
           @user.follow!(@collection)
-          @collection.followed_by?(@user).should be(true)
+          @collection.followed_by?(@user).should be_true
         end
 
         it "returns false when the collection is not being followed by the user" do
-          @collection.followed_by?(@user).should be(false)
+          @collection.followed_by?(@user).should be_false
         end
       end
 
-      describe "followers_count" do
-        it "returns a Fixnum" do
-          @user.follow!(@collection)
-          expect(@collection.followers_count).to be_a(Fixnum)
-        end
-
-        it "returns 0 when the collection is not being followed by any user" do
-          expect(@collection.followers_count).to eq(0)
-        end
-      end
     end
   end
 end

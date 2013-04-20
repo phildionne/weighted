@@ -3,13 +3,13 @@
 #
 # @!attribute @TODO
 #
-# @note Follows: `user` and `collection` are valid and persisted records
-#
 class Collection < ActiveRecord::Base
   attr_accessible :description, :subject
 
   has_many :contents
   has_many :follows, dependent: :destroy
+  has_many :reverse_follows, foreign_key: 'collection_id', class_name: 'Follow', dependent: :destroy
+  has_many :followers, through: :reverse_follows, source: :user
   has_and_belongs_to_many :sources
 
   validates :description, :subject,   presence: true
@@ -18,20 +18,11 @@ class Collection < ActiveRecord::Base
 
   before_save { self.subject = self.subject.titleize }
 
-  # @return [Array] A collection of [User] records
-  def followers
-    user_ids = Follow.where(collection_id: self.id).pluck(:user_id)
-    User.find(user_ids)
-  end
-
   # @param [User]
   # @return [Boolean] Whether the collection is being followed by the user
   def followed_by?(user)
-    Follow.where(collection_id: self.id, user_id: user.id).exists?
+    is_existing_record = follows.find_by_user_id(user.id)
+    !!is_existing_record
   end
 
-  # @return [Fixnum] The number of users following the collection
-  def followers_count
-    Follow.where(collection_id: self.id).count
-  end
 end

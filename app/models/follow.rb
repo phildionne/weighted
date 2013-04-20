@@ -5,4 +5,8 @@ class Follow < ActiveRecord::Base
   belongs_to :collection
 
   validates :user, :collection, presence: true
+  validates :user_id, uniqueness: {
+    scope: :collection_id,
+    message: "already following this collection."
+  }
 end

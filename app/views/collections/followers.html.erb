@@ -1,0 +1,11 @@
+<h1>People following <%= @collection.subject %></h1>
+
+<hr>
+
+<ol>
+  <% @collection.followers.each do |user| %>
+  <li>
+    <%= link_to user.flexible_name, user %>
+  </li>
+  <% end %>
+</ol>

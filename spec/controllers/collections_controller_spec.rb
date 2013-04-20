@@ -142,4 +142,16 @@ describe CollectionsController do
     end
   end
 
+  describe "GET followers" do
+    before do
+      @collection = FactoryGirl.create(:collection_with_followers)
+      get :followers, { id: @collection }
+    end
+
+    it "responds with success and render template" do
+      response.should be_success
+      response.should render_template :followers
+    end
+  end
+
 end

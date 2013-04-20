@@ -82,4 +82,16 @@ class CollectionsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  # GET /collections/1/followers
+  # GET /collections/1/followers.json
+  def followers
+    @collection = Collection.find(params[:id])
+    @users = @collection.followers
+
+    respond_to do |format|
+      format.html { render 'followers' }
+      format.json { render json: @users }
+    end
+  end
 end

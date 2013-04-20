@@ -8,15 +8,24 @@ Weighted::Application.routes.draw do
     :registrations      => 'users/registrations',
     :omniauth_callbacks => 'users/omniauth_callbacks'
   }
+
   devise_scope :user do
     # Not added by default while using devise with omniauth
     delete '/users/sign_out'   => 'devise/sessions#destroy'
     get    'settings/account'  => 'devise/registrations#edit'
   end
-  resources :users, :only => :show
+
+  resources :users, :only => :show do
+    member do
+      get :followed_collections
+    end
+  end
 
   resources :collections do
     resources :contents
+    member do
+      get :followers
+    end
   end
 
   get 'pages/about'   => 'high_voltage/pages#show', id: 'about'

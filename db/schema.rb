@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(:version => 20130323202138) do
   end
 
   add_index "follows", ["collection_id"], :name => "index_follows_on_collection_id"
+  add_index "follows", ["user_id", "collection_id"], :name => "index_follows_on_user_id_and_collection_id", :unique => true
   add_index "follows", ["user_id"], :name => "index_follows_on_user_id"
 
   create_table "profiles", :force => true do |t|

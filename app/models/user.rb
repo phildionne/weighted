@@ -3,8 +3,6 @@
 #
 # @!attribute @TODO
 #
-# @note Follows: `user` and `collection` are valid and persisted records
-#
 class User < ActiveRecord::Base
 
   devise :database_authenticatable, :registerable,
@@ -13,7 +11,8 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :username
 
   has_one :profile, inverse_of: :user, dependent: :destroy
-  has_many :follows, dependent: :destroy
+  has_many :follows, foreign_key: 'user_id', dependent: :destroy
+  has_many :followed_collections, through: :follows, source: :collection
 
   validates :username, presence: true
   validates :username, uniqueness: true
@@ -60,49 +59,44 @@ class User < ActiveRecord::Base
     end
   end
 
+  # Returns either the User's name or username
+  #
+  # @return [String]
   def flexible_name
     name || username
   end
 
   # Make a user follow a collection
-  # After calling this method successfuly, `user` follows the `collection`
-  # and `user.following?(collection)` returns true
   #
   # @param [Collection]
-  # @return Whether the user is not already following the collection
+  # @return [Boolean] Whether the user is not already following the collection
   def follow!(collection)
-    follow = Follow.where(user_id: self.id, collection_id: collection.id).first_or_initialize
-    is_new_record = follow.new_record?
-    follow.save! if is_new_record
-    return is_new_record
+    begin
+      follows.create!(collection: collection)
+    rescue ActiveRecord::RecordInvalid
+      return false
+    end
   end
 
   # Make a user unfollow a collection
-  # After calling this method successfuly, `user` does not follow the `collection`
-  # and `user.following?(collection)` returns false
   #
   # @param [Collection]
-  # @return Whether the user is already following the collection
+  # @return [Boolean] Whether the user is already following the collection
   def unfollow!(collection)
-    follow_id = Follow.where(user_id: self.id, collection_id: collection.id).pluck(:id)
-    is_existing_record = Follow.destroy(follow_id) != []
-    return is_existing_record
+    is_existing_record = following?(collection)
+    if is_existing_record
+      follows.find_by_collection_id(collection.id).destroy
+    else
+      return false
+    end
   end
 
-  # @return [Array] A collection of [Collection] records
-  def following
-    collection_ids = Follow.where(user_id: self.id).pluck(:collection_id)
-    Collection.find(collection_ids)
-  end
-
+  # Wether a user is following a collection
+  #
   # @param [Collection]
   # @return [Boolean] Whether the user is following the collection
   def following?(collection)
-    Follow.where(user_id: self.id, collection_id: collection.id).exists?
-  end
-
-  # @return [Fixnum] The number of collections the user is following
-  def following_count
-    Follow.where(user_id: self.id).count
+    is_existing_record = follows.find_by_collection_id(collection.id)
+    !!is_existing_record
   end
 end
