@@ -1,11 +1,10 @@
 class Settings::ProfilesController < ApplicationController
   before_filter :authenticate_user!
-  before_filter :assign_current_user
 
   # GET /settings/profile
   # GET /settings/profile.json
   def show
-    @profile = Profile.find_by_user_id(@user)
+    @profile = Profile.find_by_user_id(current_user)
 
     respond_to do |format|
       format.html # show.html.erb
@@ -16,7 +15,7 @@ class Settings::ProfilesController < ApplicationController
   # PUT /settings/profile
   # PUT /settings/profile.json
   def update
-    @profile = Profile.find_by_user_id(@user)
+    @profile = Profile.find_by_user_id(current_user)
 
     respond_to do |format|
       if @profile.update_attributes(params[:profile])

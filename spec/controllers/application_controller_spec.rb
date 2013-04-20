@@ -9,10 +9,6 @@ describe ApplicationController do
     Rails.application.config.consider_all_requests_local = true
   end
 
-  describe "assign_current_user" do
-    pending
-  end
-
   describe "load_collection" do
     pending
   end
