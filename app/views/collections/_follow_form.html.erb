@@ -1,5 +1,5 @@
 <% if user_signed_in? %>
-<div id="follow_form">
+<div id="follow_form" data-collection-id="<%= collection.id %>">
   <% if current_user.following?(collection) %>
     <%= render 'unfollow', collection: collection %>
   <% else %>

@@ -1,4 +1,5 @@
-<%= form_for(current_user.follows.build(collection: collection)) do |f| %>
+<%= form_for( current_user.follows.build(collection: collection),
+              remote: true) do |f| %>
   <div><%= f.hidden_field :collection_id %></div>
   <%= f.submit "Follow", class: "btn" %>
 <% end %>
