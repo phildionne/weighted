@@ -1,5 +1,8 @@
 Weighted::Application.routes.draw do
 
+  resources :subscriptions
+
+
   namespace :settings do
     resource :profile, :only => [:show, :update]
   end
