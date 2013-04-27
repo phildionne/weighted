@@ -7,6 +7,8 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
+  <%= display_meta_tags :'stripe-publishable-key' => Rails.configuration.stripe[:publishable_key] %>
+
   <%= stylesheet_link_tag :application %>
 
   <link rel="apple-touch-icon-precomposed" sizes="144x144" href="apple-touch-icon-144-precomposed.png">
