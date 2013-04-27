@@ -5,6 +5,7 @@ gem 'thin'
 gem 'foreman'
 gem 'devise'
 gem 'omniauth-twitter'
+gem 'stripe'
 gem 'high_voltage'
 gem 'flutie'
 
