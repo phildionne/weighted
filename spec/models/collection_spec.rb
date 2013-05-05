@@ -41,6 +41,17 @@ describe Collection do
     it { should allow_mass_assignment_of(:subject) }
   end
 
+  describe :Callbacks do
+    before { @collection = FactoryGirl.build(:collection, subject: 'sriracha') }
+
+    describe :titleize_subject do
+      it "titleizes the subject attribute" do
+        @collection.save
+        @collection.subject.should eq('Sriracha')
+      end
+    end
+  end
+
   describe :InstanceMethods do
     before { @user = FactoryGirl.create(:user) }
 

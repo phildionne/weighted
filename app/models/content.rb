@@ -8,5 +8,12 @@ class Content < ActiveRecord::Base
   validates :location, :title,          uniqueness: true
   validates :title,                     length: { minimum: 3, maximum: 255, allow_blank: false }
 
-  before_save { self.title = self.title.titleize }
+  before_save :titleize_title
+
+  private
+
+  def titleize_title
+    self.title = self.title.titleize
+  end
+
 end

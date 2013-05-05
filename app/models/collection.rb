@@ -16,13 +16,19 @@ class Collection < ActiveRecord::Base
   validates :description, :subject,   uniqueness: true
   validates :subject,                 length: { minimum: 3, maximum: 255 }
 
-  before_save { self.subject = self.subject.titleize }
+  before_save :titleize_subject
 
   # @param [User]
   # @return [Boolean] Whether the collection is being followed by the user
   def followed_by?(user)
     is_existing_record = follows.find_by_user_id(user.id)
     !!is_existing_record
+  end
+
+  private
+
+  def titleize_subject
+    self.subject = self.subject.titleize
   end
 
 end

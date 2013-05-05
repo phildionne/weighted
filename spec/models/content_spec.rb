@@ -32,4 +32,15 @@ describe Content do
     it { should allow_mass_assignment_of(:title) }
   end
 
+  describe :Callbacks do
+    before { @content = FactoryGirl.build(:content, title: 'sriracha') }
+
+    describe :titleize_title do
+      it "titleizes a the title attribute" do
+        @content.save
+        @content.title.should eq('Sriracha')
+      end
+    end
+  end
+
 end
