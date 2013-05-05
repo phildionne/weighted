@@ -63,14 +63,14 @@ describe Collection do
       it { should respond_to(:reverse_follows) }
       it { should respond_to(:followed_by?) }
 
-      describe "followers" do
+      describe :followers do
         it "returns a collection of user records" do
           user.follow!(collection)
           collection.followers.should include(user)
         end
       end
 
-      describe "followed_by?" do
+      describe :followed_by? do
         it "returns true when the collection is being followed by the user" do
           user.follow!(collection)
           collection.followed_by?(user).should be_true

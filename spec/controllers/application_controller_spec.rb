@@ -9,11 +9,11 @@ describe ApplicationController do
     Rails.application.config.consider_all_requests_local = true
   end
 
-  describe "load_collection" do
+  describe :load_collection do
     pending
   end
 
-  describe "#render_error" do
+  describe :render_error do
     pending
   end
 end

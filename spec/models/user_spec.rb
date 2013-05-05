@@ -38,7 +38,7 @@ describe User do
   describe :InstanceMethods do
     let(:user) { FactoryGirl.create(:user) }
 
-    describe "#flexible_name" do
+    describe :flexible_name do
       it "returns the name when name is specified" do
         user.profile.first_name = "Foo"
         user.profile.last_name = "Bar"
@@ -64,7 +64,7 @@ describe User do
       it { should respond_to(:unfollow!) }
       it { should respond_to(:following?) }
 
-      describe "#follow!" do
+      describe :follow! do
         it "adds the collection to the user's collections" do
           user.followed_collections.should be_empty
           user.follow!(collection)
@@ -82,7 +82,7 @@ describe User do
         end
       end
 
-      describe "#unfollow!" do
+      describe :unfollow! do
         it "removes the collection from the user's collections" do
           user.follow!(collection)
           user.followed_collections.should_not be_empty
@@ -101,14 +101,14 @@ describe User do
         end
       end
 
-      describe "#followed_collections" do
+      describe :followed_collections do
         it "returns a collection of Collection records" do
           user.follow!(collection)
           user.followed_collections.should include(collection)
         end
       end
 
-      describe "following?" do
+      describe :following? do
         it "returns true when the user already follows the collection" do
           user.follow!(collection)
           user.following?(collection).should be_true

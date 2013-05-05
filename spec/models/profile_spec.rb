@@ -33,7 +33,7 @@ describe Profile do
   end
 
   describe :InstanceMethods do
-    describe "#name" do
+    describe :name do
       let(:profile) { FactoryGirl.create(:profile, first_name: "Foo", last_name: "Bar") }
 
       it "includes first_name and last_name" do
@@ -41,7 +41,7 @@ describe Profile do
       end
     end
 
-    describe "#avatar" do
+    describe :avatar do
       let(:profile) { FactoryGirl.create(:profile, gravatar_email: nil, provider_avatar: nil) }
 
       it "returns the gravatar_avatar when gravatar_email is specified" do

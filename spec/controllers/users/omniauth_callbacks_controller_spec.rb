@@ -8,7 +8,7 @@ describe Users::OmniauthCallbacksController do
     request.env["omniauth.auth"] = OmniAuth.config.mock_auth[:twitter]
   end
 
-  describe "#all" do
+  describe :all do
     it "updates the user's profile with auth provider informations" do
       pending
     end
