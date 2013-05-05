@@ -23,6 +23,12 @@ FactoryGirl.define do
     end
   end
 
+  factory :user_with_active_subscription, parent: :user do
+    after(:create) do |user, evaluator|
+      FactoryGirl.create(:active_subscription, user: user)
+    end
+  end
+
   factory :invalid_user, parent: :user do
     username nil
   end

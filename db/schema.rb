@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130323202138) do
+ActiveRecord::Schema.define(:version => 20130426011826) do
 
   create_table "collections", :force => true do |t|
     t.string   "subject"
@@ -60,6 +60,14 @@ ActiveRecord::Schema.define(:version => 20130323202138) do
     t.string   "uri"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "subscriptions", :force => true do |t|
+    t.string   "stripe_customer_id"
+    t.string   "stripe_card_last4"
+    t.integer  "user_id"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
   end
 
   create_table "users", :force => true do |t|
