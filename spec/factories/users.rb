@@ -1,8 +1,8 @@
 FactoryGirl.define do
   factory :user do
-    username { Faker::Internet.user_name.sub(/_|\./, '') }
-    email { Faker::Internet.email }
-    password { Faker::Lorem.characters(8) }
+    username  { Faker::Internet.user_name.sub(/_|\./, '') }
+    email     { Faker::Internet.email }
+    password  { Faker::Lorem.characters(8) }
   end
 
   factory :user_with_followed_collections, parent: :user do

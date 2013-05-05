@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :collection do
-    subject { Faker::Lorem.words(6).join(' ') }
+    subject     { Faker::Lorem.words(6).join(' ') }
     description { Faker::Lorem.sentence }
   end
 
