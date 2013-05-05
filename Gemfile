@@ -53,6 +53,11 @@ group :development, :test do
   gem 'faker'
 end
 
+group :test do
+  gem 'vcr'
+  gem 'webmock', '< 1.10'
+end
+
 group :profiling do
   gem 'ruby-prof'
 end
