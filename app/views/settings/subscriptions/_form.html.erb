@@ -1,0 +1,31 @@
+<%= form_for([:settings, @subscription], url: settings_subscription_path, html: {id: 'payment-form'}) do |f| %>
+
+<% if @subscription.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@subscription.errors.count, "error") %> prohibited this subscription from being saved:</h2>
+
+    <ul>
+    <% @subscription.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+  <span class="payment-errors"></span>
+
+  <%= hidden_field_tag :stripe_card_token %>
+
+  <%= label_tag :card_number %>
+  <%= text_field_tag :card_number, nil, name: nil, size: 20, :'data-stripe' => 'number' %>
+
+  <%= label_tag :card_cvc %>
+  <%= text_field_tag :card_cvc, nil, name: nil, size: 4, :'data-stripe' => 'cvc' %>
+
+  <%= label_tag :card_month %>
+  <%= text_field_tag :card_month, nil, name: nil, size: 2, :'data-stripe' => 'exp-month' %>
+  <%= text_field_tag :card_year, nil, name: nil, size: 4, :'data-stripe' => 'exp-year' %>
+  <span>Expiration (MM/YYYY)</span>
+
+  <%= f.submit %>
+<% end %>
