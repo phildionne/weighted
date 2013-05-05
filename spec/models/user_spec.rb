@@ -36,27 +36,27 @@ describe User do
   end
 
   describe :InstanceMethods do
-    before { @user = FactoryGirl.create(:user) }
+    let(:user) { FactoryGirl.create(:user) }
 
     describe "#flexible_name" do
       it "returns the name when name is specified" do
-        @user.profile.first_name = "Foo"
-        @user.profile.last_name = "Bar"
+        user.profile.first_name = "Foo"
+        user.profile.last_name = "Bar"
 
-        @user.flexible_name.should eq("Foo Bar")
+        user.flexible_name.should eq("Foo Bar")
       end
 
       it "returns the username when name is not specified" do
-        @user.username = "Foobar"
-        @user.profile.first_name = nil
-        @user.profile.last_name = nil
+        user.username = "Foobar"
+        user.profile.first_name = nil
+        user.profile.last_name = nil
 
-        @user.flexible_name.should eq("Foobar")
+        user.flexible_name.should eq("Foobar")
       end
     end
 
     describe "Follows" do
-      before { @collection = FactoryGirl.create(:collection) }
+      let(:collection) { FactoryGirl.create(:collection) }
 
       it { should respond_to(:follows) }
       it { should respond_to(:followed_collections) }
@@ -66,56 +66,56 @@ describe User do
 
       describe "#follow!" do
         it "adds the collection to the user's collections" do
-          @user.followed_collections.should be_empty
-          @user.follow!(@collection)
+          user.followed_collections.should be_empty
+          user.follow!(collection)
 
-          @user.followed_collections.should include(@collection)
+          user.followed_collections.should include(collection)
         end
 
         it "returns true when the user does not already follow the collection" do
-          @user.follow!(@collection).should be_true
+          user.follow!(collection).should be_true
         end
 
         it "returns false when the user already follows the collection" do
-          @user.follow!(@collection)
-          @user.follow!(@collection).should be_false
+          user.follow!(collection)
+          user.follow!(collection).should be_false
         end
       end
 
       describe "#unfollow!" do
         it "removes the collection from the user's collections" do
-          @user.follow!(@collection)
-          @user.followed_collections.should_not be_empty
+          user.follow!(collection)
+          user.followed_collections.should_not be_empty
 
-          @user.unfollow!(@collection)
-          @user.followed_collections.should_not include(@collection)
+          user.unfollow!(collection)
+          user.followed_collections.should_not include(collection)
         end
 
         it "returns true when the user already follows the collection" do
-          @user.follow!(@collection)
-          @user.unfollow!(@collection).should be_true
+          user.follow!(collection)
+          user.unfollow!(collection).should be_true
         end
 
         it "returns false when the user does not already follows the collection" do
-          @user.unfollow!(@collection).should be_false
+          user.unfollow!(collection).should be_false
         end
       end
 
       describe "#followed_collections" do
         it "returns a collection of Collection records" do
-          @user.follow!(@collection)
-          @user.followed_collections.should include(@collection)
+          user.follow!(collection)
+          user.followed_collections.should include(collection)
         end
       end
 
       describe "following?" do
         it "returns true when the user already follows the collection" do
-          @user.follow!(@collection)
-          @user.following?(@collection).should be_true
+          user.follow!(collection)
+          user.following?(collection).should be_true
         end
 
         it "returns false when the user does not already follows the collection" do
-          @user.following?(@collection).should be_false
+          user.following?(collection).should be_false
         end
       end
 

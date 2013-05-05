@@ -3,9 +3,10 @@ require 'spec_helper'
 describe UsersController do
 
   describe "GET show" do
+    let(:user) { FactoryGirl.create(:user) }
+
     before do
-      @user = FactoryGirl.create(:user)
-      get :show, { id: @user }
+      get :show, { id: user }
     end
 
     it "responds with success and render template" do
@@ -15,9 +16,10 @@ describe UsersController do
   end
 
   describe "GET followed_collections" do
+    let(:user) { FactoryGirl.create(:user_with_followed_collections) }
+
     before do
-      @user = FactoryGirl.create(:user_with_followed_collections)
-      get :followed_collections, { id: @user }
+      get :followed_collections, { id: user }
     end
 
     it "responds with success and render template" do

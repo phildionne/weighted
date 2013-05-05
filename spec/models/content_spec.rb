@@ -33,12 +33,12 @@ describe Content do
   end
 
   describe :Callbacks do
-    before { @content = FactoryGirl.build(:content, title: 'sriracha') }
+    let(:content) { FactoryGirl.build(:content, title: 'sriracha') }
 
     describe :titleize_title do
       it "titleizes a the title attribute" do
-        @content.save
-        @content.title.should eq('Sriracha')
+        content.save
+        content.title.should eq('Sriracha')
       end
     end
   end

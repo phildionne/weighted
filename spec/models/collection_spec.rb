@@ -42,21 +42,21 @@ describe Collection do
   end
 
   describe :Callbacks do
-    before { @collection = FactoryGirl.build(:collection, subject: 'sriracha') }
+    let(:collection) { FactoryGirl.build(:collection, subject: 'sriracha') }
 
     describe :titleize_subject do
       it "titleizes the subject attribute" do
-        @collection.save
-        @collection.subject.should eq('Sriracha')
+        collection.save
+        collection.subject.should eq('Sriracha')
       end
     end
   end
 
   describe :InstanceMethods do
-    before { @user = FactoryGirl.create(:user) }
+    let(:user) { FactoryGirl.create(:user) }
 
     describe "Follows" do
-      before { @collection = FactoryGirl.create(:collection) }
+      let(:collection) { FactoryGirl.create(:collection) }
 
       it { should respond_to(:follows) }
       it { should respond_to(:followers) }
@@ -65,19 +65,19 @@ describe Collection do
 
       describe "followers" do
         it "returns a collection of user records" do
-          @user.follow!(@collection)
-          @collection.followers.should include(@user)
+          user.follow!(collection)
+          collection.followers.should include(user)
         end
       end
 
       describe "followed_by?" do
         it "returns true when the collection is being followed by the user" do
-          @user.follow!(@collection)
-          @collection.followed_by?(@user).should be_true
+          user.follow!(collection)
+          collection.followed_by?(user).should be_true
         end
 
         it "returns false when the collection is not being followed by the user" do
-          @collection.followed_by?(@user).should be_false
+          collection.followed_by?(user).should be_false
         end
       end
 
