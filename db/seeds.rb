@@ -3,6 +3,10 @@ p "--- Seeding users"
   FactoryGirl.create(:user)
 end
 
+1.times do
+  FactoryGirl.create(:user_with_active_subscription)
+end
+
 p "--- Seeding collections with sources and contents"
 40.times do
   FactoryGirl.create(:collection_with_sources_and_contents)

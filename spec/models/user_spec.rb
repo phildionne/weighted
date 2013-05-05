@@ -16,6 +16,7 @@ describe User do
 
   describe :Associations do
     it { should have_one(:profile).dependent(:destroy) }
+    it { should have_one(:subscription).dependent(:destroy) }
     it { should have_many(:follows).dependent(:destroy) }
     it { should have_many(:followed_collections) }
   end
