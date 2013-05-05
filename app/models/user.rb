@@ -10,16 +10,19 @@ class User < ActiveRecord::Base
 
   attr_accessible :email, :password, :password_confirmation, :username
 
-  has_one :profile, inverse_of: :user, dependent: :destroy
+  has_one :profile,      inverse_of: :user, dependent: :destroy
+  has_one :subscription, inverse_of: :user, dependent: :destroy
+
   has_many :follows, foreign_key: 'user_id', dependent: :destroy
   has_many :followed_collections, through: :follows, source: :collection
 
+  # :email, :password and :password_confirmation validations are ensured by devise
   validates :username, presence: true
   validates :username, uniqueness: true
   validates :username, format: { with: /\A[\w]{1,20}\z/,
     message: "is authorized: letters A-Z, numbers 0-9, underscores, 1-20 characters." }
 
-  after_create { self.create_profile }
+  validates_associated :profile, :subscription
 
   delegate :avatar, :first_name, :last_name, :name, to: :profile
 
