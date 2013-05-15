@@ -1,8 +1,6 @@
 require 'spec_helper'
 
 describe ApplicationController do
-  include Devise::TestHelpers
-
   around do |example|
     Rails.application.config.consider_all_requests_local = false
     example.run

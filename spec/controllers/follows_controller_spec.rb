@@ -1,8 +1,6 @@
 require 'spec_helper'
 
 describe FollowsController do
-  include Devise::TestHelpers
-
   let(:user) { FactoryGirl.create(:user) }
   let(:collection) { FactoryGirl.create(:collection) }
   before { sign_in user }

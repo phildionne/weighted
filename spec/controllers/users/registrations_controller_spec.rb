@@ -1,8 +1,6 @@
 require 'spec_helper'
 
 describe Users::RegistrationsController do
-  include Devise::TestHelpers
-
   before { request.env["devise.mapping"] = Devise.mappings[:user] }
 
   describe "create" do

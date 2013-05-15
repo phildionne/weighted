@@ -1,8 +1,6 @@
 require 'spec_helper'
 
 describe CollectionsController do
-  include Devise::TestHelpers
-
   let(:user) { FactoryGirl.create(:user) }
   before { sign_in user }
 
