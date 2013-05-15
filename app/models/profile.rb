@@ -27,8 +27,6 @@ class Profile < ActiveRecord::Base
   # @param auth [Hash]
   def update_attributes_from_auth(auth)
     update_attributes({
-      first_name: auth.first_name,
-      last_name: auth.last_name,
       provider_avatar: auth.image
       })
   end
