@@ -2,7 +2,6 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   def all
     auth = request.env["omniauth.auth"]
-
     @user = User.first_or_create_from_auth(auth)
 
     if @user.persisted?
