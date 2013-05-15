@@ -5,6 +5,12 @@ FactoryGirl.define do
     password  { Faker::Lorem.characters(8) }
   end
 
+  factory :oauth_user, parent: :user do
+    uid      12345
+    provider 'twitter'
+    password nil
+  end
+
   factory :user_with_followed_collections, parent: :user do
     ignore do
       collection_count [3, 4, 5].sample
