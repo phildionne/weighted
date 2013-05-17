@@ -19,7 +19,7 @@ class Settings::ProfilesController < ApplicationController
 
     respond_to do |format|
       if @profile.update_attributes(params[:profile])
-        format.html { redirect_to settings_profile_path(), notice: 'Profile was successfully updated.' }
+        format.html { redirect_to settings_profile_path, notice: 'Profile was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "show" }
