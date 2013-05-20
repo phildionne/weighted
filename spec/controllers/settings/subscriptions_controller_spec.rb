@@ -2,18 +2,23 @@ require 'spec_helper'
 
 describe Settings::SubscriptionsController do
   let(:user) { FactoryGirl.create(:user) }
+  let(:subscription) { user.subscription }
   before { sign_in user }
 
   describe "GET show" do
+    before { get :show }
+
     it "assigns the user subscription as @subscription" do
-      get :show
-      assigns(:subscription).should eq(user.subscription)
+      assigns(:subscription).should eq(subscription)
+    end
+
+    it "responds with success and render template" do
+      response.should be_success
+      response.should render_template :show
     end
   end
 
   describe "PUT update" do
-    let(:subscription) { user.subscription }
-
     it "assigns the user subscription as @subscription" do
       put :update
       assigns(:subscription).should eq(subscription)
