@@ -34,9 +34,7 @@ describe FollowsController do
   end
 
   describe "DELETE destroy" do
-    before do
-      user.follow!(collection)
-    end
+    before { user.follow!(collection) }
 
     let(:follow) { user.follows.find_by_collection_id(collection.id) }
 

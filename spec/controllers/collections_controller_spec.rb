@@ -16,9 +16,10 @@ describe CollectionsController do
   describe "GET show" do
     let(:collection) { FactoryGirl.create(:collection) }
 
-    before do
-      # @collection = FactoryGirl.create(:collection)
-      get :show, { id: collection }
+    before { get :show, id: collection }
+
+    it "assigns the user collection as @collection" do
+      assigns(:collection).should eq(collection)
     end
 
     it "responds with success and render template" do
@@ -29,7 +30,6 @@ describe CollectionsController do
 
   describe "GET new" do
     before { get :new }
-    subject { controller }
 
     it "responds with success and render template" do
       response.should be_success
@@ -40,9 +40,7 @@ describe CollectionsController do
   describe "GET edit" do
     let(:collection) { FactoryGirl.create(:collection) }
 
-    before do
-      get :edit, { id: collection }
-    end
+    before { get :edit, id: collection }
 
     it "responds with success and render template" do
       response.should be_success
@@ -142,9 +140,12 @@ describe CollectionsController do
 
   describe "GET followers" do
     let(:collection) { FactoryGirl.create(:collection_with_followers) }
+    let(:users) { collection.followers }
 
-    before do
-      get :followers, { id: collection }
+    before { get :followers, id: collection }
+
+    it "assigns the followers as @users" do
+      assigns(:users).should eq(users)
     end
 
     it "responds with success and render template" do
