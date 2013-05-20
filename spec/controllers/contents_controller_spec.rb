@@ -21,8 +21,10 @@ describe ContentsController do
     let(:collection) { FactoryGirl.create(:collection_with_contents) }
     let(:content) { collection.contents.first }
 
-    before do
-      get :show, { id: content, collection_id: collection }
+    before { get :show, id: content, collection_id: collection }
+
+    it "assigns the content as @content" do
+      assigns(:content).should eq(content)
     end
 
     it "responds with success and render template" do
@@ -34,10 +36,7 @@ describe ContentsController do
   describe "GET new" do
     let(:collection) { FactoryGirl.create(:collection) }
 
-    before do
-      get :new, { collection_id: collection }
-    end
-    subject { controller }
+    before { get :new, collection_id: collection }
 
     it "responds with success and render template" do
       response.should be_success
@@ -49,10 +48,7 @@ describe ContentsController do
     let(:collection) { FactoryGirl.create(:collection_with_contents) }
     let(:content) { collection.contents.first }
 
-    before do
-      get :edit, { id: content, collection_id: collection }
-    end
-    subject { controller }
+    before { get :edit, id: content, collection_id: collection }
 
     it "responds with success and render template" do
       response.should be_success

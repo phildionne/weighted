@@ -2,18 +2,23 @@ require 'spec_helper'
 
 describe Settings::ProfilesController do
   let(:user) { FactoryGirl.create(:user) }
+  let(:profile) { user.profile }
   before { sign_in user }
 
   describe "GET show" do
+    before { get :show }
+
     it "assigns the user profile as @profile" do
-      get :show
-      assigns(:profile).should eq(user.profile)
+      assigns(:profile).should eq(profile)
+    end
+
+    it "responds with success and render template" do
+      response.should be_success
+      response.should render_template :show
     end
   end
 
   describe "PUT update" do
-    let(:profile) { user.profile }
-
     it "assigns the user profile as @profile" do
       put :update
       assigns(:profile).should eq(profile)
