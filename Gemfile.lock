@@ -260,6 +260,9 @@ GEM
     stripe (1.8.1)
       multi_json (>= 1.0.4, < 2)
       rest-client (~> 1.4)
+    stripe-rails (0.2.5)
+      rails (>= 3)
+      stripe
     therubyracer (0.11.4)
       libv8 (~> 3.11.8.12)
       ref
@@ -321,6 +324,7 @@ DEPENDENCIES
   spork-rails
   sqlite3
   stripe
+  stripe-rails
   therubyracer
   thin
   uglifier (>= 1.0.3)
