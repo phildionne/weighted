@@ -6,6 +6,7 @@ gem 'foreman'
 gem 'devise'
 gem 'omniauth-twitter'
 gem 'stripe'
+gem 'stripe-rails'
 gem 'high_voltage'
 gem 'flutie'
 
