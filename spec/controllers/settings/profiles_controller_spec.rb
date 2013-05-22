@@ -19,18 +19,13 @@ describe Settings::ProfilesController do
   end
 
   describe "PUT update" do
-    it "assigns the user profile as @profile" do
-      put :update
-      assigns(:profile).should eq(profile)
-    end
-
     context "with valid params" do
-      it "updates @profile's attributes" do
+      it "assigns the requested profile as @profile" do
         put :update, { profile: FactoryGirl.attributes_for(:profile, first_name: "Dalai Lama", gravatar_email: "test@gravatar.com") }
         assigns(:profile).should eq(profile)
       end
 
-      it "assigns the requested profile as @profile" do
+      it "updates @profile's attributes" do
         put :update, { profile: FactoryGirl.attributes_for(:profile, first_name: "Dalai Lama", gravatar_email: "test@gravatar.com") }
         profile.reload
         profile.first_name.should eq("Dalai Lama")
@@ -49,7 +44,7 @@ describe Settings::ProfilesController do
         assigns(:profile).should eq(profile)
       end
 
-      it "does not assigns the requested profile as @profile" do
+      it "does not update @profile's attributes" do
         put :update, { id: profile, profile: FactoryGirl.attributes_for(:invalid_profile, first_name: "The Great", last_name: "Napoleon") }
         profile.reload
         profile.last_name.should_not eq("Napoleon")
