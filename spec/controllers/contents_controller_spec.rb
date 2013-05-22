@@ -169,17 +169,17 @@ describe ContentsController do
   end
 
   describe "DELETE destroy" do
-    let(:collection) { FactoryGirl.create(:collection_with_contents) }
-    let(:content) { collection.contents.first }
+    before { @collection = FactoryGirl.create(:collection_with_contents) }
+    let(:content) { @collection.contents.first }
 
     it "destroys the requested content" do
       expect {
-        delete :destroy, { id: content, collection_id: collection }
+        delete :destroy, { id: content, collection_id: @collection }
       }.to change(Content, :count).by(-1)
     end
 
     it "redirects to the contents list" do
-      delete :destroy, { id: content, collection_id: collection }
+      delete :destroy, { id: content, collection_id: @collection }
       response.should redirect_to(collection_contents_path)
     end
   end
