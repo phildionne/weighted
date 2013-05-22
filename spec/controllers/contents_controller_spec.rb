@@ -111,12 +111,12 @@ describe ContentsController do
     let(:content) { collection.contents.first }
 
     context "with valid params" do
-      it "updates the requested content" do
+      it "assigns the requested content as content" do
         put :update, { id: content, collection_id: collection, content: FactoryGirl.attributes_for(:content) }
         assigns(:content).should eq(content)
       end
 
-      it "assigns the requested content as content" do
+      it "updates the requested content" do
         put :update, {
           id: content,
           collection_id: collection,
@@ -145,7 +145,7 @@ describe ContentsController do
         assigns(:content).should eq(content)
       end
 
-      it "does not assigns the requested content as content" do
+      it "does not update @content's attributes" do
         put :update, {
           id: content,
           collection_id: collection,

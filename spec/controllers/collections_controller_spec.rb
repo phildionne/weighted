@@ -85,12 +85,12 @@ describe CollectionsController do
     let(:collection) { FactoryGirl.create(:collection, subject: "Bacon", description: "Is so tasty!") }
 
     context "with valid params" do
-      it "updates the requested collection" do
+      it "assigns the requested collection as @collection" do
         put :update, { id: collection, collection: FactoryGirl.attributes_for(:collection)}
         assigns(:collection).should eq(collection)
       end
 
-      it "assigns the requested collection as @collection" do
+      it "updates the requested collection" do
         put :update, { id: collection, collection: FactoryGirl.attributes_for(:collection, subject: "Poutine", description: "Is so tasty!") }
         collection.reload
         collection.subject.should eq("Poutine")
@@ -109,7 +109,7 @@ describe CollectionsController do
         assigns(:collection).should eq(collection)
       end
 
-      it "does not assigns the requested collection as @collection" do
+      it "does not update @collection's attributes" do
         put :update, { id: collection, collection: FactoryGirl.attributes_for(:invalid_collection, subject: "Poutine") }
         collection.reload
         collection.subject.should_not eq("Poutine")
