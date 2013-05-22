@@ -124,16 +124,16 @@ describe CollectionsController do
   end
 
   describe "DELETE destroy" do
-    let(:collection) { FactoryGirl.create(:collection) }
+    before { @collection = FactoryGirl.create(:collection) }
 
     it "destroys the requested collection" do
       expect {
-        delete :destroy, { id: collection }
+        delete :destroy, { id: @collection }
       }.to change(Collection, :count).by(-1)
     end
 
     it "redirects to the collections list" do
-      delete :destroy, { id: collection }
+      delete :destroy, { id: @collection }
       response.should redirect_to(collections_path)
     end
   end
