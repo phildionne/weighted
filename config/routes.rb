@@ -5,7 +5,6 @@ Weighted::Application.routes.draw do
   end
 
   devise_for :users, :controllers => {
-    :registrations      => 'users/registrations',
     :omniauth_callbacks => 'users/omniauth_callbacks'
   }
 
