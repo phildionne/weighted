@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Settings::SubscriptionsController do
-  let(:user) { FactoryGirl.create(:user) }
+  let(:user) { FactoryGirl.create(:user_with_active_subscription) }
   let(:subscription) { user.subscription }
   before { sign_in user }
 
@@ -19,50 +19,62 @@ describe Settings::SubscriptionsController do
   end
 
   describe "PUT update" do
-    it "assigns the user subscription as @subscription" do
-      put :update
-      assigns(:subscription).should eq(subscription)
+    let(:stripe_card) do
+      Stripe::Token.create(
+        :card => {
+          :number => "4012888888881881",
+          :exp_month => 5,
+          :exp_year => 2020,
+          :cvc => 1234
+        }
+      )
+    end
+
+    let(:invalid_stripe_card) do
+      Stripe::Token.create(
+        :card => {
+          :number => "4242424242424241",
+          :exp_month => 33,
+          :exp_year => 4050,
+          :cvc => 12
+        }
+      )
     end
 
     context "with valid params" do
-      it "updates @subscription's attributes" do
-        put :update, { subscription: FactoryGirl.attributes_for(:subscription, first_name: "Dalai Lama", gravatar_email: "test@gravatar.com") }
+      it "assigns the user subscription as @subscription" do
+        put :update, { stripe_card_token: stripe_card.id }
         assigns(:subscription).should eq(subscription)
       end
 
-      it "assigns the requested subscription as @subscription" do
-        pending
-        # put :update, { subscription: FactoryGirl.attributes_for(:subscription, first_name: "Dalai Lama", gravatar_email: "test@gravatar.com") }
-        # subscription.reload
-        # subscription.first_name.should eq("Dalai Lama")
-        # subscription.gravatar_email.should eq("test@gravatar.com")
+      it "updates @subscription's attributes" do
+        put :update, { stripe_card_token: stripe_card.id }
+
+        subscription.reload
+        subscription.stripe_card_last4.should eq('1881')
       end
 
       it "redirects to subscription path" do
-        pending
-        # put :update, { subscription: FactoryGirl.attributes_for(:subscription) }
-        # response.should redirect_to(settings_subscription_path)
+        put :update, { stripe_card_token: stripe_card.id }
+        response.should redirect_to(settings_subscription_path)
       end
     end
 
     context "with invalid params" do
       it "assigns the subscription as @subscription" do
-        put :update, { id: subscription, subscription: FactoryGirl.attributes_for(:invalid_subscription) }
+        put :update, { stripe_card_token: invalid_stripe_card.id }
         assigns(:subscription).should eq(subscription)
       end
 
-      it "does not assigns the requested subscription as @subscription" do
-        pending
-        # put :update, { id: subscription, subscription: FactoryGirl.attributes_for(:invalid_subscription, first_name: "The Great", last_name: "Napoleon") }
-        # subscription.reload
-        # subscription.last_name.should_not eq("Napoleon")
-        # subscription.first_name.should_not eq("The Great")
+      it "does not update @subscription's attributes" do
+        put :update, { stripe_card_token: invalid_stripe_card.id }
+        subscription.reload
+        subscription.stripe_card_last4.should eq('4242')
       end
 
       it "re-renders the 'show' template" do
-        pending
-        # put :update, { id: subscription, subscription: FactoryGirl.attributes_for(:invalid_subscription) }
-        # response.should render_template :show
+        put :update, { stripe_card_token: invalid_stripe_card.id }
+        response.should render_template :show
       end
     end
   end
