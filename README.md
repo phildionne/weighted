@@ -41,3 +41,6 @@ Apply release branch to develop:
 
 ## Assets
 Assets are automatically uploaded on AWS S3 using [asset_sync](https://github.com/rumblelabs/asset_sync) and served through a Cloudfront distribution.
+
+ - Staging `d10qu47grxb9bh.cloudfront.net`
+ - Production `d2y5pqdeoz9ati.cloudfront.net`
