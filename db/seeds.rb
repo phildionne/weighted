@@ -1,5 +1,5 @@
 p "--- Seeding users"
-20.times do
+5.times do
   FactoryGirl.create(:user)
 end
 
