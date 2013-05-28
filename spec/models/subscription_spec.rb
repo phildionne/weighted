@@ -63,5 +63,10 @@ describe Subscription do
   end
 
   describe :InstanceMethods do
+    it { should respond_to(:trialing?) }
+    it { should respond_to(:active?) }
+    it { should respond_to(:past_due?) }
+    it { should respond_to(:canceled?) }
+    it { should respond_to(:unpaid?) }
   end
 end

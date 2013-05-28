@@ -65,6 +65,7 @@ ActiveRecord::Schema.define(:version => 20130426011826) do
   create_table "subscriptions", :force => true do |t|
     t.string   "stripe_customer_id"
     t.string   "stripe_card_last4"
+    t.string   "state"
     t.integer  "user_id"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
