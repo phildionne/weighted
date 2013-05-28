@@ -43,4 +43,30 @@ class Settings::SubscriptionsController < ApplicationController
     end
   end
 
+  # DELETE /settings/subscription
+  # DELETE /settings/subscription.json
+  def destroy
+    @subscription = Subscription.find_by_user_id(current_user)
+
+    begin
+      stripe_customer = Stripe::Customer.retrieve(@subscription.stripe_customer_id)
+      stripe_customer.cancel_subscription
+    rescue Stripe::StripeError => e
+      logger.error e
+      raise e
+
+      respond_to do |format|
+        format.html { redirect_to settings_subscription_path, notice: 'There was a problem while canceling your subscription' }
+        format.json { status :unprocessable_entity }
+      end
+
+      return
+    end
+
+    respond_to do |format|
+      format.html { redirect_to settings_subscription_path, notice: 'Your subscription has been canceled successfuly' }
+      format.json { head :no_content }
+    end
+  end
+
 end

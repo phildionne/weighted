@@ -2,7 +2,7 @@ Weighted::Application.routes.draw do
 
   namespace :settings do
     resource :profile,      :only => [:show, :update]
-    resource :subscription, :only => [:show, :update]
+    resource :subscription, :only => [:show, :update, :destroy]
   end
 
   devise_for :users, :controllers => {

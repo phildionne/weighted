@@ -68,4 +68,18 @@ describe Settings::SubscriptionsController do
       end
     end
   end
+
+  describe "DELETE destroy" do
+    it "cancels the requested subscription" do
+      delete :destroy
+
+      subscription.reload
+      subscription.should be_canceled
+    end
+
+    it "redirects to the subscription" do
+      delete :destroy
+      response.should redirect_to(settings_subscription_path)
+    end
+  end
 end
