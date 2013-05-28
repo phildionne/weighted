@@ -5,6 +5,7 @@
     bundle install
     bundle exec rake db:create
     bundle exec rake db:migrate
+    pagekite.py 5000 weighted.pagekite.me
     foreman start
 
 
@@ -72,6 +73,9 @@ Registration and authentication are handled with [Devise](https://github.com/pla
 A subscription references a Stripe customer through its `stripe_customer_id`. See [stripe customer](https://stripe.com/docs/api?lang=ruby#customers)
 
 In development, use card number `4242424242424242` with any CVC and a valid expiration date.
+
+##### Webhooks
+In order to receive Stripe events via webhooks in development, you must provide a public endpoint. This is achieved with [weighted.pagekite.me](http://weighted.pagekite.me). More infos about [pagekite](http://pagekite.net/)
 
 ### Collections
 
