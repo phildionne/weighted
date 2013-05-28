@@ -2,8 +2,8 @@ class ContentsController < ApplicationController
   before_filter :authenticate_user!, except: [:index, :show]
   before_filter :load_collection
 
-  # GET collections/:collection_id/contents
-  # GET collections/:collection_id/contents.json
+  # GET /collections/:collection_id/contents
+  # GET /collections/:collection_id/contents.json
   def index
     @contents = @collection.contents
 
@@ -13,8 +13,8 @@ class ContentsController < ApplicationController
     end
   end
 
-  # GET collections/:collection_id/contents/:id
-  # GET collections/:collection_id/contents/:id.json
+  # GET /collections/:collection_id/contents/:id
+  # GET /collections/:collection_id/contents/:id.json
   def show
     @content = @collection.contents.find(params[:id])
 
@@ -24,8 +24,8 @@ class ContentsController < ApplicationController
     end
   end
 
-  # GET collections/:collection_id/contents/new
-  # GET collections/:collection_id/contents/new.json
+  # GET /collections/:collection_id/contents/new
+  # GET /collections/:collection_id/contents/new.json
   def new
     @content = @collection.contents.new
 
@@ -35,13 +35,13 @@ class ContentsController < ApplicationController
     end
   end
 
-  # GET collections/:collection_id/contents/:id/edit
+  # GET /collections/:collection_id/contents/:id/edit
   def edit
     @content = Content.find(params[:id])
   end
 
-  # POST collections/:collection_id/contents
-  # POST collections/:collection_id/contents.json
+  # POST /collections/:collection_id/contents
+  # POST /collections/:collection_id/contents.json
   def create
     @content = @collection.contents.new(params[:content])
 
@@ -56,8 +56,8 @@ class ContentsController < ApplicationController
     end
   end
 
-  # PUT collections/:collection_id/contents/:id
-  # PUT collections/:collection_id/contents/:id.json
+  # PUT /collections/:collection_id/contents/:id
+  # PUT /collections/:collection_id/contents/:id.json
   def update
     @content = @collection.contents.find(params[:id])
 
@@ -72,8 +72,8 @@ class ContentsController < ApplicationController
     end
   end
 
-  # DELETE collections/:collection_id/contents/:id
-  # DELETE collections/:collection_id/contents/:id.json
+  # DELETE /collections/:collection_id/contents/:id
+  # DELETE /collections/:collection_id/contents/:id.json
   def destroy
     @content = @collection.contents.find(params[:id])
     @content.destroy
