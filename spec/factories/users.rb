@@ -24,8 +24,21 @@ FactoryGirl.define do
   end
 
   factory :user_with_active_subscription, parent: :user do
-    after(:create) do |user, evaluator|
-      FactoryGirl.create(:active_subscription, user: user)
+    after(:create) do |user|
+      subscription = user.subscription
+
+      stripe_customer = Stripe::Customer.retrieve(subscription.stripe_customer_id)
+      stripe_card = Stripe::Token.create(card: {
+                                          :number    => "4242424242424242",
+                                          :exp_month => 5,
+                                          :exp_year  => 2020,
+                                          :cvc       => 1234
+                                        }
+                                      )
+
+      stripe_customer.card = stripe_card.id
+      subscription.stripe_card_last4 = stripe_card.card.last4
+      subscription.save
     end
   end
 

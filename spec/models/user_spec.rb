@@ -8,6 +8,21 @@ describe User do
       specify { should be_valid }
     end
 
+    context "Valid factory" do
+      subject { FactoryGirl.create(:oauth_user) }
+      specify { should be_valid }
+    end
+
+    context "Valid factory" do
+      subject { FactoryGirl.create(:user_with_followed_collections) }
+      specify { should be_valid }
+    end
+
+    context "Valid factory" do
+      subject { FactoryGirl.create(:user_with_active_subscription) }
+      specify { should be_valid }
+    end
+
     context "Invalid factory" do
       subject { FactoryGirl.build(:invalid_user) }
       specify { should_not be_valid }

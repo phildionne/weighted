@@ -8,11 +8,6 @@ describe Subscription do
       specify { should be_valid }
     end
 
-    context "Valid factory" do
-      subject { FactoryGirl.create(:active_subscription) }
-      specify { should be_valid }
-    end
-
     context "Invalid factory" do
       subject { FactoryGirl.build(:invalid_subscription) }
       specify { should_not be_valid }
