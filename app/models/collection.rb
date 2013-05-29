@@ -12,9 +12,9 @@ class Collection < ActiveRecord::Base
   has_many :followers, through: :reverse_follows, source: :user
   has_and_belongs_to_many :sources
 
-  validates :description, :subject,   presence: true
-  validates :description, :subject,   uniqueness: true
-  validates :subject,                 length: { minimum: 3, maximum: 255 }
+  validates :description, :subject, presence: true
+  validates :description, :subject, uniqueness: true
+  validates :subject,               length: { minimum: 3, maximum: 255 }
 
   before_save :titleize_subject
 
