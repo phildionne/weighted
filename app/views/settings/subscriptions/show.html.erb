@@ -1,3 +1,32 @@
-<h1>Editing subscription</h1>
+<% if @subscription.active? %>
+  <h2>Subscribed!</h2>
+  <p>Currently using credit card ending with <strong><%= @subscription.stripe_card_last4 %></strong></p>
 
-<%= render 'form' %>
+  <hr>
+
+  <h4>Update payment informations</h4>
+  <%= render 'form' %>
+
+  <hr>
+
+  <p>Unhappy? <%= button_to "Cancel my subscription", settings_subscription_path, :data => { :confirm => "Are you sure?" }, :method => :delete %>.</p>
+
+
+
+<% elsif @subscription.trialing? %>
+  <h2>Subscribe</h2>
+  <%= render 'form' %>
+
+
+
+<% elsif @subscription.canceled? %>
+  <h2>Subscribe</h2>
+  <%= render 'form' %>
+
+
+
+<% else %>
+  <h2>Houston, we have a problem</h2>
+  <p>Seems like your subscription is past due or unpaid.</p>
+
+<% end %>
