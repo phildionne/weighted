@@ -45,8 +45,15 @@ FactoryGirl.define do
     end
 
     after(:create) do |collection, evaluator|
-      FactoryGirl.create_list(:user, evaluator.users_count).each do |user|
-        user.follow!(collection)
+
+      # @TODO Solve the email uniqueness problem introduced by deterministic user email attribute
+
+      users = FactoryGirl.build_list(:user, evaluator.users_count)
+      ActiveRecord::Base.transaction do
+        users.each { |user| user.save(validate: false) }
+      end
+      ActiveRecord::Base.transaction do
+        users.each { |user| user.follow!(collection) }
       end
     end
   end

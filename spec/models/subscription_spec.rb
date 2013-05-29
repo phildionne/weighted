@@ -23,34 +23,36 @@ describe Subscription do
   end
 
   describe :Callbacks do
-    let(:stripe) { double(Stripe::Customer) }
 
     # @TODO
     describe :create_stripe_customer do
       before { @user = FactoryGirl.build(:user) }
 
       it "makes a request to create a stripe customer" do
-        stripe.should_receive(:create)
-
-        @user.save!
+        Stripe::Customer.should_receive(:create)
+        @user.run_callbacks(:save)
       end
 
-      # it "creates the right stripe customer" do
-      # end
+      it "raises on failure" do
+        WebMock.disable_net_connect!
+        expect { @user.save! }.to raise_error
+      end
     end
 
     # @TODO
     describe :destroy_stripe_customer do
-      before { @user = FactoryGirl.create(:user) }
+      let(:user) { FactoryGirl.create(:user) }
 
       it "makes a request to destroy a stripe customer" do
-        stripe.should_receive(:retrieve)
-
-        @user.destroy
+        Stripe::Customer.should_receive(:retrieve)
+        user.run_callbacks(:destroy)
       end
 
-      # it "destroys the right stripe customer" do
-      # end
+      it "rollsback on failure" do
+        WebMock.disable_net_connect!
+        user.run_callbacks(:destroy)
+        user.should be_persisted
+      end
     end
   end
 
