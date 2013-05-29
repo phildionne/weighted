@@ -1,7 +1,6 @@
 class Subscription < ActiveRecord::Base
   include Stripe::Callbacks
 
-  attr_protected :stripe_customer_id
   # @note Possible states are:
   #
   #   trialing
@@ -12,10 +11,18 @@ class Subscription < ActiveRecord::Base
 
   belongs_to :user
 
+  # @note Presence validation of stripe_customer_id is ensured by #create_stripe_customer
+  # @note Presence validation of stripe_card_last4 is ensured in the
+  # SubscriptionController #update action
+  #
   validates :user, presence: true
-  validates :stripe_customer_id, presence: true, on: :update
-  before_validation :create_stripe_customer, on: :create
-  before_destroy    :destroy_stripe_customer
+
+  before_create    :create_stripe_customer
+  before_destroy   :destroy_stripe_customer
+
+  # @TODO Decide what happens when a customer activates his subscription before the end of the trial
+  # @TODO Decide wether to show trial begining and ending dates
+
   after_customer_subscription_created! do |stripe_subscription, event|
     subscription = Subscription.find_by_stripe_customer_id(stripe_subscription.customer)
     subscription.state = stripe_subscription.status
@@ -44,13 +51,12 @@ class Subscription < ActiveRecord::Base
   end
 
 
-
-  # Convenience methods to query the subscription state
+  # Convenience methods to query the Subscription state
   #
   # @return [Boolean]
-  ['trialing?', 'active?', 'past_due?', 'canceled?', 'unpaid?'].each do |method|
-    define_method(method) do
-      state == method.chop
+  ['trialing?', 'active?', 'past_due?', 'canceled?', 'unpaid?'].each do |method_name|
+    define_method(method_name) do
+      state == method_name.chop
     end
   end
 
@@ -60,8 +66,7 @@ class Subscription < ActiveRecord::Base
   # Creates a Stripe customer, raises on failure
   def create_stripe_customer
     begin
-      customer = Stripe::Customer.create(email: user.email,
-                                         plan:  'default')
+      customer = Stripe::Customer.create(email: user.email, plan:  'default')
       self.stripe_customer_id = customer.id
     rescue Stripe::StripeError => e
       logger.error e
