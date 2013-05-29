@@ -6,9 +6,10 @@
 
       <p class="navbar-text pull-right">
         <% if user_signed_in? %>
-          Hello <%= link_to current_user.flexible_name, user_path(current_user), :class => 'navbar-link' %>
+          <%= t('layout.header.greeting') %>
+          <%= link_to current_user.flexible_name, user_path(current_user), :class => 'navbar-link' %>
         <% else %>
-          <%= link_to "Read why you should sign up", new_user_registration_path, :class => 'navbar-link' %>
+          <%= link_to t('layout.header.signup'), new_user_registration_path, :class => 'navbar-link' %>
         <% end %>
       </p>
     </div>
