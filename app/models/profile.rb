@@ -33,7 +33,8 @@ class Profile < ActiveRecord::Base
 
   private
 
-    def gravatar_avatar
-      self.gravatar_email ? "https://gravatar.com/avatar/#{Digest::MD5.hexdigest(self.gravatar_email.downcase)}.png?size=70" : nil
-    end
+  def gravatar_avatar
+    self.gravatar_email ? "https://gravatar.com/avatar/#{Digest::MD5.hexdigest(self.gravatar_email.downcase)}.png?size=70" : nil
+  end
+
 end

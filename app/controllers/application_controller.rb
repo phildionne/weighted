@@ -11,19 +11,19 @@ class ApplicationController < ActionController::Base
 
   private
 
-    def load_collection
-      @collection = Collection.find_by_id(params[:collection_id])
+  def load_collection
+    @collection = Collection.find_by_id(params[:collection_id])
+  end
+
+  # Errors
+  def render_error(status, exception=nil)
+    if status.eql?(500)
+      ExceptionNotifier.notify_exception(exception, env: request.env)
     end
 
-    # Errors
-    def render_error(status, exception=nil)
-      if status.eql?(500)
-        ExceptionNotifier.notify_exception(exception, env: request.env)
-      end
-
-      respond_to do |format|
-        format.html { render template: "errors/#{status}", layout: 'layouts/application', status: status }
-        format.all  { render nothing: true, status: status }
-      end
+    respond_to do |format|
+      format.html { render template: "errors/#{status}", layout: 'layouts/application', status: status }
+      format.all  { render nothing: true, status: status }
     end
+  end
 end
