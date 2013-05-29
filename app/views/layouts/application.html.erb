@@ -19,14 +19,12 @@
 </head>
 <body data-view="<%= body_class %>">
 
-  <%= render 'layouts/header' %>
-  <%= render :partial => 'layouts/flash', :object => flash %>
+  <div class="container" id="wrapper" role="document">
+    <%= render 'layouts/header' %>
+    <%= render :partial => 'layouts/flash', :object => flash %>
 
-  <div id="wrap" role="document">
-    <div class="container-fluid">
-      <%= yield %>
-    </div>
-  </div><!-- /#wrap -->
+    <%= yield %>
+  </div><!-- /#wrapper -->
 
   <%= render 'layouts/footer' %>
 
