@@ -7,6 +7,7 @@ gem 'devise'
 gem 'omniauth-twitter'
 gem 'high_voltage'
 gem 'flutie'
+gem 'simple_form'
 
 
 # Gems used only for assets and not required
