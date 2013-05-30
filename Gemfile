@@ -47,6 +47,7 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'factory_girl_rails', '~> 4.0'
   gem 'shoulda-matchers'
+  gem 'i18n-spec'
   gem 'awesome_print'
   gem 'faker'
 end
