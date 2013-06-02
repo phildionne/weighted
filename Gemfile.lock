@@ -6,6 +6,18 @@ GIT
       actionmailer (>= 3.0.4)
       activesupport (>= 3.0.4)
 
+GIT
+  remote: git://github.com/superfeedr/rack-superfeedr.git
+  revision: 91340c47986870b7adf983d4fb27c071301e0c66
+  specs:
+    rack-superfeedr (0.0.5)
+      nokogiri
+      nokogiri
+      rack
+      rack
+      typhoeus
+      typhoeus
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -93,6 +105,9 @@ GEM
       eventmachine (>= 0.12.9)
       http_parser.rb (~> 0.5.3)
     erubis (2.7.0)
+    ethon (0.5.12)
+      ffi (>= 1.3.0)
+      mime-types (~> 1.18)
     eventmachine (1.0.3)
     excon (0.20.1)
     execjs (1.4.0)
@@ -278,6 +293,8 @@ GEM
     treetop (1.4.12)
       polyglot
       polyglot (>= 0.3.1)
+    typhoeus (0.6.3)
+      ethon (~> 0.5.11)
     tzinfo (0.3.37)
     uglifier (2.0.1)
       execjs (>= 0.3.0)
@@ -321,6 +338,7 @@ DEPENDENCIES
   omniauth-twitter
   pg
   pry-rails
+  rack-superfeedr!
   rails (= 3.2.12)
   rb-fsevent
   rspec-rails
