@@ -1,0 +1,6 @@
+en:
+  activerecord:
+    models:
+      collection:
+    attributes:
+      collection:

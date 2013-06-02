@@ -31,5 +31,9 @@ describe CollectionsController do
       delete("/collections/1").should route_to("collections#destroy", :id => "1")
     end
 
+    it "routes to #followers" do
+      get("/collections/1/followers").should route_to("collections#followers", :id => "1")
+    end
+
   end
 end

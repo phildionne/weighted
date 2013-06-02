@@ -1,17 +1,32 @@
+<% if current_user && current_user.id  == @user.id %>
+  <ul class="nav nav-pills">
+    <li>
+      <%= link_to 'Account', edit_registration_path(@user) %>
+    </li>
+    <li>
+      <%= link_to Profile.model_name.human, settings_profile_path %>
+    </li>
+  </ul>
 
-<%= image_tag @user.avatar %>
+  <hr>
+<% end %>
 
-<h1><%= @user.flexible_name %></h1>
+<div class="row">
+  <div class="col col-lg-8">
 
-<hr>
+    <%= image_tag @user.avatar, :class => 'img-circle' %>
 
-<h2>Following <%= @user.followed_collections.count %> collections:</h2>
+    <h1><%= @user.flexible_name %></h1>
 
-<ol>
-  <% @user.followed_collections.each do |collection| %>
-  <li>
-    <h3><%= link_to collection.subject, collection %></h3>
-    <p><%= collection.description %></p>
-  </li>
-  <% end %>
-</ol>
+    <h2>Following <%= @user.followed_collections.count %> collections:</h2>
+
+    <ol class="list-unstyled">
+      <% @user.followed_collections.each do |collection| %>
+      <li>
+        <strong><%= link_to collection.subject, collection %>: </strong><%= collection.description %>
+      </li>
+      <% end %>
+    </ol>
+
+  </div>
+</div><!-- /.row -->

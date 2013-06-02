@@ -1,6 +1,6 @@
-<%= form_for( current_user.follows.find_by_collection_id(collection.id),
-              html: { method: :delete },
-              remote: true) do |f| %>
-  <div><%= f.hidden_field :collection_id %></div>
-  <%= f.submit "Unfollow", class: "btn" %>
+<%= form_for(current_user.follows.find_by_collection_id(collection.id),
+             html: { :method => :delete },
+             remote: true) do |f| %>
+  <%= f.hidden_field :collection_id %>
+  <%= f.submit "Unfollow", :class => "btn" %>
 <% end %>
