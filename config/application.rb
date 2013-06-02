@@ -72,5 +72,17 @@ module Weighted
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    superfeedr_options = {
+      host:     'weighted.pagekite.me',
+      login:    ENV['SUPERFEEDR_USERNAME'],
+      password: ENV['SUPERFEEDR_PASSWORD'],
+      format:   'json',
+      async:    false
+    }
+    config.middleware.use Rack::Superfeedr, superfeedr_options do |superfeedr|
+      Superfeedr = superfeedr
+    end
+
   end
 end
