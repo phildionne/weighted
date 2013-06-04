@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.12'
+gem 'pg'
 gem 'thin'
 gem 'foreman'
 gem 'devise'
@@ -23,7 +24,6 @@ group :assets do
 end
 
 group :production do
-  gem 'pg'
   gem 'exception_notification', github: 'smartinez87/exception_notification'
 end
 
