@@ -4,6 +4,8 @@
 # @!attribute @TODO
 #
 class Collection < ActiveRecord::Base
+  serialize :data, ActiveRecord::Coders::Hstore
+
   attr_accessible :description, :subject
 
   has_many :contents

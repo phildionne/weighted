@@ -356,10 +356,10 @@ ALTER TABLE ONLY users
 
 
 --
--- Name: collections_data; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+-- Name: index_collections_on_data; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
-CREATE INDEX collections_data ON collections USING gin (data);
+CREATE INDEX index_collections_on_data ON collections USING gist (data);
 
 
 --
