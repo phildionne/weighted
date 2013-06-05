@@ -12,6 +12,7 @@ gem 'flutie'
 gem 'simple_form'
 gem 'sanitize'
 gem 'addressable'
+gem 'uuid'
 
 # Gems used only for assets and not required
 # in production environments by default.
