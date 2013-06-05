@@ -52,6 +52,28 @@ describe Collection do
     end
   end
 
+  describe :ClassMethods do
+
+    describe :with_data do
+      let(:collection) { FactoryGirl.create(:collection) }
+
+      it "finds the record with an existing key" do
+        collection.data[:foo] = :bar
+        collection.save
+
+        Collection.with_data(:foo, :bar).should include(collection)
+      end
+
+      it "doesnt find the record without an existing key" do
+        Collection.with_data(:foo, :bar).should_not include(collection)
+      end
+
+      it "returns an ActiveRecord::Relation" do
+        Collection.with_data(:foo, :bar).should be_a(ActiveRecord::Relation)
+      end
+    end
+  end
+
   describe :InstanceMethods do
     let(:user) { FactoryGirl.create(:user) }
 

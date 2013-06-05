@@ -20,6 +20,16 @@ class Collection < ActiveRecord::Base
 
   before_save :titleize_subject
 
+  # Find all records where data attribute contains the passed key and value
+  #
+  # @note Uses database index
+  # @param key [Symbol, String]
+  # @param value [String]
+  # @return [ActiveRecord::Relation]
+  def self.with_data(key, value)
+    where("data @> hstore(:key, :value)", key: key, value: value)
+  end
+
   # @param [User]
   # @return [Boolean] Whether the collection is being followed by the user
   def followed_by?(user)
