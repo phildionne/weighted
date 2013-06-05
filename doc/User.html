@@ -1,0 +1,1177 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Class: User
+  
+    &mdash; Documentation by YARD 0.8.6.1
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '';
+  framesUrl = "frames.html#!" + escape(window.location.href);
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html">Index (U)</a> &raquo;
+    
+    
+    <span class="title">User</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><h1>Class: User
+  <span class="abstract note title">Abstract</span>
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName">ActiveRecord::Base</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">ActiveRecord::Base</li>
+          
+            <li class="next">User</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">app/models/user.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <div class="note abstract">
+  <strong>This class is abstract.</strong>
+  <div class='inline'>
+<p>@TODO</p>
+</div>
+</div>
+
+<p>User</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+
+
+
+  <h2>Instance Attribute Summary <small>(<a href="#" class="summary_toggle">collapse</a>)</small></h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#%40TODO-instance_method" title="\#@TODO (instance method)">- (Object) <strong>@TODO</strong>(@TODO) </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  <span class="abstract note title">abstract</span>
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>User.</p>
+</div></span>
+  
+</li>
+
+    
+  </ul>
+
+
+
+
+  
+    <h2>
+      Class Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#first_or_create_from_auth-class_method" title="first_or_create_from_auth (class method)">+ (Object) <strong>first_or_create_from_auth</strong>(auth) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Find or create a User based on Auth provider and uid.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#new_with_session-class_method" title="new_with_session (class method)">+ (Object) <strong>new_with_session</strong>(params, session) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Populates a new User from the session and trigger validations.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#flexible_name-instance_method" title="#flexible_name (instance method)">- (String) <strong>flexible_name</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns either the User's name or username.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#follow%21-instance_method" title="#follow! (instance method)">- (Boolean) <strong>follow!</strong>(collection) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Make a user follow a collection.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#following%3F-instance_method" title="#following? (instance method)">- (Boolean) <strong>following?</strong>(collection) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Wether a user is following a collection.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#password_required%3F-instance_method" title="#password_required? (instance method)">- (Boolean) <strong>password_required?</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>In In Users/Registrations#new, don't require password when coming from
+OAuth provider.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#unfollow%21-instance_method" title="#unfollow! (instance method)">- (Boolean) <strong>unfollow!</strong>(collection) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Make a user unfollow a collection.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#update_with_password-instance_method" title="#update_with_password (instance method)">- (Object) <strong>update_with_password</strong>(params, *options) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>In Users/Registrations#update, only require current password if user signed
+up with password.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+  <div id="instance_attr_details" class="attr_details">
+    <h2>Instance Attribute Details</h2>
+    
+      
+      <span id="@TODO=-instance_method"></span>
+      <div class="method_details first">
+  <h3 class="signature first" id="@TODO-instance_method">
+  
+    - (<tt>Object</tt>) <strong>@TODO</strong>(@TODO) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <div class="note abstract">
+  <strong>This method is abstract.</strong>
+  <div class='inline'>
+<p>@TODO</p>
+</div>
+</div>
+
+<p>User</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/models/user.rb', line 6</span>
+
+<span class='kw'>class</span> <span class='const'>User</span> <span class='op'>&lt;</span> <span class='const'>ActiveRecord</span><span class='op'>::</span><span class='const'>Base</span>
+
+  <span class='id identifier rubyid_devise'>devise</span> <span class='symbol'>:database_authenticatable</span><span class='comma'>,</span> <span class='symbol'>:registerable</span><span class='comma'>,</span>
+  <span class='symbol'>:recoverable</span><span class='comma'>,</span> <span class='symbol'>:validatable</span><span class='comma'>,</span> <span class='symbol'>:omniauthable</span><span class='comma'>,</span> <span class='symbol'>:omniauth_providers</span> <span class='op'>=&gt;</span> <span class='lbracket'>[</span><span class='symbol'>:twitter</span><span class='rbracket'>]</span>
+
+  <span class='id identifier rubyid_attr_accessible'>attr_accessible</span> <span class='symbol'>:email</span><span class='comma'>,</span> <span class='symbol'>:password</span><span class='comma'>,</span> <span class='symbol'>:password_confirmation</span><span class='comma'>,</span> <span class='symbol'>:username</span>
+
+  <span class='id identifier rubyid_has_one'>has_one</span> <span class='symbol'>:profile</span><span class='comma'>,</span>      <span class='label'>inverse_of:</span> <span class='symbol'>:user</span><span class='comma'>,</span> <span class='label'>dependent:</span> <span class='symbol'>:destroy</span>
+  <span class='comment'># has_one :subscription, inverse_of: :user, dependent: :destroy
+</span>
+  <span class='id identifier rubyid_has_many'>has_many</span> <span class='symbol'>:follows</span><span class='comma'>,</span> <span class='label'>foreign_key:</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>user_id</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='label'>dependent:</span> <span class='symbol'>:destroy</span>
+  <span class='id identifier rubyid_has_many'>has_many</span> <span class='symbol'>:followed_collections</span><span class='comma'>,</span> <span class='label'>through:</span> <span class='symbol'>:follows</span><span class='comma'>,</span> <span class='label'>source:</span> <span class='symbol'>:collection</span>
+
+  <span class='comment'># :email, :password and :password_confirmation validations are ensured by devise
+</span>  <span class='id identifier rubyid_validates'>validates</span> <span class='symbol'>:username</span><span class='comma'>,</span> <span class='label'>presence:</span> <span class='kw'>true</span>
+  <span class='id identifier rubyid_validates'>validates</span> <span class='symbol'>:username</span><span class='comma'>,</span> <span class='label'>uniqueness:</span> <span class='kw'>true</span>
+  <span class='id identifier rubyid_validates'>validates</span> <span class='symbol'>:username</span><span class='comma'>,</span> <span class='label'>format:</span> <span class='lbrace'>{</span> <span class='label'>with:</span> <span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>\A[\w]{1,20}\z</span><span class='regexp_end'>/</span></span><span class='comma'>,</span>
+    <span class='label'>message:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>is authorized: letters A-Z, numbers 0-9, underscores, 1-20 characters.</span><span class='tstring_end'>&quot;</span></span> <span class='rbrace'>}</span>
+
+  <span class='id identifier rubyid_validates_associated'>validates_associated</span> <span class='symbol'>:profile</span> <span class='comment'>#, :subscription
+</span>
+  <span class='id identifier rubyid_delegate'>delegate</span> <span class='symbol'>:avatar</span><span class='comma'>,</span> <span class='symbol'>:first_name</span><span class='comma'>,</span> <span class='symbol'>:last_name</span><span class='comma'>,</span> <span class='symbol'>:name</span><span class='comma'>,</span> <span class='label'>to:</span> <span class='symbol'>:profile</span>
+
+  <span class='comment'># Find or create a User based on Auth provider and uid
+</span>  <span class='comment'>#
+</span>  <span class='comment'># @param auth @TODO
+</span>  <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_first_or_create_from_auth'>first_or_create_from_auth</span><span class='lparen'>(</span><span class='id identifier rubyid_auth'>auth</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_where'>where</span><span class='lparen'>(</span><span class='id identifier rubyid_auth'>auth</span><span class='period'>.</span><span class='id identifier rubyid_slice'>slice</span><span class='lparen'>(</span><span class='symbol'>:provider</span><span class='comma'>,</span> <span class='symbol'>:uid</span><span class='rparen'>)</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_first_or_create'>first_or_create</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_user'>user</span><span class='op'>|</span>
+      <span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_username'>username</span> <span class='op'>=</span> <span class='id identifier rubyid_auth'>auth</span><span class='period'>.</span><span class='id identifier rubyid_info'>info</span><span class='period'>.</span><span class='id identifier rubyid_nickname'>nickname</span>
+      <span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_email'>email</span> <span class='op'>=</span> <span class='id identifier rubyid_auth'>auth</span><span class='period'>.</span><span class='id identifier rubyid_info'>info</span><span class='period'>.</span><span class='id identifier rubyid_email'>email</span>
+      <span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_provider'>provider</span> <span class='op'>=</span> <span class='id identifier rubyid_auth'>auth</span><span class='period'>.</span><span class='id identifier rubyid_provider'>provider</span>
+      <span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_uid'>uid</span> <span class='op'>=</span> <span class='id identifier rubyid_auth'>auth</span><span class='period'>.</span><span class='id identifier rubyid_uid'>uid</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+
+  <span class='comment'># Populates a new User from the session and trigger validations
+</span>  <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_new_with_session'>new_with_session</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='comma'>,</span> <span class='id identifier rubyid_session'>session</span><span class='rparen'>)</span>
+    <span class='kw'>if</span> <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>devise.user_attributes</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span>
+      <span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>devise.user_attributes</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='label'>without_protection:</span> <span class='kw'>true</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_user'>user</span><span class='op'>|</span>
+        <span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_attributes'>attributes</span> <span class='op'>=</span> <span class='id identifier rubyid_params'>params</span>
+        <span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_valid?'>valid?</span>
+      <span class='kw'>end</span>
+    <span class='kw'>else</span>
+      <span class='kw'>super</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+
+  <span class='comment'># In In Users/Registrations#new, don't require password when coming from OAuth provider
+</span>  <span class='kw'>def</span> <span class='id identifier rubyid_password_required?'>password_required?</span>
+    <span class='kw'>super</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_provider'>provider</span><span class='period'>.</span><span class='id identifier rubyid_blank?'>blank?</span>
+  <span class='kw'>end</span>
+
+  <span class='comment'># In Users/Registrations#update, only require current password if user signed up with password
+</span>  <span class='kw'>def</span> <span class='id identifier rubyid_update_with_password'>update_with_password</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='comma'>,</span> <span class='op'>*</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
+    <span class='kw'>if</span> <span class='id identifier rubyid_encrypted_password'>encrypted_password</span><span class='period'>.</span><span class='id identifier rubyid_blank?'>blank?</span>
+      <span class='id identifier rubyid_update_attributes'>update_attributes</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='comma'>,</span> <span class='op'>*</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
+    <span class='kw'>else</span>
+      <span class='kw'>super</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+
+  <span class='comment'># Returns either the User's name or username
+</span>  <span class='comment'>#
+</span>  <span class='comment'># @return [String]
+</span>  <span class='kw'>def</span> <span class='id identifier rubyid_flexible_name'>flexible_name</span>
+    <span class='id identifier rubyid_name'>name</span> <span class='op'>||</span> <span class='id identifier rubyid_username'>username</span>
+  <span class='kw'>end</span>
+
+  <span class='comment'># Make a user follow a collection
+</span>  <span class='comment'>#
+</span>  <span class='comment'># @param collection [Collection]
+</span>  <span class='comment'># @return [Boolean] Whether the user is not already following the collection
+</span>  <span class='kw'>def</span> <span class='id identifier rubyid_follow!'>follow!</span><span class='lparen'>(</span><span class='id identifier rubyid_collection'>collection</span><span class='rparen'>)</span>
+    <span class='kw'>begin</span>
+      <span class='id identifier rubyid_follows'>follows</span><span class='period'>.</span><span class='id identifier rubyid_create!'>create!</span><span class='lparen'>(</span><span class='label'>collection:</span> <span class='id identifier rubyid_collection'>collection</span><span class='rparen'>)</span>
+    <span class='kw'>rescue</span> <span class='const'>ActiveRecord</span><span class='op'>::</span><span class='const'>RecordInvalid</span>
+      <span class='kw'>return</span> <span class='kw'>false</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+
+  <span class='comment'># Make a user unfollow a collection
+</span>  <span class='comment'>#
+</span>  <span class='comment'># @param collection [Collection]
+</span>  <span class='comment'># @return [Boolean] Whether the user is already following the collection
+</span>  <span class='kw'>def</span> <span class='id identifier rubyid_unfollow!'>unfollow!</span><span class='lparen'>(</span><span class='id identifier rubyid_collection'>collection</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_is_existing_record'>is_existing_record</span> <span class='op'>=</span> <span class='id identifier rubyid_following?'>following?</span><span class='lparen'>(</span><span class='id identifier rubyid_collection'>collection</span><span class='rparen'>)</span>
+    <span class='kw'>if</span> <span class='id identifier rubyid_is_existing_record'>is_existing_record</span>
+      <span class='id identifier rubyid_follows'>follows</span><span class='period'>.</span><span class='id identifier rubyid_find_by_collection_id'>find_by_collection_id</span><span class='lparen'>(</span><span class='id identifier rubyid_collection'>collection</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_destroy'>destroy</span>
+    <span class='kw'>else</span>
+      <span class='kw'>return</span> <span class='kw'>false</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+
+  <span class='comment'># Wether a user is following a collection
+</span>  <span class='comment'>#
+</span>  <span class='comment'># @param collection [Collection]
+</span>  <span class='comment'># @return [Boolean] Whether the user is following the collection
+</span>  <span class='kw'>def</span> <span class='id identifier rubyid_following?'>following?</span><span class='lparen'>(</span><span class='id identifier rubyid_collection'>collection</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_is_existing_record'>is_existing_record</span> <span class='op'>=</span> <span class='id identifier rubyid_follows'>follows</span><span class='period'>.</span><span class='id identifier rubyid_find_by_collection_id'>find_by_collection_id</span><span class='lparen'>(</span><span class='id identifier rubyid_collection'>collection</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span><span class='rparen'>)</span>
+    <span class='op'>!</span><span class='op'>!</span><span class='id identifier rubyid_is_existing_record'>is_existing_record</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="first_or_create_from_auth-class_method">
+  
+    + (<tt>Object</tt>) <strong>first_or_create_from_auth</strong>(auth) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Find or create a User based on Auth provider and uid</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>auth</span>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>@TODO</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+32
+33
+34
+35
+36
+37
+38
+39</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/models/user.rb', line 32</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_first_or_create_from_auth'>first_or_create_from_auth</span><span class='lparen'>(</span><span class='id identifier rubyid_auth'>auth</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_where'>where</span><span class='lparen'>(</span><span class='id identifier rubyid_auth'>auth</span><span class='period'>.</span><span class='id identifier rubyid_slice'>slice</span><span class='lparen'>(</span><span class='symbol'>:provider</span><span class='comma'>,</span> <span class='symbol'>:uid</span><span class='rparen'>)</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_first_or_create'>first_or_create</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_user'>user</span><span class='op'>|</span>
+    <span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_username'>username</span> <span class='op'>=</span> <span class='id identifier rubyid_auth'>auth</span><span class='period'>.</span><span class='id identifier rubyid_info'>info</span><span class='period'>.</span><span class='id identifier rubyid_nickname'>nickname</span>
+    <span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_email'>email</span> <span class='op'>=</span> <span class='id identifier rubyid_auth'>auth</span><span class='period'>.</span><span class='id identifier rubyid_info'>info</span><span class='period'>.</span><span class='id identifier rubyid_email'>email</span>
+    <span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_provider'>provider</span> <span class='op'>=</span> <span class='id identifier rubyid_auth'>auth</span><span class='period'>.</span><span class='id identifier rubyid_provider'>provider</span>
+    <span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_uid'>uid</span> <span class='op'>=</span> <span class='id identifier rubyid_auth'>auth</span><span class='period'>.</span><span class='id identifier rubyid_uid'>uid</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="new_with_session-class_method">
+  
+    + (<tt>Object</tt>) <strong>new_with_session</strong>(params, session) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Populates a new User from the session and trigger validations</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/models/user.rb', line 42</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_new_with_session'>new_with_session</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='comma'>,</span> <span class='id identifier rubyid_session'>session</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>devise.user_attributes</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span>
+    <span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>devise.user_attributes</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='comma'>,</span> <span class='label'>without_protection:</span> <span class='kw'>true</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_user'>user</span><span class='op'>|</span>
+      <span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_attributes'>attributes</span> <span class='op'>=</span> <span class='id identifier rubyid_params'>params</span>
+      <span class='id identifier rubyid_user'>user</span><span class='period'>.</span><span class='id identifier rubyid_valid?'>valid?</span>
+    <span class='kw'>end</span>
+  <span class='kw'>else</span>
+    <span class='kw'>super</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="flexible_name-instance_method">
+  
+    - (<tt>String</tt>) <strong>flexible_name</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns either the User's name or username</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+70
+71
+72</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/models/user.rb', line 70</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_flexible_name'>flexible_name</span>
+  <span class='id identifier rubyid_name'>name</span> <span class='op'>||</span> <span class='id identifier rubyid_username'>username</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="follow!-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>follow!</strong>(collection) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Make a user follow a collection</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>collection</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Collection.html" title="Collection (class)">Collection</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Whether the user is not already following the collection</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+78
+79
+80
+81
+82
+83
+84</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/models/user.rb', line 78</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_follow!'>follow!</span><span class='lparen'>(</span><span class='id identifier rubyid_collection'>collection</span><span class='rparen'>)</span>
+  <span class='kw'>begin</span>
+    <span class='id identifier rubyid_follows'>follows</span><span class='period'>.</span><span class='id identifier rubyid_create!'>create!</span><span class='lparen'>(</span><span class='label'>collection:</span> <span class='id identifier rubyid_collection'>collection</span><span class='rparen'>)</span>
+  <span class='kw'>rescue</span> <span class='const'>ActiveRecord</span><span class='op'>::</span><span class='const'>RecordInvalid</span>
+    <span class='kw'>return</span> <span class='kw'>false</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="following?-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>following?</strong>(collection) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Wether a user is following a collection</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>collection</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Collection.html" title="Collection (class)">Collection</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Whether the user is following the collection</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+103
+104
+105
+106</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/models/user.rb', line 103</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_following?'>following?</span><span class='lparen'>(</span><span class='id identifier rubyid_collection'>collection</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_is_existing_record'>is_existing_record</span> <span class='op'>=</span> <span class='id identifier rubyid_follows'>follows</span><span class='period'>.</span><span class='id identifier rubyid_find_by_collection_id'>find_by_collection_id</span><span class='lparen'>(</span><span class='id identifier rubyid_collection'>collection</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span><span class='rparen'>)</span>
+  <span class='op'>!</span><span class='op'>!</span><span class='id identifier rubyid_is_existing_record'>is_existing_record</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="password_required?-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>password_required?</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>In In Users/Registrations#new, don't require password when coming from
+OAuth provider</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+54
+55
+56</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/models/user.rb', line 54</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_password_required?'>password_required?</span>
+  <span class='kw'>super</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_provider'>provider</span><span class='period'>.</span><span class='id identifier rubyid_blank?'>blank?</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="unfollow!-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>unfollow!</strong>(collection) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Make a user unfollow a collection</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>collection</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Collection.html" title="Collection (class)">Collection</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Whether the user is already following the collection</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+90
+91
+92
+93
+94
+95
+96
+97</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/models/user.rb', line 90</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_unfollow!'>unfollow!</span><span class='lparen'>(</span><span class='id identifier rubyid_collection'>collection</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_is_existing_record'>is_existing_record</span> <span class='op'>=</span> <span class='id identifier rubyid_following?'>following?</span><span class='lparen'>(</span><span class='id identifier rubyid_collection'>collection</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_is_existing_record'>is_existing_record</span>
+    <span class='id identifier rubyid_follows'>follows</span><span class='period'>.</span><span class='id identifier rubyid_find_by_collection_id'>find_by_collection_id</span><span class='lparen'>(</span><span class='id identifier rubyid_collection'>collection</span><span class='period'>.</span><span class='id identifier rubyid_id'>id</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_destroy'>destroy</span>
+  <span class='kw'>else</span>
+    <span class='kw'>return</span> <span class='kw'>false</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="update_with_password-instance_method">
+  
+    - (<tt>Object</tt>) <strong>update_with_password</strong>(params, *options) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>In Users/Registrations#update, only require current password if user signed
+up with password</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+59
+60
+61
+62
+63
+64
+65</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app/models/user.rb', line 59</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_update_with_password'>update_with_password</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='comma'>,</span> <span class='op'>*</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_encrypted_password'>encrypted_password</span><span class='period'>.</span><span class='id identifier rubyid_blank?'>blank?</span>
+    <span class='id identifier rubyid_update_attributes'>update_attributes</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='comma'>,</span> <span class='op'>*</span><span class='id identifier rubyid_options'>options</span><span class='rparen'>)</span>
+  <span class='kw'>else</span>
+    <span class='kw'>super</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+    <div id="footer">
+  Generated on Wed Jun  5 08:41:33 2013 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.6.1 (ruby-1.9.3).
+</div>
+
+  </body>
+</html>
