@@ -82,6 +82,11 @@ module Weighted
     }
     config.middleware.use Rack::Superfeedr, superfeedr_options do |superfeedr|
       Superfeedr = superfeedr
+
+      # @TODO Extract this in the proper file
+      Superfeedr.on_notification do |notification, feed_id|
+        Feed.superfeedr_callback(notification, feed_id)
+      end
     end
 
   end
