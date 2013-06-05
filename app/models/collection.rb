@@ -30,7 +30,7 @@ class Collection < ActiveRecord::Base
     where("data @> hstore(:key, :value)", key: key, value: value)
   end
 
-  # @param [User]
+  # @param user [User]
   # @return [Boolean] Whether the collection is being followed by the user
   def followed_by?(user)
     is_existing_record = follows.find_by_user_id(user.id)

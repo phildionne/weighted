@@ -27,6 +27,8 @@ class User < ActiveRecord::Base
   delegate :avatar, :first_name, :last_name, :name, to: :profile
 
   # Find or create a User based on Auth provider and uid
+  #
+  # @param auth @TODO
   def self.first_or_create_from_auth(auth)
     where(auth.slice(:provider, :uid)).first_or_create do |user|
       user.username = auth.info.nickname
@@ -71,7 +73,7 @@ class User < ActiveRecord::Base
 
   # Make a user follow a collection
   #
-  # @param [Collection]
+  # @param collection [Collection]
   # @return [Boolean] Whether the user is not already following the collection
   def follow!(collection)
     begin
@@ -83,7 +85,7 @@ class User < ActiveRecord::Base
 
   # Make a user unfollow a collection
   #
-  # @param [Collection]
+  # @param collection [Collection]
   # @return [Boolean] Whether the user is already following the collection
   def unfollow!(collection)
     is_existing_record = following?(collection)
@@ -96,7 +98,7 @@ class User < ActiveRecord::Base
 
   # Wether a user is following a collection
   #
-  # @param [Collection]
+  # @param collection [Collection]
   # @return [Boolean] Whether the user is following the collection
   def following?(collection)
     is_existing_record = follows.find_by_collection_id(collection.id)
