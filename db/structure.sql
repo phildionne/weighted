@@ -52,7 +52,8 @@ CREATE TABLE collections (
     description character varying(255),
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
-    data hstore
+    data hstore,
+    type character varying(255)
 );
 
 
@@ -431,3 +432,5 @@ INSERT INTO schema_migrations (version) VALUES ('20130604001645');
 INSERT INTO schema_migrations (version) VALUES ('20130604001727');
 
 INSERT INTO schema_migrations (version) VALUES ('20130604002323');
+
+INSERT INTO schema_migrations (version) VALUES ('20130607224347');
