@@ -10,6 +10,7 @@ gem 'omniauth-twitter'
 gem 'high_voltage'
 gem 'flutie'
 gem 'simple_form'
+gem 'sanitize'
 gem 'addressable'
 
 # Gems used only for assets and not required
