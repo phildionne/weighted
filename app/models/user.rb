@@ -15,6 +15,7 @@ class User < ActiveRecord::Base
 
   has_many :follows, foreign_key: 'user_id', dependent: :destroy
   has_many :followed_collections, through: :follows, source: :collection
+  has_and_belongs_to_many :contents
 
   # :email, :password and :password_confirmation validations are ensured by devise
   validates :username, presence: true

@@ -18,6 +18,7 @@ describe User do
     it { should have_one(:profile).dependent(:destroy) }
     it { should have_many(:follows).dependent(:destroy) }
     it { should have_many(:followed_collections) }
+    it { should have_and_belong_to_many(:contents) }
   end
 
   describe :Validations do

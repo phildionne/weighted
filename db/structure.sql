@@ -121,6 +121,16 @@ ALTER SEQUENCE contents_id_seq OWNED BY contents.id;
 
 
 --
+-- Name: contents_users; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE contents_users (
+    content_id integer,
+    user_id integer
+);
+
+
+--
 -- Name: follows; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -434,3 +444,5 @@ INSERT INTO schema_migrations (version) VALUES ('20130604001727');
 INSERT INTO schema_migrations (version) VALUES ('20130604002323');
 
 INSERT INTO schema_migrations (version) VALUES ('20130607224347');
+
+INSERT INTO schema_migrations (version) VALUES ('20130612012514');

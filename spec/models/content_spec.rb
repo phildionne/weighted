@@ -16,6 +16,7 @@ describe Content do
 
   describe :Associations do
     it { should belong_to(:collection) }
+    it { should have_and_belong_to_many(:users) }
   end
 
   describe :Validations do

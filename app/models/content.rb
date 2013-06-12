@@ -2,6 +2,7 @@ class Content < ActiveRecord::Base
   attr_accessible :body, :location, :title
 
   belongs_to :collection
+  has_and_belongs_to_many :users
 
   validates :collection,                presence: true
   validates :body, :location, :title,   presence: true
