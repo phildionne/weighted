@@ -15,12 +15,13 @@ describe Content do
   end
 
   describe :Associations do
-    it { should belong_to(:collection) }
     it { should have_and_belong_to_many(:users) }
+    it { should belong_to(:source) }
+    it { should have_many(:collections).through(:source) }
   end
 
   describe :Validations do
-    it { should validate_presence_of(:collection) }
+    it { should validate_presence_of(:source) }
     it { should validate_presence_of(:body) }
     it { should validate_presence_of(:location) }
     it { should validate_presence_of(:title) }

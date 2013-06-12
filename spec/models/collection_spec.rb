@@ -24,10 +24,11 @@ describe Collection do
   end
 
   describe :Associations do
-    it { should have_many(:contents) }
     it { should have_many(:follows).dependent(:destroy) }
     it { should have_many(:reverse_follows).dependent(:destroy) }
+    it { should have_many(:followers).through(:reverse_follows) }
     it { should have_and_belong_to_many(:sources) }
+    it { should have_many(:contents).through(:sources) }
   end
 
   describe :Validations do

@@ -95,7 +95,7 @@ CREATE TABLE contents (
     title character varying(255),
     body text,
     location character varying(255),
-    collection_id integer,
+    source_id integer,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
 );
@@ -446,3 +446,5 @@ INSERT INTO schema_migrations (version) VALUES ('20130604002323');
 INSERT INTO schema_migrations (version) VALUES ('20130607224347');
 
 INSERT INTO schema_migrations (version) VALUES ('20130612012514');
+
+INSERT INTO schema_migrations (version) VALUES ('20130612230549');

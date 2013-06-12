@@ -1,13 +1,15 @@
 class Content < ActiveRecord::Base
   attr_accessible :body, :location, :title
 
-  belongs_to :collection
   has_and_belongs_to_many :users
 
-  validates :collection,                presence: true
-  validates :body, :location, :title,   presence: true
-  validates :location, :title,          uniqueness: true
-  validates :title,                     length: { minimum: 3, maximum: 255, allow_blank: false }
+  belongs_to :source
+  has_many :collections, through: :source
+
+  validates :source,                  presence: true
+  validates :body, :location, :title, presence: true
+  validates :location, :title,        uniqueness: true
+  validates :title,                   length: { minimum: 3, maximum: 255, allow_blank: false }
 
   before_save :titleize_title
   before_save :sanitize_body

@@ -19,6 +19,7 @@ describe Source do
 
   describe :Associations do
     it { should have_and_belong_to_many(:collections) }
+    it { should have_many(:contents) }
   end
 
   describe :Validations do
