@@ -9,8 +9,8 @@
 
   <footer>
     <%= render 'follow_form', collection: collection %>
-    <%= link_to 'Show', collection %>
+    <%= link_to 'Show', collection_path(collection) %>
     <%= link_to 'Edit', edit_collection_path(collection) %>
-    <%= link_to 'Destroy', collection, method: :delete, data: { confirm: 'Are you sure?' } %>
+    <%= link_to 'Destroy', collection_path(collection), method: :delete, data: { confirm: 'Are you sure?' } %>
   </footer>
 </article>

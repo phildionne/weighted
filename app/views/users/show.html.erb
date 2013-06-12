@@ -23,7 +23,7 @@
     <ol class="list-unstyled">
       <% @user.followed_collections.each do |collection| %>
       <li>
-        <strong><%= link_to collection.subject, collection %>: </strong><%= collection.description %>
+        <strong><%= link_to collection.subject, collection_path(collection) %>: </strong><%= collection.description %>
       </li>
       <% end %>
     </ol>
