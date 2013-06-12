@@ -1,3 +1,9 @@
+##
+# Profile
+# @abstract @TODO
+#
+# @!attribute @TODO
+#
 class Profile < ActiveRecord::Base
   attr_accessible :first_name, :last_name, :gravatar_email, :provider_avatar
 

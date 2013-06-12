@@ -1,3 +1,9 @@
+##
+# Follow
+# @abstract @TODO
+#
+# @!attribute @TODO
+#
 class Follow < ActiveRecord::Base
   attr_accessible :user, :collection
 

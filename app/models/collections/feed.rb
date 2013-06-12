@@ -1,3 +1,9 @@
+##
+# Feed
+# @abstract @TODO
+#
+# @!attribute @TODO
+#
 class Feed < Collection
   hstore_accessor :data, :feed_url
 

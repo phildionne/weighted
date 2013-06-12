@@ -1,3 +1,9 @@
+##
+# Source
+# @abstract @TODO
+#
+# @!attribute @TODO
+#
 class Source < ActiveRecord::Base
   attr_accessible :location
 

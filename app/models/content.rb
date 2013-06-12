@@ -1,3 +1,9 @@
+##
+# Content
+# @abstract @TODO
+#
+# @!attribute @TODO
+#
 class Content < ActiveRecord::Base
   attr_accessible :body, :location, :title
 
