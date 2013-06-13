@@ -20,8 +20,11 @@ Weighted::Application.routes.draw do
     end
   end
 
+  resources :sources, :only => [:new, :edit, :create, :update, :destroy] do
+  end
   resources :collections do
     resources :contents
+    resources :sources, :only => [:index, :show]
     member do
       get :followers
     end

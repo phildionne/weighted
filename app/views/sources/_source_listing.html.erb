@@ -1,0 +1,14 @@
+<article>
+  <header>
+    <h1><%= source.location %></h1>
+  </header>
+
+  <p>
+    <%= link_to source.location, source.location %>
+  </p>
+
+  <footer>
+    <%= link_to 'Edit', edit_source_path(source) %>
+    <%= link_to 'Destroy', source_path(source), method: :delete, data: { confirm: 'Are you sure?' } %>
+  </footer>
+</article>

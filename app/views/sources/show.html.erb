@@ -1,0 +1,7 @@
+<p id="notice"><%= notice %></p>
+
+<%= render @source %>
+
+<%= link_to 'Edit', edit_source_path(@source) %> |
+
+<%= render partial: 'contents/content_listing', source: @source.contents, as: :content %>
