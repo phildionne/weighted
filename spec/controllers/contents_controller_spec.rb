@@ -5,11 +5,9 @@ describe ContentsController do
   before { sign_in user }
 
   describe "GET index" do
-    let(:collection) { FactoryGirl.create(:collection_with_contents) }
+    let(:collection) { FactoryGirl.create(:collection_with_sources_and_contents) }
 
-    before do
-      get :index, { collection_id: collection }
-    end
+    before { get :index, { collection_id: collection } }
 
     it "responds with success and render template" do
       response.should be_success
@@ -18,7 +16,7 @@ describe ContentsController do
   end
 
   describe "GET show" do
-    let(:collection) { FactoryGirl.create(:collection_with_contents) }
+    let(:collection) { FactoryGirl.create(:collection_with_sources_and_contents) }
     let(:content) { collection.contents.first }
 
     before { get :show, id: content, collection_id: collection }
@@ -34,9 +32,9 @@ describe ContentsController do
   end
 
   describe "GET new" do
-    let(:collection) { FactoryGirl.create(:collection) }
+    let(:source) { FactoryGirl.create(:source) }
 
-    before { get :new, collection_id: collection }
+    before { get :new, source_id: source }
 
     it "responds with success and render template" do
       response.should be_success
@@ -44,47 +42,35 @@ describe ContentsController do
     end
   end
 
-  describe "GET edit" do
-    let(:collection) { FactoryGirl.create(:collection_with_contents) }
-    let(:content) { collection.contents.first }
-
-    before { get :edit, id: content, collection_id: collection }
-
-    it "responds with success and render template" do
-      response.should be_success
-      response.should render_template :edit
-    end
-  end
-
   describe "POST create" do
     context "with valid params" do
-      let(:collection) { FactoryGirl.create(:collection) }
+      let(:source) { FactoryGirl.create(:source) }
       let(:content_attributes) { FactoryGirl.attributes_for(:content) }
 
       it "creates a new Content" do
         expect {
-          post :create, { content: content_attributes, collection_id: collection }
+          post :create, { content: content_attributes, source_id: source }
         }.to change(Content, :count).by(1)
       end
 
       it "assigns a newly created content as @content" do
-        post :create, { content: content_attributes, collection_id: collection }
+        post :create, { content: content_attributes, source_id: source }
         assigns(:content).should be_a(Content)
         assigns(:content).should be_persisted
       end
 
       it "redirects to the created content" do
-        post :create, { content: content_attributes, collection_id: collection }
-        response.should redirect_to(collection_content_path(collection, Collection.last))
+        post :create, { content: content_attributes, source_id: source }
+        response.should redirect_to(source_content_path(source, Source.last))
       end
     end
 
     context "with invalid params" do
-      let(:collection) { FactoryGirl.create(:collection) }
+      let(:source) { FactoryGirl.create(:source) }
       let(:invalid_content_attributes) { FactoryGirl.attributes_for(:invalid_content) }
 
       before do
-        post :create, { content: invalid_content_attributes, collection_id: collection }
+        post :create, { content: invalid_content_attributes, source_id: source }
       end
 
       it "assigns a newly created but unsaved content as @content" do
@@ -95,92 +81,19 @@ describe ContentsController do
     end
   end
 
-  describe "PUT update" do
-    let(:collection) do
-      FactoryGirl.create(:collection) do |collection|
-        collection.contents.create(
-          FactoryGirl.attributes_for(
-            :content,
-            title: "Lorem ipsum dolor sit amet",
-            body: "A pretty neat body",
-            location: "http://good-example.com"
-          )
-        )
-      end
-    end
-    let(:content) { collection.contents.first }
-
-    context "with valid params" do
-      it "assigns the requested content as content" do
-        put :update, { id: content, collection_id: collection, content: FactoryGirl.attributes_for(:content) }
-        assigns(:content).should eq(content)
-      end
-
-      it "updates the requested content" do
-        put :update, {
-          id: content,
-          collection_id: collection,
-          content: FactoryGirl.attributes_for(
-            :content,
-            title: "Bacon ipsum dolor sit amet",
-            body: "A very neat body",
-            location: "http://good-test.com"
-          )
-        }
-        content.reload
-        content.title.should eq("Bacon ipsum dolor sit amet".titleize)
-        content.body.should eq("A very neat body")
-        content.location.should eq("http://good-test.com")
-      end
-
-      it "redirects to the content" do
-        put :update, { id: content, collection_id: collection, content: FactoryGirl.attributes_for(:content) }
-        response.should redirect_to(collection_content_path(collection, content))
-      end
-    end
-
-    context "with invalid params" do
-      it "assigns the content as @content" do
-        put :update, { id: content, collection_id: collection, content: FactoryGirl.attributes_for(:invalid_content) }
-        assigns(:content).should eq(content)
-      end
-
-      it "does not update @content's attributes" do
-        put :update, {
-          id: content,
-          collection_id: collection,
-          content: FactoryGirl.attributes_for(
-            :invalid_content,
-            title: "Bacon ipsum dolor sit amet",
-            location: "http://bad-test.com"
-          )
-        }
-        content.reload
-        content.title.should_not eq("Bacon ipsum dolor sit amet")
-        content.body.should eq("A pretty neat body")
-        content.location.should eq("http://good-example.com")
-      end
-
-      it "re-renders the 'edit' template" do
-        put :update, { id: content, collection_id: collection, content: FactoryGirl.attributes_for(:invalid_content) }
-        response.should render_template :edit
-      end
-    end
-  end
-
   describe "DELETE destroy" do
-    before { @collection = FactoryGirl.create(:collection_with_contents) }
-    let(:content) { @collection.contents.first }
+    before { @source = FactoryGirl.create(:source_with_contents) }
+    let(:content) { @source.contents.first }
 
     it "destroys the requested content" do
       expect {
-        delete :destroy, { id: content, collection_id: @collection }
+        delete :destroy, { id: content, source_id: @source }
       }.to change(Content, :count).by(-1)
     end
 
     it "redirects to the contents list" do
-      delete :destroy, { id: content, collection_id: @collection }
-      response.should redirect_to(collection_contents_path)
+      delete :destroy, { id: content, source_id: @source }
+      response.should redirect_to(source_contents_path)
     end
   end
 

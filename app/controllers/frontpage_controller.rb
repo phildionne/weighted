@@ -6,7 +6,7 @@ class FrontpageController < ApplicationController
     if current_user
 
       @collections = current_user.followed_collections
-      @contents = Content.where(collection_id: @collections.map(&:id))
+      @contents = @collections.map(&:contents).flatten
 
       render 'homepage'
     else

@@ -15,6 +15,10 @@ class ApplicationController < ActionController::Base
     @collection = Collection.find_by_id(params[:collection_id])
   end
 
+  def load_source
+    @source = Source.find_by_id(params[:source_id])
+  end
+
   # Errors
   def render_error(status, exception=nil)
     if status.eql?(500)
