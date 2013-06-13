@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :source do
-    uri { Faker::Internet.url }
+    location { Faker::Internet.url }
 
     factory :source_with_collections do
       ignore do
@@ -14,6 +14,6 @@ FactoryGirl.define do
   end
 
   factory :invalid_source, parent: :source do
-    uri ""
+    location ""
   end
 end

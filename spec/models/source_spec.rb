@@ -22,7 +22,7 @@ describe Source do
   end
 
   describe :Validations do
-    it { should validate_presence_of(:uri) }
+    it { should validate_presence_of(:location) }
   end
 
 end

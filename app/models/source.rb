@@ -1,7 +1,7 @@
 class Source < ActiveRecord::Base
-  attr_accessible :uri
+  attr_accessible :location
 
   has_and_belongs_to_many :collections
 
-  validates :uri, presence: true
+  validates :location, url_format: true, presence: true
 end
