@@ -4,44 +4,31 @@ FactoryGirl.define do
     description { Faker::Lorem.sentence }
   end
 
-  factory :collection_with_contents, parent: :collection do
-    ignore do
-      contents_count 5
-    end
-
-    after(:create) do |collection, evaluator|
-      FactoryGirl.create_list(:content, evaluator.contents_count, collection: collection)
-    end
-  end
-
   factory :collection_with_sources, parent: :collection do
     ignore do
-      sources_count 5
+      sources_count [1,2,3].sample
     end
 
     after(:create) do |collection, evaluator|
-      sources = FactoryGirl.create(:source, evaluator.sources_count)
-      collection.sources << sources
+      collection.sources << FactoryGirl.create_list(:source, evaluator.sources_count)
     end
   end
 
   factory :collection_with_sources_and_contents, parent: :collection do
     ignore do
-      contents_count 10
-      sources_count 2
+      sources_count [1,2,3].sample
     end
 
     after(:create) do |collection, evaluator|
-      FactoryGirl.create_list(:content, evaluator.contents_count, collection: collection)
-
-      sources = FactoryGirl.create_list(:source, evaluator.sources_count)
+      sources = FactoryGirl.create_list(:source_with_contents, evaluator.sources_count)
       collection.sources << sources
+      collection.save
     end
   end
 
   factory :collection_with_followers, parent: :collection do
     ignore do
-      users_count 10
+      users_count [1,2,3].sample
     end
 
     after(:create) do |collection, evaluator|

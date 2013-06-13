@@ -6,9 +6,6 @@ describe Source do
     context "Valid factory" do
       subject { FactoryGirl.create(:source) }
       specify { should be_valid }
-
-      subject { FactoryGirl.create(:source_with_collections) }
-      specify { should be_valid }
     end
 
     context "Invalid factory" do

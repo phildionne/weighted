@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :content do
-    collection
+    source
 
     title     { Faker::Lorem.words(8).join(' ') }
     body      { Faker::Lorem.paragraphs.join(' ') }

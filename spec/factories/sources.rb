@@ -1,15 +1,15 @@
 FactoryGirl.define do
   factory :source do
     location { Faker::Internet.url }
+  end
 
-    factory :source_with_collections do
-      ignore do
-        collections_count 2
-      end
+  factory :source_with_contents, parent: :source do
+    ignore do
+      contents_count [1,2,3].sample
+    end
 
-      after(:create) do |source, evaluator|
-        source.collections << FactoryGirl.create_list(:collection, evaluator.collections_count)
-      end
+    after(:create) do |source, evaluator|
+      source.contents << FactoryGirl.create_list(:content, evaluator.contents_count)
     end
   end
 
