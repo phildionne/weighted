@@ -2,6 +2,8 @@
 
 <%= render @source %>
 
-<%= link_to 'Edit', edit_source_path(@source) %> |
+<%= link_to 'Edit', edit_source_path(@source) %>
 
-<%= render partial: 'contents/content_listing', source: @source.contents, as: :content %>
+<hr>
+
+<%= render partial: 'collections/collection_listing', collection: @source.collections, as: :collection %>

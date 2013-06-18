@@ -1,9 +1,9 @@
 <% if user_signed_in? %>
 <div id="follow_form" data-collection-id="<%= collection.id %>">
   <% if current_user.following?(collection) %>
-    <%= render 'unfollow', collection: collection %>
+    <%= render 'collections/unfollow', collection: collection %>
   <% else %>
-    <%= render 'follow', collection: collection %>
+    <%= render 'collections/follow', collection: collection %>
   <% end %>
 </div>
 <% end %>
