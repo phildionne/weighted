@@ -1,4 +1,4 @@
-<article>
+<%= content_tag_for(:article, collection) do %>
   <header>
     <h1><%= collection.subject %></h1>
   </header>
@@ -8,4 +8,4 @@
   </p>
 
   <footer></footer>
-</article>
+<% end %>

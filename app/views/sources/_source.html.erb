@@ -1,4 +1,4 @@
-<article>
+<%= content_tag_for(:article, source) do %>
   <header>
     <h1><%= source.location %></h1>
     <div>
@@ -7,4 +7,4 @@
   </header>
 
   <footer></footer>
-</article>
+<% end %>

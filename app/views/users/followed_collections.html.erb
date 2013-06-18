@@ -3,10 +3,8 @@
 <hr>
 
 <ol>
-  <% @user.followed_collections.each do |collection| %>
-  <li>
+  <%= content_tag_for(:li, @user.followed_collections) do |collection| %>
     <h3><%= link_to collection.subject, collection %></h3>
     <p><%= collection.description %></p>
-  </li>
   <% end %>
 </ol>

@@ -1,4 +1,4 @@
-<article>
+<%= content_tag_for(:article, collection) do %>
   <header>
     <h1><%= collection.subject %></h1>
   </header>
@@ -13,4 +13,4 @@
     <%= link_to 'Edit', edit_collection_path(collection) %>
     <%= link_to 'Destroy', collection_path(collection), method: :delete, data: { confirm: 'Are you sure?' } %>
   </footer>
-</article>
+<% end %>

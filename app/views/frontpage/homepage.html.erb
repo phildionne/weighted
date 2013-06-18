@@ -1,4 +1,6 @@
 <% @contents.each do |content| %>
-  <h3><%= content.title %></h3>
-  <p><%= content.body %></p>
+  <%= content_tag_for(:article, content) do %>
+    <h3><%= content.title %></h3>
+    <p><%= content.body %></p>
+  <% end %>
 <% end %>

@@ -1,4 +1,4 @@
-<article>
+<%= content_tag_for(:article, content) do %>
   <header>
     <h1><%= content.title %></h1>
     <div>
@@ -13,4 +13,4 @@
   <footer>
     <%= link_to 'Show', collection_content_path(@collection, content) %>
   </footer>
-</article>
+<% end %>

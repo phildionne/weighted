@@ -3,9 +3,7 @@
 <hr>
 
 <ol>
-  <% @collection.followers.each do |user| %>
-  <li>
+  <%= content_tag_for(:li, @collection.followers) do |user| %>
     <%= link_to user.flexible_name, user %>
-  </li>
   <% end %>
 </ol>

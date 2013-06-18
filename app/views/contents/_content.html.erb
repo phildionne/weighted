@@ -1,4 +1,4 @@
-<article>
+<%= content_tag_for(:article, content) do %>
   <header>
     <h1><%= content.title %></h1>
     <div>
@@ -11,4 +11,4 @@
   </div>
 
   <footer></footer>
-</article>
+<% end %>

@@ -1,4 +1,4 @@
-<article>
+<%= content_tag_for(:article, source) do %>
   <header>
     <h1><%= source.location %></h1>
   </header>
@@ -11,4 +11,4 @@
     <%= link_to 'Edit', edit_source_path(source) %>
     <%= link_to 'Destroy', source_path(source), method: :delete, data: { confirm: 'Are you sure?' } %>
   </footer>
-</article>
+<% end %>
