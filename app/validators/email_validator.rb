@@ -1,23 +1,14 @@
 class EmailValidator < ActiveModel::EachValidator
 
-  # @TODO Make this work
-  # @see https://gist.github.com/jcf/1188367
-
-  # Validates an email is valid and exists
+  # Validates an email is valid
   #
   # @param record [ActiveRecord::Model]
   # @param attribute [Symbol]
   # @param value [String]
   def validate_each(record, attribute, value)
-    @value = value
-    @email = Mail::Address.new(@value)
-
-    unless valid_email?(@value) && existing_email?(@value)
+    unless valid_email?(value)
       record.errors[attribute] << (options[:message] || "is not a valid email")
     end
-
-  rescue Mail::Field::ParseError
-    false
   end
 
 
@@ -25,18 +16,14 @@ class EmailValidator < ActiveModel::EachValidator
 
   # @nodoc
   def valid_email?(string)
-    domain_and_address_present?
-  end
+    begin
+      @email = Mail::Address.new(string)
 
-  # @nodoc
-  def existing_email?(uri)
-    true
-  end
+      # cannot be a local address
+      @email.address == string && @email.local != string
 
-  # @nodoc
-  def domain_and_address_present?
-    if @email.domain && @email.address
-      @email.domain + @email.address == @value
+    rescue Mail::Field::ParseError
+      false
     end
   end
 end

@@ -1,15 +1,15 @@
 require 'addressable/uri'
 
-class UrlFormatValidator < ActiveModel::EachValidator
+class UrlValidator < ActiveModel::EachValidator
 
-  # Validates a Url is valid and responds with success
+  # Validates a Url is valid and exists
   #
   # @param record [ActiveRecord::Model]
   # @param attribute [Symbol]
   # @param value [String]
   def validate_each(record, attribute, value)
     unless valid_uri?(value) && existing_uri?(value)
-      record.errors[attribute] << (options[:message] || "is not a valid URI")
+      record.errors[attribute] << (options[:message] || "is not a valid URL")
     end
   end
 

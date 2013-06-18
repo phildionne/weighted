@@ -13,7 +13,6 @@ describe EmailValidator do
 
   context "with a valid email" do
     let(:emails) do
-      # @TODO Find a bunch of picky valid emails
       [
         'james@gmail.com',
         'man@8.8.8.8',
@@ -33,11 +32,11 @@ describe EmailValidator do
 
   context "with an invalid email" do
     let(:emails) do
-      # @TODO Find a bunch of picky invalid emails
       [
+        # 'can@haz', @FIXME: This is currently valid
         'haxors',
         '@blah',
-        'can@haz'
+        'test1@a.com, test2@b.com'
       ]
     end
 

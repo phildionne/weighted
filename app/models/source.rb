@@ -10,5 +10,5 @@ class Source < ActiveRecord::Base
   has_and_belongs_to_many :collections
   has_many :contents
 
-  validates :location, url_format: true, presence: true
+  validates :location, url: true, presence: true
 end

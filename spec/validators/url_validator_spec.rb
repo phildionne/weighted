@@ -4,10 +4,10 @@ require 'spec_helper'
 class Validatable
   include ActiveModel::Validations
   attr_accessor :url
-  validates :url, url_format: true
+  validates :url, url: true
 end
 
-describe UrlFormatValidator do
+describe UrlValidator do
 
   subject { Validatable.new }
 
