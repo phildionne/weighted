@@ -43,7 +43,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: collections; Type: TABLE; Schema: public; Owner: -; Tablespace:
+-- Name: collections; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE collections (
@@ -53,7 +53,8 @@ CREATE TABLE collections (
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
     data hstore,
-    type character varying(255)
+    type character varying(255),
+    slug character varying(255)
 );
 
 
@@ -77,7 +78,7 @@ ALTER SEQUENCE collections_id_seq OWNED BY collections.id;
 
 
 --
--- Name: collections_sources; Type: TABLE; Schema: public; Owner: -; Tablespace:
+-- Name: collections_sources; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE collections_sources (
@@ -87,7 +88,7 @@ CREATE TABLE collections_sources (
 
 
 --
--- Name: contents; Type: TABLE; Schema: public; Owner: -; Tablespace:
+-- Name: contents; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE contents (
@@ -121,7 +122,7 @@ ALTER SEQUENCE contents_id_seq OWNED BY contents.id;
 
 
 --
--- Name: contents_users; Type: TABLE; Schema: public; Owner: -; Tablespace:
+-- Name: contents_users; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE contents_users (
@@ -131,7 +132,7 @@ CREATE TABLE contents_users (
 
 
 --
--- Name: follows; Type: TABLE; Schema: public; Owner: -; Tablespace:
+-- Name: follows; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE follows (
@@ -163,7 +164,7 @@ ALTER SEQUENCE follows_id_seq OWNED BY follows.id;
 
 
 --
--- Name: profiles; Type: TABLE; Schema: public; Owner: -; Tablespace:
+-- Name: profiles; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE profiles (
@@ -199,7 +200,7 @@ ALTER SEQUENCE profiles_id_seq OWNED BY profiles.id;
 
 
 --
--- Name: schema_migrations; Type: TABLE; Schema: public; Owner: -; Tablespace:
+-- Name: schema_migrations; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE schema_migrations (
@@ -208,7 +209,7 @@ CREATE TABLE schema_migrations (
 
 
 --
--- Name: sources; Type: TABLE; Schema: public; Owner: -; Tablespace:
+-- Name: sources; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE sources (
@@ -239,7 +240,7 @@ ALTER SEQUENCE sources_id_seq OWNED BY sources.id;
 
 
 --
--- Name: users; Type: TABLE; Schema: public; Owner: -; Tablespace:
+-- Name: users; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE TABLE users (
@@ -253,7 +254,8 @@ CREATE TABLE users (
     reset_password_sent_at timestamp without time zone,
     unconfirmed_email character varying(255),
     provider character varying(255),
-    uid character varying(255)
+    uid character varying(255),
+    slug character varying(255)
 );
 
 
@@ -319,7 +321,7 @@ ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regcl
 
 
 --
--- Name: collections_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
+-- Name: collections_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY collections
@@ -327,7 +329,7 @@ ALTER TABLE ONLY collections
 
 
 --
--- Name: contents_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
+-- Name: contents_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY contents
@@ -335,7 +337,7 @@ ALTER TABLE ONLY contents
 
 
 --
--- Name: follows_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
+-- Name: follows_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY follows
@@ -343,7 +345,7 @@ ALTER TABLE ONLY follows
 
 
 --
--- Name: profiles_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
+-- Name: profiles_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY profiles
@@ -351,7 +353,7 @@ ALTER TABLE ONLY profiles
 
 
 --
--- Name: sources_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
+-- Name: sources_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY sources
@@ -359,7 +361,7 @@ ALTER TABLE ONLY sources
 
 
 --
--- Name: users_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace:
+-- Name: users_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
 ALTER TABLE ONLY users
@@ -367,49 +369,63 @@ ALTER TABLE ONLY users
 
 
 --
--- Name: index_collections_on_data; Type: INDEX; Schema: public; Owner: -; Tablespace:
+-- Name: index_collections_on_data; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX index_collections_on_data ON collections USING gist (data);
 
 
 --
--- Name: index_follows_on_collection_id; Type: INDEX; Schema: public; Owner: -; Tablespace:
+-- Name: index_collections_on_slug; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_collections_on_slug ON collections USING btree (slug);
+
+
+--
+-- Name: index_follows_on_collection_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX index_follows_on_collection_id ON follows USING btree (collection_id);
 
 
 --
--- Name: index_follows_on_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace:
+-- Name: index_follows_on_user_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE INDEX index_follows_on_user_id ON follows USING btree (user_id);
 
 
 --
--- Name: index_follows_on_user_id_and_collection_id; Type: INDEX; Schema: public; Owner: -; Tablespace:
+-- Name: index_follows_on_user_id_and_collection_id; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE UNIQUE INDEX index_follows_on_user_id_and_collection_id ON follows USING btree (user_id, collection_id);
 
 
 --
--- Name: index_users_on_email; Type: INDEX; Schema: public; Owner: -; Tablespace:
+-- Name: index_users_on_email; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE UNIQUE INDEX index_users_on_email ON users USING btree (email);
 
 
 --
--- Name: index_users_on_reset_password_token; Type: INDEX; Schema: public; Owner: -; Tablespace:
+-- Name: index_users_on_reset_password_token; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE UNIQUE INDEX index_users_on_reset_password_token ON users USING btree (reset_password_token);
 
 
 --
--- Name: unique_schema_migrations; Type: INDEX; Schema: public; Owner: -; Tablespace:
+-- Name: index_users_on_slug; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_users_on_slug ON users USING btree (slug);
+
+
+--
+-- Name: unique_schema_migrations; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
 CREATE UNIQUE INDEX unique_schema_migrations ON schema_migrations USING btree (version);
@@ -448,3 +464,9 @@ INSERT INTO schema_migrations (version) VALUES ('20130607224347');
 INSERT INTO schema_migrations (version) VALUES ('20130612012514');
 
 INSERT INTO schema_migrations (version) VALUES ('20130612230549');
+
+INSERT INTO schema_migrations (version) VALUES ('20130613005529');
+
+INSERT INTO schema_migrations (version) VALUES ('20130618020112');
+
+INSERT INTO schema_migrations (version) VALUES ('20130618020638');
