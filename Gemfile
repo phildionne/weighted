@@ -51,6 +51,7 @@ group :development, :test do
   gem 'factory_girl_rails', '~> 4.0'
   gem 'shoulda-matchers'
   gem 'i18n-spec'
+  gem 'guard-brakeman'
   gem 'awesome_print'
   gem 'faker'
 end
