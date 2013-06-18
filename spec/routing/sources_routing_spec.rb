@@ -8,11 +8,11 @@ describe SourcesController do
     end
 
     it "routes to #show" do
-      get("/collections/:collection_id/sources/1").should route_to("sources#show", :collection_id => ":collection_id", :id => "1")
+      get("/sources/1").should route_to("sources#show", :id => "1")
     end
 
     it "routes to #new" do
-      get("/sources/new").should route_to("sources#new")
+      get("/collections/:collection_id/sources/new").should route_to("sources#new", :collection_id => ":collection_id")
     end
 
     it "routes to #edit" do
@@ -20,7 +20,7 @@ describe SourcesController do
     end
 
     it "routes to #create" do
-      post("/sources").should route_to("sources#create")
+      post("/collections/:collection_id/sources").should route_to("sources#create", :collection_id => ":collection_id")
     end
 
     it "routes to #update" do

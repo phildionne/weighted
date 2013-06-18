@@ -16,12 +16,11 @@ describe SourcesController do
   end
 
   describe "GET show" do
-    let(:collection) { FactoryGirl.create(:collection_with_sources) }
-    let(:source) { collection.sources.first }
+    let(:source) { FactoryGirl.create(:source) }
 
-    before { get :show, id: source, collection_id: collection }
+    before { get :show, id: source }
 
-    it "assigns the source as @source" do
+    it "assigns the user source as @source" do
       assigns(:source).should eq(source)
     end
 
@@ -32,7 +31,9 @@ describe SourcesController do
   end
 
   describe "GET new" do
-    before { get :new }
+    let(:collection) { FactoryGirl.create(:collection) }
+
+    before { get :new, { collection_id: collection } }
 
     it "responds with success and render template" do
       response.should be_success
@@ -53,28 +54,34 @@ describe SourcesController do
 
   describe "POST create" do
     context "with valid params" do
+      let(:collection) { FactoryGirl.create(:collection) }
       let(:source_attributes) { FactoryGirl.attributes_for(:source) }
 
       it "creates a new Source" do
         expect {
-          post :create, { source: source_attributes }
+          post :create, { source: source_attributes, collection_id: collection }
         }.to change(Source, :count).by(1)
       end
 
       it "assigns a newly created source as @source" do
-        post :create, { source: source_attributes }
+        post :create, { source: source_attributes, collection_id: collection }
         assigns(:source).should be_a(Source)
         assigns(:source).should be_persisted
       end
 
-      it "redirects to the created source" do
-        post :create, { source: source_attributes }
-        response.should redirect_to(Source.last)
+      it "redirects to the collection" do
+        post :create, { source: source_attributes, collection_id: collection }
+        response.should redirect_to(collection)
       end
     end
 
     context "with invalid params" do
-      before { post :create, FactoryGirl.attributes_for(:invalid_source) }
+      let(:collection) { FactoryGirl.create(:collection) }
+      let(:invalid_source_attributes) { FactoryGirl.attributes_for(:invalid_source) }
+
+      before do
+        post :create, { source: invalid_source_attributes, collection_id: collection }
+      end
 
       it "assigns a newly created but unsaved source as @source" do
         assigns(:source).should be_a_new(Source)
@@ -101,7 +108,7 @@ describe SourcesController do
 
       it "redirects to the source" do
         put :update, { id: source, source: FactoryGirl.attributes_for(:source) }
-        response.should redirect_to(source)
+        response.should redirect_to(root_path)
       end
     end
 
@@ -136,7 +143,7 @@ describe SourcesController do
 
     it "redirects to the sources list" do
       delete :destroy, { id: @source }
-      response.should redirect_to(sources_path)
+      response.should redirect_to(root_path)
     end
   end
 

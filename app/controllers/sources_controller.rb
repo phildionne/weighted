@@ -1,6 +1,6 @@
 class SourcesController < ApplicationController
   before_filter :authenticate_user!, except: [:index, :show]
-  before_filter :load_collection, only: [:index, :show]
+  before_filter :load_collection, only: [:index, :new, :create]
 
   # GET /collections/:collection_id/sources
   # GET /collections/:collection_id/sources.json
@@ -13,10 +13,10 @@ class SourcesController < ApplicationController
     end
   end
 
-  # GET /collections/:collection_id/sources/1
-  # GET /collections/:collection_id/sources/1.json
+  # GET /sources/1
+  # GET /sources/1.json
   def show
-    @source = @collection.sources.find(params[:id])
+    @source = Source.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -24,10 +24,10 @@ class SourcesController < ApplicationController
     end
   end
 
-  # GET /sources/new
-  # GET /sources/new.json
+  # GET /collections/:collection_id/sources/new
+  # GET /collections/:collection_id/sources/new.json
   def new
-    @source = Source.new
+    @source = @collection.sources.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -40,14 +40,14 @@ class SourcesController < ApplicationController
     @source = Source.find(params[:id])
   end
 
-  # POST /sources
-  # POST /sources.json
+  # POST /collections/:collection_id/sources
+  # POST /collections/:collection_id/sources.json
   def create
-    @source = Source.new(params[:source])
+    @source = @collection.sources.new(params[:source])
 
     respond_to do |format|
       if @source.save
-        format.html { redirect_to @source, notice: 'Source was successfully created.' }
+        format.html { redirect_to @collection, notice: 'Source was successfully created.' }
         format.json { render json: @source, status: :created, location: @source }
       else
         format.html { render action: "new" }
@@ -63,7 +63,7 @@ class SourcesController < ApplicationController
 
     respond_to do |format|
       if @source.update_attributes(params[:source])
-        format.html { redirect_to @source, notice: 'Source was successfully updated.' }
+        format.html { redirect_to root_path, notice: 'Source was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -79,7 +79,7 @@ class SourcesController < ApplicationController
     @source.destroy
 
     respond_to do |format|
-      format.html { redirect_to sources_path }
+      format.html { redirect_to root_path }
       format.json { head :no_content }
     end
   end
