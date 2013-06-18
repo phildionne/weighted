@@ -3,7 +3,5 @@
 <hr>
 
 <ol>
-  <%= content_tag_for(:li, @collection.followers) do |user| %>
-    <%= link_to user.flexible_name, user %>
-  <% end %>
+  <%= render partial: 'users/user_listing', collection: @collection.followers, as: :user %>
 </ol>
