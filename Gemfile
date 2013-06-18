@@ -52,6 +52,7 @@ group :development, :test do
   gem 'shoulda-matchers'
   gem 'i18n-spec'
   gem 'guard-brakeman'
+  gem 'tarantula', :require => 'tarantula-rails3'
   gem 'awesome_print'
   gem 'faker'
 end
