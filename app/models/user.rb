@@ -4,6 +4,8 @@
 # @!attribute @TODO
 #
 class User < ActiveRecord::Base
+  extend FriendlyId
+  friendly_id :username, use: :slugged
 
   devise :database_authenticatable, :registerable,
   :recoverable, :validatable, :omniauthable, :omniauth_providers => [:twitter]

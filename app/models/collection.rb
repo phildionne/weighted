@@ -5,6 +5,9 @@
 # @!attribute @TODO
 #
 class Collection < ActiveRecord::Base
+  extend FriendlyId
+  friendly_id :subject, use: :slugged
+
   serialize :data, ActiveRecord::Coders::Hstore
 
   attr_accessible :description, :subject
