@@ -9,5 +9,5 @@ class Feed < Collection
 
   attr_accessible :feed_url
 
-  validates :feed_url, presence: true
+  validates :feed_url, url: true, rss_feed: true, presence: true
 end
