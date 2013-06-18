@@ -12,11 +12,11 @@ class ApplicationController < ActionController::Base
   private
 
   def load_collection
-    @collection = Collection.find_by_id(params[:collection_id])
+    @collection = Collection.find(params[:collection_id])
   end
 
   def load_source
-    @source = Source.find_by_id(params[:source_id])
+    @source = Source.find(params[:source_id])
   end
 
   # Errors
