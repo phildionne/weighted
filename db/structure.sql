@@ -216,7 +216,8 @@ CREATE TABLE sources (
     id integer NOT NULL,
     location character varying(255),
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    type character varying(255)
 );
 
 
@@ -470,3 +471,7 @@ INSERT INTO schema_migrations (version) VALUES ('20130613005529');
 INSERT INTO schema_migrations (version) VALUES ('20130618020112');
 
 INSERT INTO schema_migrations (version) VALUES ('20130618020638');
+
+INSERT INTO schema_migrations (version) VALUES ('20130623120502');
+
+INSERT INTO schema_migrations (version) VALUES ('20130623120654');
