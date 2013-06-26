@@ -38,7 +38,7 @@ describe Content do
     let(:content) { FactoryGirl.build(:content, title: 'sriracha') }
 
     describe :titleize_title do
-      it "titleizes a the title attribute" do
+      it "titleizes record's title attribute" do
         content.save
         content.title.should eq('Sriracha')
       end
