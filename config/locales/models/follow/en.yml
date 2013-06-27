@@ -4,3 +4,8 @@ en:
       follow:
     attributes:
       follow:
+        id:
+        user_id:
+        collection_id:
+        created_at:
+        updated_at:

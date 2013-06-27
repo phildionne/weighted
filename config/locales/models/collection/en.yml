@@ -4,3 +4,11 @@ en:
       collection:
     attributes:
       collection:
+        id:
+        subject:
+        description:
+        created_at:
+        updated_at:
+        data:
+        type:
+        slug:

@@ -4,3 +4,15 @@ en:
       user:
     attributes:
       user:
+        id:
+        username:
+        created_at:
+        updated_at:
+        email:
+        encrypted_password:
+        reset_password_token:
+        reset_password_sent_at:
+        unconfirmed_email:
+        provider:
+        uid:
+        slug:

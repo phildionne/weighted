@@ -4,3 +4,8 @@ en:
       source:
     attributes:
       source:
+        id:
+        location:
+        created_at:
+        updated_at:
+        type:

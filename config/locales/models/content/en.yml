@@ -4,3 +4,10 @@ en:
       content:
     attributes:
       content:
+        id:
+        title:
+        body:
+        location:
+        source_id:
+        created_at:
+        updated_at:
