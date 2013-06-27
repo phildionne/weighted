@@ -1,4 +1,11 @@
 GIT
+  remote: git://github.com/feedbin/opml_saw.git
+  revision: 61d8c2dd3d46e9cae38178754469dd9da7c8bd6a
+  specs:
+    opml_saw (0.0.2)
+      nokogiri
+
+GIT
   remote: git://github.com/smartinez87/exception_notification.git
   revision: 6026c274d284def545cda9bfed8dcbc3964ae08f
   specs:
@@ -349,6 +356,7 @@ DEPENDENCIES
   jquery-rails
   less-rails
   omniauth-twitter
+  opml_saw!
   pg
   pry-rails
   quiet_assets

@@ -13,6 +13,7 @@ gem 'friendly_id'
 gem 'simple_form'
 gem 'sanitize'
 gem 'addressable'
+gem 'opml_saw', github: 'feedbin/opml_saw'
 
 # Gems used only for assets and not required
 # in production environments by default.
