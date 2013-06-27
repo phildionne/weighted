@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "Profiles" do
+describe Settings::ProfilesController do
   describe "GET /settings/profile" do
     pending
   end
