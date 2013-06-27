@@ -61,7 +61,7 @@ describe ContentsController do
 
       it "redirects to the created content" do
         post :create, { content: content_attributes, source_id: source }
-        response.should redirect_to(source_content_path(source, Source.last))
+        response.should redirect_to(source_content_path(source, Content.last))
       end
     end
 

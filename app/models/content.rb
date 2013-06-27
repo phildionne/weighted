@@ -8,7 +8,6 @@ class Content < ActiveRecord::Base
   attr_accessible :body, :location, :title
 
   has_and_belongs_to_many :users
-
   belongs_to :source
   has_many :collections, through: :source
 
@@ -22,8 +21,9 @@ class Content < ActiveRecord::Base
 
   private
 
+  # @nodoc
   def titleize_title
-    self.title = self.title.titleize
+    self.title = self.title.titleize if title
   end
 
   # Sanitizes html content
@@ -32,8 +32,8 @@ class Content < ActiveRecord::Base
   # @note Images are limited to HTTP and HTTPS, links are limited to FTP, HTTP, HTTPS, and mailto protocols.
   # @see Full configuration here https://github.com/rgrove/sanitize/blob/master/lib/sanitize/config/relaxed.rb
   def sanitize_body
-    # TODO: Remove from the output the following node elements: data-*, id, class, onmouseout (and others), trackbacks, comment form
-    # TODO: Handle code blocks and syntax highlighting
-    Sanitize.clean(body, Sanitize::Config::RELAXED)
+    # @TODO: Remove from the output the following node elements: data-*, id, class, onmouseout (and others), trackbacks, comment form
+    # @TODO: Handle code blocks and syntax highlighting
+    self.body = Sanitize.clean(body, Sanitize::Config::RELAXED)
   end
 end

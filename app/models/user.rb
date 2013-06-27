@@ -53,7 +53,7 @@ class User < ActiveRecord::Base
     end
   end
 
-  # In In Users/Registrations#new, don't require password when coming from OAuth provider
+  # In Users/Registrations#new, don't require password when coming from OAuth provider
   def password_required?
     super && provider.blank?
   end

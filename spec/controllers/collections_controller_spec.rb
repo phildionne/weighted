@@ -99,6 +99,7 @@ describe CollectionsController do
 
       it "redirects to the collection" do
         put :update, { id: collection, collection: FactoryGirl.attributes_for(:collection) }
+        collection.reload
         response.should redirect_to(collection)
       end
     end

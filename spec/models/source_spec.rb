@@ -21,6 +21,7 @@ describe Source do
 
   describe :Validations do
     it { should validate_presence_of(:location) }
+    it { should allow_mass_assignment_of(:location) }
   end
 
 end

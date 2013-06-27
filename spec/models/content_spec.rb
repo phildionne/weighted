@@ -25,7 +25,7 @@ describe Content do
     it { should validate_presence_of(:body) }
     it { should validate_presence_of(:location) }
     it { should validate_presence_of(:title) }
-    # it { should validate_uniqueness_of(:location) }
+    it { should validate_uniqueness_of(:location) }
     it { should validate_uniqueness_of(:title) }
     it { should ensure_length_of(:title).is_at_least(3).is_at_most(255) }
 
@@ -35,12 +35,22 @@ describe Content do
   end
 
   describe :Callbacks do
-    let(:content) { FactoryGirl.build(:content, title: 'sriracha') }
-
     describe :titleize_title do
-      it "titleizes record's title attribute" do
+      let(:content) { FactoryGirl.build(:content, title: 'sriracha') }
+
+      it "titleizes the record's title attribute" do
         content.save
         content.title.should eq('Sriracha')
+      end
+    end
+
+    # @TODO Add better tests for sanitization checking
+    describe :sanitize_body do
+      let(:content) { FactoryGirl.build(:content, body: '<a href="#">Link</a>') }
+
+      it "sanitizes the record's body attribute" do
+        content.save
+        content.body.should eq('<a href="#">Link</a>')
       end
     end
   end

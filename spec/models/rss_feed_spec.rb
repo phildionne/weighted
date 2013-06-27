@@ -14,17 +14,4 @@ describe RssFeed do
     end
   end
 
-  describe :Associations do
-  end
-
-  describe :Validations do
-    it { should validate_presence_of(:location) }
-    it { should allow_mass_assignment_of(:location) }
-  end
-
-  describe :Callbacks do
-  end
-
-  describe :InstanceMethods do
-  end
 end

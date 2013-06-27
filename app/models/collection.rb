@@ -43,8 +43,9 @@ class Collection < ActiveRecord::Base
 
   private
 
+  # @nodoc
   def titleize_subject
-    self.subject = self.subject.titleize
+    self.subject = self.subject.titleize if subject
   end
 
 end

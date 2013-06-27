@@ -17,7 +17,7 @@ describe User do
   describe :Associations do
     it { should have_one(:profile).dependent(:destroy) }
     it { should have_many(:follows).dependent(:destroy) }
-    it { should have_many(:followed_collections) }
+    it { should have_many(:followed_collections).through(:follows) }
     it { should have_and_belong_to_many(:contents) }
   end
 
@@ -30,6 +30,8 @@ describe User do
     it { should allow_mass_assignment_of(:password_confirmation) }
     it { should allow_mass_assignment_of(:username) }
 
+    it { should_not allow_value("").for(:username) }
+    it { should_not allow_value(" ").for(:username) }
     it { should_not allow_value("User Name").for(:username) }
     it { should_not allow_value("email@example.com").for(:username) }
     it { should_not allow_value("user-name").for(:username) }

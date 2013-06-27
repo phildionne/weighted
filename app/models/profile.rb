@@ -9,14 +9,15 @@ class Profile < ActiveRecord::Base
 
   DEFAULT_AVATAR = 'assets/default_avatar.png'
 
-  validates :user,           presence: true
-  validates :first_name,     length: { minimum: 3, maximum: 64, allow_blank: true }
-  validates :last_name,      length: { minimum: 3, maximum: 64, allow_blank: true }
+  validates :user,       presence: true
+  validates :first_name, length: { minimum: 3, maximum: 64, allow_blank: true }
+  validates :last_name,  length: { minimum: 3, maximum: 64, allow_blank: true }
 
   validates :gravatar_email, email: true, allow_blank: true
 
   belongs_to :user
 
+  # @return [String]
   def name
     "#{first_name} #{last_name}" if first_name && last_name
   end
@@ -36,8 +37,9 @@ class Profile < ActiveRecord::Base
 
   private
 
+  # @return [String, Nil] Gravatar url or nil
   def gravatar_avatar
-    self.gravatar_email ? "https://gravatar.com/avatar/#{Digest::MD5.hexdigest(self.gravatar_email.downcase)}.png?size=70" : nil
+    gravatar_email ? "https://gravatar.com/avatar/#{Digest::MD5.hexdigest(gravatar_email.downcase)}.png?size=70" : nil
   end
 
 end
