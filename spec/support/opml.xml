@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<opml version="1.0">
+    <head>
+        <title>Abonnements de Philippe Dionne dans Google Reader</title>
+    </head>
+    <body>
+        <outline title="Autres" text="Autres">
+            <outline text="Lifehacker: Top" title="Lifehacker: Top"
+                type="rss"
+                xmlUrl="http://lifehacker.com/tag/top/index.xml" htmlUrl="http://lifehacker.com/tag/top"/>
+            <outline
+                text="OFQJ :: Partir en France / Appels à candidatures de l’OFQJ"
+                title="OFQJ :: Partir en France / Appels à candidatures de l’OFQJ"
+                type="rss"
+                xmlUrl="http://ofqj.org/partir-en-france/appels/rss" htmlUrl="http://ofqj.org/partir-en-france/appels"/>
+            <outline text="trendwatching.com" title="trendwatching.com"
+                type="rss"
+                xmlUrl="http://www.trendwatching.com/newsletter/rss.xml" htmlUrl="http://www.trendwatching.com"/>
+        </outline>
+        <outline title="Web" text="Web">
+            <outline text="A List Apart" title="A List Apart" type="rss"
+                xmlUrl="http://www.alistapart.com/site/rss" htmlUrl="http://alistapart.com"/>
+            <outline text="Design Staff" title="Design Staff" type="rss"
+                xmlUrl="http://feeds.feedburner.com/DesignStaff" htmlUrl="http://www.designstaff.org/"/>
+            <outline text="One Thing Well" title="One Thing Well"
+                type="rss" xmlUrl="http://onethingwell.org/rss" htmlUrl="http://onethingwell.org/"/>
+            <outline text="Signal vs. Noise" title="Signal vs. Noise"
+                type="rss"
+                xmlUrl="http://feeds.feedburner.com/37signals/beMH" htmlUrl="http://37signals.com/svn/posts"/>
+            <outline text="Smashing Magazine Feed"
+                title="Smashing Magazine Feed" type="rss"
+                xmlUrl="http://rss1.smashingmagazine.com/feed/" htmlUrl="http://www.smashingmagazine.com/"/>
+            <outline
+                text="The Godfounder | Clever Stuff No One Can Refuse"
+                title="The Godfounder | Clever Stuff No One Can Refuse"
+                type="rss"
+                xmlUrl="http://feeds.feedburner.com/thegodfounder" htmlUrl="http://thegodfounder.com/"/>
+            <outline text="Think Vitamin" title="Think Vitamin"
+                type="rss"
+                xmlUrl="http://feeds.feedburner.com/vitaminmasterfeed/" htmlUrl="http://thinkvitamin.com"/>
+            <outline text="ZURB" title="ZURB" type="rss"
+                xmlUrl="http://feeds.feedburner.com/zurb/blog" htmlUrl="http://www.zurb.com/blog/posts"/>
+        </outline>
+        <outline title="Design" text="Design">
+            <outline text="Datavisualization.ch"
+                title="Datavisualization.ch" type="rss"
+                xmlUrl="http://feeds.feedburner.com/Datavisualization" htmlUrl="http://datavisualization.ch"/>
+            <outline text="DNBot" title="DNBot" type="rss"
+                xmlUrl="http://dnbot.herokuapp.com/?points=10&amp;comments=5&amp;format=rss" htmlUrl="http://www.google.com/reader/view/feed%2Fhttp%3A%2F%2Fdnbot.herokuapp.com%2F%3Fpoints%3D10%26comments%3D5%26format%3Drss"/>
+            <outline text="Fribbble" title="Fribbble" type="rss"
+                xmlUrl="http://feeds.feedburner.com/fribbble" htmlUrl="http://fribbble.com"/>
+            <outline text="Fubiz™" title="Fubiz™" type="rss"
+                xmlUrl="http://feeds.feedburner.com/fubiz" htmlUrl="http://www.fubiz.net"/>
+            <outline
+                text="idsgn (a design blog): Design and branding news"
+                title="idsgn (a design blog): Design and branding news"
+                type="rss" xmlUrl="http://feeds.feedburner.com/idsgn" htmlUrl="http://idsgn.org/posts/"/>
+            <outline text="Little Big Details"
+                title="Little Big Details" type="rss"
+                xmlUrl="http://feeds.feedburner.com/littlebigdetails" htmlUrl="http://littlebigdetails.com/"/>
+            <outline text="nylllon.com" title="nylllon.com" type="rss"
+                xmlUrl="http://nylllon.com/rss?utm_source=RSS_feed&amp;utm_medium=RSS&amp;utm_campaign=RSS_Syndication" htmlUrl="http://nylllon.com"/>
+            <outline text="Premium Pixels" title="Premium Pixels"
+                type="rss"
+                xmlUrl="http://feeds.feedburner.com/premiumpixels" htmlUrl="http://www.premiumpixels.com"/>
+            <outline text="Styleboost reviews"
+                title="Styleboost reviews" type="rss"
+                xmlUrl="http://feeds2.feedburner.com/styleboostlinks" htmlUrl="http://styleboost.com"/>
+        </outline>
+    </body>
+</opml>

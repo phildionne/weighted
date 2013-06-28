@@ -27,6 +27,9 @@ module Weighted
     # Recursively load models in subdirectories
     config.autoload_paths += Dir[Rails.root.join('app', 'models', '{**}')]
 
+    # Load lib
+    config.autoload_paths += Dir[Rails.root.join('lib')]
+
     # Only load the plugins named here, in the order given (default is alphabetical).
     # :all can be used as a placeholder for all plugins not explicitly named.
     # config.plugins = [ :exception_notification, :ssl_requirement, :all ]
