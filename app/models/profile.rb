@@ -18,7 +18,7 @@ class Profile < ActiveRecord::Base
   belongs_to :user
 
   # @return [String]
-  def name
+  def full_name
     "#{first_name} #{last_name}" if first_name && last_name
   end
 

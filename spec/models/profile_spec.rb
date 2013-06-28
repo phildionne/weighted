@@ -33,11 +33,11 @@ describe Profile do
   end
 
   describe :InstanceMethods do
-    describe :name do
+    describe :full_name do
       let(:profile) { FactoryGirl.create(:profile, first_name: "Foo", last_name: "Bar") }
 
       it "includes first_name and last_name" do
-        profile.name.should eq("Foo Bar")
+        profile.full_name.should eq("Foo Bar")
       end
     end
 

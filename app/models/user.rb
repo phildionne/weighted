@@ -27,7 +27,7 @@ class User < ActiveRecord::Base
 
   validates_associated :profile, :subscription
 
-  delegate :avatar, :first_name, :last_name, :name, to: :profile
+  delegate :avatar, :first_name, :last_name, :full_name, to: :profile
 
   # Find or create a User based on Auth provider and uid
   #
@@ -71,7 +71,7 @@ class User < ActiveRecord::Base
   #
   # @return [String]
   def flexible_name
-    name || username
+    full_name || username
   end
 
   # Make a user follow a collection
