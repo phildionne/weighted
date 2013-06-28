@@ -31,6 +31,7 @@ group :production do
 end
 
 group :development do
+  gem 'quiet_assets'
   gem 'bullet'
   gem 'pry-rails'
   gem 'better_errors'
