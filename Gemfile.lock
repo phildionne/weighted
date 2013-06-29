@@ -212,6 +212,8 @@ GEM
     pg (0.15.1)
     pg-hstore (1.1.7)
     polyglot (0.3.3)
+    protected_attributes (1.0.3)
+      activemodel (>= 4.0.0, < 5.0)
     pry (0.9.12.2)
       coderay (~> 1.0.5)
       method_source (~> 0.8)
@@ -363,6 +365,7 @@ DEPENDENCIES
   less-rails
   omniauth-twitter
   pg
+  protected_attributes
   pry-rails
   quiet_assets
   rails (= 4.0.0)

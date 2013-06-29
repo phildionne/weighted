@@ -17,6 +17,7 @@ gem 'sanitize'
 gem 'addressable'
 
 gem 'rails-observers'
+gem 'protected_attributes'
 
 gem 'less-rails'
 gem 'therubyracer', platforms: :ruby
