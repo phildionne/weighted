@@ -48,10 +48,14 @@ Devise.setup do |config|
   # enable it only for database (email + password) authentication.
   # config.params_authenticatable = true
 
-  # Tell if authentication through HTTP Basic Auth is enabled. False by default.
+  # Tell if authentication through HTTP Auth is enabled. False by default.
   # It can be set to an array that will enable http authentication only for the
   # given strategies, for example, `config.http_authenticatable = [:token]` will
-  # enable it only for token authentication.
+  # enable it only for token authentication. The supported strategies are:
+  # :database      = Support basic authentication with authentication key + password
+  # :token         = Support basic authentication with token authentication key
+  # :token_options = Support token authentication with options as defined in
+  #                  http://api.rubyonrails.org/classes/ActionController/HttpAuthentication/Token.html
   # config.http_authenticatable = false
 
   # If http headers should be returned for AJAX requests. True by default.
@@ -82,7 +86,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 10
 
   # Setup a pepper to generate the encrypted password.
-  # config.pepper = "4a2cb26c3085c5130e09900af4384edf30f48867c7ad8aaebc4f4841b40c4bd30d0bea735fcb1a57d978fea8ec393e740f9310098fcd0e25e8f6cd4f0e8f75e2"
+  # config.pepper = "61a7f816bbc6b0e4f058df7cc2b2fce6962621805af7d356ed938921cb0f6bc4dc3b2142d0d2940c80d73991d020de8e4d47147751d70e1342b1729c291391e5"
 
   # ==> Configuration for :confirmable
   # A period that the user is allowed to access the website even without
@@ -125,7 +129,7 @@ Devise.setup do |config|
   config.password_length = 8..128
 
   # Email regex used to validate email formats. It simply asserts that
-  # an one (and only one) @ exists in the given string. This is mainly
+  # one (and only one) @ exists in the given string. This is mainly
   # to give user feedback and not to assert the e-mail validity.
   # config.email_regexp = /\A[^@]+@[^@]+\z/
 
@@ -175,7 +179,9 @@ Devise.setup do |config|
   # :sha1, :sha512 or encryptors from others authentication tools as :clearance_sha1,
   # :authlogic_sha512 (then you should set stretches above to 20 for default behavior)
   # and :restful_authentication_sha1 (then you should set stretches to 10, and copy
-  # REST_AUTH_SITE_KEY to pepper)
+  # REST_AUTH_SITE_KEY to pepper).
+  #
+  # Require the `devise-encryptable` gem when using anything other than bcrypt
   # config.encryptor = :sha512
 
   # ==> Configuration for :token_authenticatable
