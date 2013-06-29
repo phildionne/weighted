@@ -5,7 +5,7 @@ module Weighted
 
     # Parses an OPML formatted file and extract entries
     #
-    # @params string [String]
+    # @param string [String]
     # @return [Array] A collection of hashes
     # @example
     #
