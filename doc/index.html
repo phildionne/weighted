@@ -1,0 +1,122 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>
+  File: README
+  
+    &mdash; Documentation by YARD 0.8.6.2
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  hasFrames = window.top.frames.main ? true : false;
+  relpath = '';
+  framesUrl = "frames.html#!" + escape(window.location.href);
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html">Index</a> &raquo; 
+    <span class="title">File: README</span>
+  
+
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="class_list.html">
+      Class List
+    </a>
+  
+    <a class="full_list_link" id="method_list_link"
+        href="method_list.html">
+      Method List
+    </a>
+  
+    <a class="full_list_link" id="file_list_link"
+        href="file_list.html">
+      File List
+    </a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+
+    <iframe id="search_frame"></iframe>
+
+    <div id="content"><div id='filecontents'>
+<h1 id="label-Weighted">Weighted</h1>
+
+<h2 id="label-Getting+started">Getting started</h2>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_bundle'>bundle</span> <span class='id identifier rubyid_install'>install</span>
+<span class='id identifier rubyid_bundle'>bundle</span> <span class='id identifier rubyid_exec'>exec</span> <span class='id identifier rubyid_rake'>rake</span> <span class='label'>db:</span><span class='id identifier rubyid_create'>create</span>
+<span class='id identifier rubyid_bundle'>bundle</span> <span class='id identifier rubyid_exec'>exec</span> <span class='id identifier rubyid_rake'>rake</span> <span class='label'>db:</span><span class='id identifier rubyid_migrate'>migrate</span>
+<span class='id identifier rubyid_foreman'>foreman</span> <span class='id identifier rubyid_start'>start</span></code></pre>
+
+<h2 id="label-Deploying+on+Heroku">Deploying on Heroku</h2>
+
+<p>First, deploy to staging:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_git'>git</span> <span class='id identifier rubyid_checkout'>checkout</span> <span class='id identifier rubyid_develop'>develop</span>
+<span class='id identifier rubyid_git'>git</span> <span class='id identifier rubyid_push'>push</span> <span class='id identifier rubyid_staging'>staging</span> <span class='label'>develop:</span><span class='id identifier rubyid_master'>master</span></code></pre>
+
+<p>Ready for production? Alright, let&#39;s do this:</p>
+
+<pre class="code ruby"><code class="ruby">git checkout develop
+git checkout -b release-#
+# @TODO: bump version script
+git commit -a -m &#39;Bump version to #&#39;
+git checkout master
+git merge --no-ff release-#
+git tag -a #
+git push prodution master</code></pre>
+
+<p>Apply release branch to develop:</p>
+
+<pre class="code ruby"><code class="ruby">git checkout develop
+git merge --no-ff release-#
+git branch -d release-#
+git push --tags</code></pre>
+
+<h2 id="label-Running+tests">Running tests</h2>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_foreman'>foreman</span> <span class='id identifier rubyid_run'>run</span> <span class='id identifier rubyid_bundle'>bundle</span> <span class='id identifier rubyid_exec'>exec</span> <span class='id identifier rubyid_guard'>guard</span></code></pre>
+
+<h2 id="label-Assets">Assets</h2>
+
+<p>Assets are automatically uploaded on AWS S3 using <a
+href="https://github.com/rumblelabs/asset_sync">asset_sync</a> and served
+through a Cloudfront distribution.</p>
+<ul><li>
+<p>Staging <code>d10qu47grxb9bh.cloudfront.net</code></p>
+</li><li>
+<p>Production <code>d2y5pqdeoz9ati.cloudfront.net</code></p>
+</li></ul>
+</div></div>
+
+    <div id="footer">
+  Generated on Sat Jun 29 17:51:04 2013 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.8.6.2 (ruby-2.0.0).
+</div>
+
+  </body>
+</html>
