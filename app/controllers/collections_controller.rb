@@ -49,7 +49,7 @@ class CollectionsController < ApplicationController
         format.html { redirect_to @collection, notice: 'Collection was successfully created.' }
         format.json { render json: @collection, status: :created, location: @collection }
       else
-        format.html { render action: "new" }
+        format.html { render action: :new }
         format.json { render json: @collection.errors, status: :unprocessable_entity }
       end
     end
@@ -65,7 +65,7 @@ class CollectionsController < ApplicationController
         format.html { redirect_to @collection, notice: 'Collection was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render action: "edit" }
+        format.html { render action: :edit }
         format.json { render json: @collection.errors, status: :unprocessable_entity }
       end
     end

@@ -46,7 +46,7 @@ class ContentsController < ApplicationController
         format.html { redirect_to source_content_path(@source, @content), notice: 'Content was successfully created.' }
         format.json { render json: @content, status: :created, location: @content }
       else
-        format.html { render action: "new" }
+        format.html { render action: :new }
         format.json { render json: @content.errors, status: :unprocessable_entity }
       end
     end

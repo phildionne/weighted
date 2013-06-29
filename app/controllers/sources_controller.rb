@@ -50,7 +50,7 @@ class SourcesController < ApplicationController
         format.html { redirect_to @collection, notice: 'Source was successfully created.' }
         format.json { render json: @source, status: :created, location: @source }
       else
-        format.html { render action: "new" }
+        format.html { render action: :new }
         format.json { render json: @source.errors, status: :unprocessable_entity }
       end
     end
@@ -66,7 +66,7 @@ class SourcesController < ApplicationController
         format.html { redirect_to root_path, notice: 'Source was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render action: "edit" }
+        format.html { render action: :edit }
         format.json { render json: @source.errors, status: :unprocessable_entity }
       end
     end
