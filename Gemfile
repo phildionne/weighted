@@ -16,6 +16,8 @@ gem 'simple_form'
 gem 'sanitize'
 gem 'addressable'
 
+gem 'rails-observers'
+
 gem 'less-rails'
 gem 'therubyracer', platforms: :ruby
 gem 'sass-rails', '~> 4.0.0'

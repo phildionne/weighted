@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-    @user = User.find(params[:id])
+    @user = User.friendly.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -14,7 +14,7 @@ class UsersController < ApplicationController
   # GET /users/1/followed_collections
   # GET /users/1/followed_collections.json
   def followed_collections
-    @user = User.find(params[:id])
+    @user = User.friendly.find(params[:id])
     @collections = @user.followed_collections
 
     respond_to do |format|
