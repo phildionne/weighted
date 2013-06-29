@@ -1,0 +1,6 @@
+<%= simple_form_for(:search, url: search_path) do |f| %>
+
+  <%= f.input :query, as: :search %>
+  <%= f.button :submit %>
+
+<% end %>

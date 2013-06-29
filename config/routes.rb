@@ -14,6 +14,8 @@ Weighted::Application.routes.draw do
     get    'settings/account'  => 'devise/registrations#edit'
   end
 
+  resource :search, :only => [:show, :create]
+
   resources :users, :only => :show do
     member do
       get :followed_collections

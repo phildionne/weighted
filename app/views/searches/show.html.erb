@@ -1,0 +1,11 @@
+<h2>Search</h2>
+
+<%= render 'form' %>
+
+<hr>
+
+<% if @results && @results.any? %>
+  <h3>Results</h3>
+
+  <%= render partial: 'results', locals: { results: @results } %>
+<% end %>
