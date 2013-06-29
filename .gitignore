@@ -17,6 +17,7 @@ capybara-*.html
 **.orig
 rerun.txt
 pickle-email-*.html
+/.yardoc
 .project
 .rbenv-vars
 .ruby-version
