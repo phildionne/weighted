@@ -15,7 +15,7 @@ class CollectionsController < ApplicationController
   # GET /collections/1
   # GET /collections/1.json
   def show
-    @collection = Collection.find(params[:id])
+    @collection = Collection.friendly.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -36,7 +36,7 @@ class CollectionsController < ApplicationController
 
   # GET /collections/1/edit
   def edit
-    @collection = Collection.find(params[:id])
+    @collection = Collection.friendly.find(params[:id])
   end
 
   # POST /collections
@@ -58,7 +58,7 @@ class CollectionsController < ApplicationController
   # PUT /collections/1
   # PUT /collections/1.json
   def update
-    @collection = Collection.find(params[:id])
+    @collection = Collection.friendly.find(params[:id])
 
     respond_to do |format|
       if @collection.update_attributes(params[:collection])
@@ -74,7 +74,7 @@ class CollectionsController < ApplicationController
   # DELETE /collections/1
   # DELETE /collections/1.json
   def destroy
-    @collection = Collection.find(params[:id])
+    @collection = Collection.friendly.find(params[:id])
     @collection.destroy
 
     respond_to do |format|
@@ -86,7 +86,7 @@ class CollectionsController < ApplicationController
   # GET /collections/1/followers
   # GET /collections/1/followers.json
   def followers
-    @collection = Collection.find(params[:id])
+    @collection = Collection.friendly.find(params[:id])
     @users = @collection.followers
 
     respond_to do |format|

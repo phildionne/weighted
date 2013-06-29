@@ -17,7 +17,7 @@ class ContentsController < ApplicationController
   # GET /collections/:collection_id/contents/:id
   # GET /collections/:collection_id/contents/:id.json
   def show
-    @content = @collection.contents.find(params[:id])
+    @content = @collection.contents.friendly.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -55,7 +55,7 @@ class ContentsController < ApplicationController
   # DELETE /sources/:source_id/contents/:id
   # DELETE /sources/:source_id/contents/:id.json
   def destroy
-    @content = @source.contents.find(params[:id])
+    @content = @source.contents.friendly.find(params[:id])
     @content.destroy
 
     respond_to do |format|
